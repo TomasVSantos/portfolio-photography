@@ -41,9 +41,9 @@ export default function AboutPage() {
                   of work left behind in a place.
                 </p>
                 <p>
-                  This collection is an evolving record of those
-                  observations—made while travelling, walking close to home, and
-                  learning to trust quieter photographs.
+                  This collection is an evolving record of those observations.
+                  Made while travelling, walking close to home, and learning to
+                  trust quieter photographs.
                 </p>
               </div>
             </Reveal>

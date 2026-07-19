@@ -18,8 +18,8 @@ const contacts = [
     value: siteConfig.email,
     href: `mailto:${siteConfig.email}`,
   },
-  { label: "Instagram", value: "@tomassantos", href: siteConfig.instagram },
-  { label: "GitHub", value: "tomassantos", href: siteConfig.github },
+  { label: "Instagram", value: "@tomas.vsantos", href: siteConfig.instagram },
+  { label: "GitHub", value: "tomasvsantos", href: siteConfig.github },
 ];
 
 export default function ContactPage() {

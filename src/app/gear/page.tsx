@@ -12,28 +12,12 @@ export const metadata: Metadata = {
 
 const currentGear = [
   {
-    name: "Fujifilm X100VI",
-    note: "The everyday camera. Small, familiar, and always close.",
-  },
-  {
-    name: "Fujifilm X-T5",
-    note: "For slower work and the flexibility of interchangeable lenses.",
-  },
-  {
-    name: "XF 35mm f/1.4 R",
-    note: "A compact, characterful lens for people and low light.",
-  },
-  {
     name: "iPhone 17 Pro",
-    note: "The camera that removes every excuse not to make a photograph.",
+    note: "The camera that started it all and removes every excuse not to make a photograph.",
   },
 ];
 
-const wishlist = [
-  "Fujifilm GF 50mm f/3.5",
-  "A compact film rangefinder",
-  "More time in good light",
-];
+const wishlist = ["Fujifilm X-T5", "More time in good light"];
 
 export default function GearPage() {
   return (
