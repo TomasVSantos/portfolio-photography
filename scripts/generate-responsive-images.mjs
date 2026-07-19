@@ -8,6 +8,7 @@ import {
   isGeneratedImage,
   isSourceEntryCurrent,
   readManifest,
+  readSafeExifDefaults,
   writeManifestAtomic,
 } from "./image-pipeline/core.mjs";
 
@@ -43,7 +44,13 @@ if (slugs[0] && selected.length === 0) {
 
 const manifest = await readManifest(manifestPath);
 let manifestChanged = false;
-const summary = { processed: 0, skipped: 0, warnings: 0, failed: 0 };
+const summary = {
+  processed: 0,
+  metadataUpdated: 0,
+  skipped: 0,
+  warnings: 0,
+  failed: 0,
+};
 
 for (const slug of selected) {
   const directory = path.join(root, slug);
@@ -77,6 +84,21 @@ for (const slug of selected) {
       !force &&
       (await isSourceEntryCurrent(directory, manifest[slug], source))
     ) {
+      const exif = await readSafeExifDefaults(
+        path.join(directory, source.fileName),
+      );
+      const previousExif = manifest[slug].exif;
+      if (
+        JSON.stringify(previousExif ?? null) !== JSON.stringify(exif ?? null)
+      ) {
+        const refreshed = { ...manifest[slug] };
+        if (exif) refreshed.exif = exif;
+        else delete refreshed.exif;
+        manifest[slug] = refreshed;
+        manifestChanged = true;
+        summary.metadataUpdated += 1;
+        console.log(`[${slug}] Refreshed safe EXIF metadata.`);
+      }
       summary.skipped += 1;
       if (verbose) console.log(`[${slug}] Unchanged.`);
       continue;
@@ -100,6 +122,7 @@ if (manifestChanged) await writeManifestAtomic(manifestPath, manifest);
 
 console.log("");
 console.log(`Processed: ${summary.processed}`);
+console.log(`Metadata refreshed: ${summary.metadataUpdated}`);
 console.log(`Skipped unchanged: ${summary.skipped}`);
 console.log(`Warnings: ${summary.warnings}`);
 console.log(`Failed: ${summary.failed}`);

@@ -23,8 +23,8 @@ Every photograph keeps editorial content and image assets in matching slug
 folders:
 
 ```text
-src/content/photos/culatra-lighthouse/page.mdx
-public/photos/culatra-lighthouse/source.jpg
+src/content/photos/culatra-farol/page.mdx
+public/photos/culatra-farol/source.jpeg
 ```
 
 The MDX file contains human decisions; `src/generated/photos.json` contains
@@ -120,31 +120,32 @@ venue: MEO Arena # optional
 featured: true
 tags: [lighthouse, sea, algarve]
 alt: A white lighthouse beyond sand dunes
-order: 10 # optional
+seriesOrder: 10 # optional; controls order only within this series
 ---
 ```
 
-Camera and lens are optional editorial overrides. The data model permits safe
-EXIF-derived defaults, but the current pipeline deliberately does not publish raw
-EXIF. GPS, serial numbers, owner names, and software history are never copied to
-the public manifest. Alt text always remains human-authored.
+Camera and lens are optional editorial overrides. The pipeline extracts only a
+sanitized EXIF capture timestamp for chronological sorting; it does not publish
+raw EXIF. GPS, serial numbers, owner names, and software history are never copied
+to the public manifest. Alt text always remains human-authored.
 
 `draft: true` allows incomplete work to exist without an image manifest entry.
 Drafts are excluded from production gallery, search, series, sitemap, and photo
 navigation. Incomplete non-drafts fail validation.
 
-Portfolio order is deterministic: explicit `order` values come first in ascending
-order, followed by date descending, then slug ascending for ties. The same order
-feeds galleries, series, featured selections, and previous/next navigation.
+The gallery, homepage selections, search index, and global photo navigation sort
+by the sanitized EXIF capture timestamp, newest first, regardless of when a
+photograph was added to the repository. The editorial `date` and then slug are
+deterministic fallbacks when capture time is unavailable. Within a series,
+optional `seriesOrder` values come first in ascending order; photographs without
+one fall back to capture time, date, and slug.
 
-### Existing generated-only photographs
+### Current collection
 
-The six original sample folders contain generated WebPs but no recoverable source
-originals. They have been preserved as explicit legacy entries in the manifest;
-`images:build` skips them safely and `images:check` reports a warning rather than
-corrupting their assets. To complete their migration, add the true original as
-`source.<extension>` and run `pnpm images:build -- <slug>`. Do not rename
-`image.webp` into a source file.
+The repository currently publishes eight source-backed photographs in the
+Culatra series. Each entry includes its full-resolution `source.jpeg`, generated
+responsive WebPs, editorial MDX, and a current manifest record. Running
+`pnpm images:check` verifies all eight without legacy warnings.
 
 ## Architecture
 
@@ -165,7 +166,8 @@ The frontend never constructs a storage URL directly. `getPhotoImage()` is the s
 
 ### Categories and series metadata
 
-`category` accepts `documentary`, `street`, `travel`, `concert`, `music`, `portrait`, or `other`. `venue` is optional.
+`category` accepts `documentary`, `street`, `travel`, `concert`, `music`,
+`portrait`, `landscape`, or `other`. `venue` is optional.
 
 A series is generated automatically from photo frontmatter. Optional editorial metadata can be added without changing any photo:
 
@@ -208,6 +210,8 @@ The app uses native Next.js static export and does not require a Node runtime at
 
 `wrangler.toml` records the Pages output directory. All photo and series routes are produced at build time with `generateStaticParams`.
 
-## Sample imagery
+## Photography collection
 
-The repository includes six generated editorial photographs so every layout and interaction is production-testable. Add the matching original source when available, run `pnpm images:build -- <slug>`, and update editorial MDX only where the real photograph requires it.
+The public portfolio currently contains eight photographs from Culatra, ordered
+chronologically from 17–19 July 2026. New photographs can be added through the
+same source-backed workflow without changing application routes or components.

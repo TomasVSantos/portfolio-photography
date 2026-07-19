@@ -42,7 +42,7 @@ export default function GalleryPage() {
               Gallery
             </SectionHeading>
             <p className="text-muted-foreground mt-7 max-w-lg text-base leading-7">
-              Places, people, and atmosphere—from quiet streets to live stages.
+              Places, people, and atmosphere. From quiet streets to live stages.
               Select an image to enter the full-screen view, or open its story
               below.
             </p>

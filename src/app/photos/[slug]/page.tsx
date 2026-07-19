@@ -215,7 +215,7 @@ export default async function PhotoPage({ params }: PhotoPageProps) {
                   <MapPin className="size-4" />
                   {photo.location}
                 </Link>
-                <ShareButton title={`${photo.title} — ${siteConfig.name}`} />
+                <ShareButton title={`${photo.title} | ${siteConfig.name}`} />
               </div>
             </aside>
           </div>

@@ -64,24 +64,33 @@ function assertPublishedFrontmatter(
     title: normalized.title as string,
     location: normalized.location as string,
     date: normalized.date as string,
+    capturedAt: image.exif?.captureDate,
     series: normalized.series as string,
     category: normalized.category as Photo["category"],
     venue: normalized.venue,
     featured: normalized.featured as boolean,
     tags: normalized.tags as string[],
     alt: normalized.alt as string,
-    order: normalized.order,
+    seriesOrder: normalized.seriesOrder,
     ...mergeEditorialWithDerived(normalized, image),
   };
 }
 
 export function comparePhotos(a: Photo, b: Photo) {
-  const aOrdered = a.order !== undefined;
-  const bOrdered = b.order !== undefined;
-  if (aOrdered && bOrdered && a.order !== b.order) return a.order! - b.order!;
+  const aCapturedAt = a.capturedAt ?? `${a.date}T00:00:00`;
+  const bCapturedAt = b.capturedAt ?? `${b.date}T00:00:00`;
+  const captureOrder = bCapturedAt.localeCompare(aCapturedAt);
+  return captureOrder || a.slug.localeCompare(b.slug);
+}
+
+export function compareSeriesPhotos(a: Photo, b: Photo) {
+  const aOrdered = a.seriesOrder !== undefined;
+  const bOrdered = b.seriesOrder !== undefined;
+  if (aOrdered && bOrdered && a.seriesOrder !== b.seriesOrder) {
+    return a.seriesOrder! - b.seriesOrder!;
+  }
   if (aOrdered !== bOrdered) return aOrdered ? -1 : 1;
-  const dateOrder = b.date.localeCompare(a.date);
-  return dateOrder || a.slug.localeCompare(b.slug);
+  return comparePhotos(a, b);
 }
 
 function getSeriesMetadata(slug: string): SeriesFrontmatter | undefined {
@@ -161,7 +170,7 @@ export function getAllSeries(): Series[] {
       slug: metadata?.slug ?? fallbackSlug,
       description: metadata?.description,
       category: metadata?.category,
-      photos,
+      photos: [...photos].sort(compareSeriesPhotos),
     } satisfies Series;
   });
 }

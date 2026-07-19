@@ -7,6 +7,7 @@ import { afterEach, describe, expect, it } from "vitest";
 import { imagePipelineConfig } from "../scripts/image-pipeline/config.mjs";
 import {
   discoverSource,
+  extractCaptureDate,
   generatePhotoAssets,
   getExpectedGeneratedFiles,
   isSourceEntryCurrent,
@@ -15,6 +16,30 @@ import {
 } from "../scripts/image-pipeline/core.mjs";
 
 const temporaryDirectories: string[] = [];
+
+function exifFixture(captureDate: string) {
+  const exif = Buffer.alloc(70);
+  exif.write("Exif\0\0", 0, "binary");
+  exif.write("II", 6, "ascii");
+  exif.writeUInt16LE(42, 8);
+  exif.writeUInt32LE(8, 10);
+
+  const ifd0 = 14;
+  exif.writeUInt16LE(1, ifd0);
+  exif.writeUInt16LE(0x8769, ifd0 + 2);
+  exif.writeUInt16LE(4, ifd0 + 4);
+  exif.writeUInt32LE(1, ifd0 + 6);
+  exif.writeUInt32LE(26, ifd0 + 10);
+
+  const exifIfd = 32;
+  exif.writeUInt16LE(1, exifIfd);
+  exif.writeUInt16LE(0x9003, exifIfd + 2);
+  exif.writeUInt16LE(2, exifIfd + 4);
+  exif.writeUInt32LE(20, exifIfd + 6);
+  exif.writeUInt32LE(44, exifIfd + 10);
+  exif.write(`${captureDate}\0`, 50, "ascii");
+  return exif;
+}
 
 async function fixtureDirectory() {
   const directory = await mkdtemp(path.join(tmpdir(), "photo-pipeline-"));
@@ -69,6 +94,15 @@ describe("image source discovery", () => {
     expect(() => discoverSource(["source.gif"], "frame")).toThrow(
       "Unsupported source format",
     );
+  });
+});
+
+describe("safe EXIF metadata", () => {
+  it("extracts and normalizes DateTimeOriginal without exposing other EXIF", () => {
+    expect(extractCaptureDate(exifFixture("2026:06:21 19:57:46"))).toBe(
+      "2026-06-21T19:57:46",
+    );
+    expect(extractCaptureDate(Buffer.from("not exif"))).toBeUndefined();
   });
 });
 

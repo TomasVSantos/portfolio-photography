@@ -1,6 +1,10 @@
 import { describe, expect, it } from "vitest";
 
-import { comparePhotos, mergeEditorialWithDerived } from "@/lib/photos";
+import {
+  comparePhotos,
+  compareSeriesPhotos,
+  mergeEditorialWithDerived,
+} from "@/lib/photos";
 import { validateEditorialData } from "@/lib/photo-editorial.mjs";
 import type { Photo, PhotoImageManifestEntry } from "@/types/photo";
 
@@ -8,8 +12,13 @@ const image = {
   exif: { camera: "Fujifilm X-T5", lens: "XF 35mm F1.4 R" },
 } as PhotoImageManifestEntry;
 
-function photo(slug: string, date: string, order?: number) {
-  return { slug, date, order } as Photo;
+function photo(
+  slug: string,
+  date: string,
+  seriesOrder?: number,
+  capturedAt?: string,
+) {
+  return { slug, date, seriesOrder, capturedAt } as Photo;
 }
 
 describe("photo editorial metadata", () => {
@@ -32,21 +41,35 @@ describe("photo editorial metadata", () => {
 });
 
 describe("deterministic photo ordering", () => {
-  it("uses explicit order, then descending date, then ascending slug", () => {
+  it("uses descending EXIF capture time, then date and slug for global lists", () => {
     const photos = [
-      photo("zulu", "2026-01-01"),
-      photo("alpha", "2026-01-01"),
+      photo("morning", "2026-01-01", undefined, "2026-01-01T08:00:00"),
+      photo("evening", "2026-01-01", undefined, "2026-01-01T20:00:00"),
       photo("newest", "2026-03-01"),
       photo("ordered-last", "2020-01-01", 20),
       photo("ordered-first", "2020-01-01", 10),
     ].sort(comparePhotos);
 
     expect(photos.map(({ slug }) => slug)).toEqual([
+      "newest",
+      "evening",
+      "morning",
+      "ordered-first",
+      "ordered-last",
+    ]);
+  });
+
+  it("uses explicit series order only within a series", () => {
+    const photos = [
+      photo("newest", "2026-03-01"),
+      photo("ordered-last", "2020-01-01", 20),
+      photo("ordered-first", "2020-01-01", 10),
+    ].sort(compareSeriesPhotos);
+
+    expect(photos.map(({ slug }) => slug)).toEqual([
       "ordered-first",
       "ordered-last",
       "newest",
-      "alpha",
-      "zulu",
     ]);
   });
 });

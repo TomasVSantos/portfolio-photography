@@ -15,6 +15,122 @@ import { imagePipelineConfig, pipelineSignature } from "./config.mjs";
 
 const GENERATED_IMAGE_PATTERN = /^image(?:-\d+)?\.webp$/i;
 const SOURCE_FILE_PATTERN = /^source\.[^.]+$/i;
+const EXIF_HEADER = "Exif\0\0";
+
+function createTiffReader(exif) {
+  if (!Buffer.isBuffer(exif) || exif.length < 8) return null;
+  const tiffStart =
+    exif.subarray(0, 6).toString("binary") === EXIF_HEADER ? 6 : 0;
+  if (tiffStart + 8 > exif.length) return null;
+
+  const byteOrder = exif.subarray(tiffStart, tiffStart + 2).toString("ascii");
+  const littleEndian = byteOrder === "II";
+  if (!littleEndian && byteOrder !== "MM") return null;
+
+  function inBounds(offset, length) {
+    return offset >= 0 && length >= 0 && offset + length <= exif.length;
+  }
+
+  function uint16(offset) {
+    if (!inBounds(offset, 2)) return null;
+    return littleEndian ? exif.readUInt16LE(offset) : exif.readUInt16BE(offset);
+  }
+
+  function uint32(offset) {
+    if (!inBounds(offset, 4)) return null;
+    return littleEndian ? exif.readUInt32LE(offset) : exif.readUInt32BE(offset);
+  }
+
+  if (uint16(tiffStart + 2) !== 42) return null;
+
+  function readIfd(relativeOffset) {
+    const offset = tiffStart + relativeOffset;
+    const declaredCount = uint16(offset);
+    if (declaredCount === null) return new Map();
+    const availableCount = Math.max(
+      0,
+      Math.floor((exif.length - (offset + 2)) / 12),
+    );
+    const count = Math.min(declaredCount, availableCount);
+    const entries = new Map();
+
+    for (let index = 0; index < count; index += 1) {
+      const entryOffset = offset + 2 + index * 12;
+      const tag = uint16(entryOffset);
+      const type = uint16(entryOffset + 2);
+      const valueCount = uint32(entryOffset + 4);
+      if (tag === null || type === null || valueCount === null) continue;
+      entries.set(tag, {
+        type,
+        count: valueCount,
+        valueOffset: entryOffset + 8,
+      });
+    }
+    return entries;
+  }
+
+  function readLong(entry) {
+    if (!entry || entry.type !== 4 || entry.count < 1) return null;
+    return uint32(entry.valueOffset);
+  }
+
+  function readAscii(entry) {
+    if (!entry || entry.type !== 2 || entry.count < 1) return null;
+    const byteLength = entry.count;
+    const relativeOffset = byteLength <= 4 ? null : uint32(entry.valueOffset);
+    if (byteLength > 4 && relativeOffset === null) return null;
+    const offset =
+      byteLength <= 4 ? entry.valueOffset : tiffStart + relativeOffset;
+    if (!inBounds(offset, byteLength)) return null;
+    return exif
+      .subarray(offset, offset + byteLength)
+      .toString("ascii")
+      .replace(/\0.*$/s, "")
+      .trim();
+  }
+
+  return { readIfd, readLong, readAscii, uint32, tiffStart };
+}
+
+export function extractCaptureDate(exif) {
+  const reader = createTiffReader(exif);
+  if (!reader) return undefined;
+
+  const ifd0Offset = reader.uint32(reader.tiffStart + 4);
+  if (ifd0Offset === null) return undefined;
+  const ifd0 = reader.readIfd(ifd0Offset);
+  const exifIfdOffset = reader.readLong(ifd0.get(0x8769));
+  const exifIfd =
+    exifIfdOffset === null ? new Map() : reader.readIfd(exifIfdOffset);
+  const rawDate =
+    reader.readAscii(exifIfd.get(0x9003)) ??
+    reader.readAscii(exifIfd.get(0x9004)) ??
+    reader.readAscii(ifd0.get(0x0132));
+  const match = /^(\d{4}):(\d{2}):(\d{2})[ T](\d{2}):(\d{2}):(\d{2})/.exec(
+    rawDate ?? "",
+  );
+  if (!match) return undefined;
+
+  const [, year, month, day, hour, minute, second] = match;
+  const normalized = `${year}-${month}-${day}T${hour}:${minute}:${second}`;
+  const date = new Date(`${normalized}Z`);
+  if (
+    Number.isNaN(date.valueOf()) ||
+    date.toISOString().slice(0, 19) !== normalized
+  ) {
+    return undefined;
+  }
+  return normalized;
+}
+
+function safeExifDefaults(metadata) {
+  const captureDate = extractCaptureDate(metadata.exif);
+  return captureDate ? { captureDate } : undefined;
+}
+
+export async function readSafeExifDefaults(input) {
+  return safeExifDefaults(await sharp(input).metadata());
+}
 
 export class ImagePipelineError extends Error {
   constructor(slug, message) {
@@ -167,6 +283,7 @@ export async function generatePhotoAssets({ directory, slug, source }) {
     getDerivedVisualData(sourcePath),
   ]);
   const dimensions = getOrientedDimensions(metadata, slug);
+  const exif = safeExifDefaults(metadata);
   const outputs = [
     {
       fileName: "image.webp",
@@ -242,6 +359,7 @@ export async function generatePhotoAssets({ directory, slug, source }) {
       dimensions.height,
       fallbackWidth,
     ),
+    ...(exif ? { exif } : {}),
   };
 }
 

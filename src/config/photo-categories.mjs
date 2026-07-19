@@ -5,5 +5,6 @@ export const photoCategories = Object.freeze([
   "concert",
   "music",
   "portrait",
+  "landscape",
   "other",
 ]);

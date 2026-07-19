@@ -13,7 +13,7 @@ import { getAllPhotos, getAllSeries } from "@/lib/photos";
 export default function Home() {
   const photos = getAllPhotos();
   const heroPhoto =
-    photos.find((photo) => photo.slug === "culatra-lighthouse") ?? photos[0];
+    photos.find((photo) => photo.slug === "culatra-farol") ?? photos[0];
   const featured = photos.filter((photo) => photo.featured).slice(0, 3);
   const latestSeries = getAllSeries()[0];
   const latestImage = getPhotoImage(latestSeries.photos[0]);
@@ -35,7 +35,7 @@ export default function Home() {
               </h1>
               <div className="text-muted-foreground mt-10 flex flex-wrap gap-x-5 gap-y-2 text-[0.67rem] tracking-[0.18em] uppercase">
                 <span>Software Engineer</span>
-                <span aria-hidden="true">—</span>
+                <span aria-hidden="true">·</span>
                 <span>Hobby Photographer</span>
               </div>
               <p className="text-muted-foreground mt-8 max-w-md text-base leading-7">

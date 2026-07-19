@@ -10,6 +10,7 @@ import {
   hashFile,
   isGeneratedImage,
   readManifest,
+  readSafeExifDefaults,
 } from "./image-pipeline/core.mjs";
 import { validateEditorialData } from "../src/lib/photo-editorial.mjs";
 
@@ -87,13 +88,24 @@ for (const slug of contentFolders) {
   }
 
   if (source) {
-    const currentHash = await hashFile(path.join(directory, source.fileName));
+    const sourcePath = path.join(directory, source.fileName);
+    const [currentHash, safeExif] = await Promise.all([
+      hashFile(sourcePath),
+      readSafeExifDefaults(sourcePath),
+    ]);
     if (entry.sourceHash !== currentHash || entry.source !== source.fileName) {
       errors.push(`[${slug}] Source image changed after generation.`);
     }
     if (entry.pipelineSignature !== pipelineSignature) {
       errors.push(
         `[${slug}] Image pipeline configuration changed after generation.`,
+      );
+    }
+    if (
+      JSON.stringify(entry.exif ?? null) !== JSON.stringify(safeExif ?? null)
+    ) {
+      errors.push(
+        `[${slug}] Safe EXIF metadata changed after image generation.`,
       );
     }
     const expected = new Set(getExpectedGeneratedFiles());

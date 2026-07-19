@@ -25,6 +25,7 @@ export interface ImageManifestEntry {
   fallback: string;
   fallbackWidth: number;
   fallbackHeight: number;
+  exif?: { captureDate?: string };
 }
 
 export class ImagePipelineError extends Error {}
@@ -35,6 +36,12 @@ export function discoverSource(
 ): DiscoveredSource | null;
 export function getExpectedGeneratedFiles(): string[];
 export function hashFile(filePath: string): Promise<string>;
+export function extractCaptureDate(
+  exif: Buffer | undefined,
+): string | undefined;
+export function readSafeExifDefaults(
+  input: string,
+): Promise<{ captureDate: string } | undefined>;
 export function outputsAreCurrent(
   directory: string,
   entry: ImageManifestEntry,

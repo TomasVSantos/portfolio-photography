@@ -12,12 +12,12 @@ describe("getSearchIndex", () => {
   });
 
   it("includes searchable MDX metadata and thumbnails", () => {
-    const lighthouse = getSearchIndex().find(
-      (item) => item.id === "photo:culatra-lighthouse",
+    const farol = getSearchIndex().find(
+      (item) => item.id === "photo:culatra-farol",
     );
 
-    expect(lighthouse?.searchText).toContain("iPhone 17 Pro");
-    expect(lighthouse?.searchText).toContain("travel");
-    expect(lighthouse?.thumbnail?.src).toContain("culatra-lighthouse");
+    expect(farol?.searchText).toContain("iPhone 17 Pro");
+    expect(farol?.searchText).toContain("travel");
+    expect(farol?.thumbnail?.src).toContain("culatra-farol");
   });
 });

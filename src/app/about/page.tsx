@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
-  const photo = getPhoto("culatra-fisherman")!;
+  const photo = getPhoto("culatra-under-the-trees")!;
   const image = getPhotoImage(photo);
 
   return (
@@ -43,7 +43,7 @@ export default function AboutPage() {
                 <p>
                   Music has been part of my life for much longer than
                   photography, so the camera is beginning to follow me towards
-                  concerts too—the performers, the rooms, and the energy around
+                  concerts too. The performers, the rooms, and the energy around
                   a stage. This collection leaves room for both the quiet walks
                   and the louder nights.
                 </p>

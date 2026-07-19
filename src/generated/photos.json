@@ -1,320 +1,1260 @@
 {
-  "albufeira-cyclist": {
-    "source": null,
-    "sourceHash": null,
-    "pipelineSignature": null,
-    "legacy": true,
-    "width": 1536,
-    "height": 1024,
-    "aspectRatio": 1.5,
-    "orientation": "landscape",
-    "dominantColor": "#e8e8e8",
-    "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADQAwCdASoYABAAPv1qsE6rJiUiMAgBYB+JZwDA3BR8i3vsGPhxNVAAw7+ieI5KHY/eSD26AoCY+RX2w+HZCAWVjVozTRCyWya/hpxEAd6N3nKAD4AAAA==",
+  "culatra-afterglow": {
+    "source": "source.jpeg",
+    "sourceHash": "5077e9bcae784afa9966a4662a6842335d372b6d39be3c93c39be847e5815f48",
+    "pipelineSignature": "2f2fe7766d24c936",
+    "legacy": false,
+    "width": 4536,
+    "height": 8064,
+    "aspectRatio": 0.5625,
+    "orientation": "portrait",
+    "dominantColor": "#080808",
+    "blurDataURL": "data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAADQBACdASoYACsAPv10rlCrJyQiqrgMAWAfiWUAxNhOSUJYQuqSusrNnrpycuZFjAD+8CZZyyZnfnFMEK2I7Vn0vd+Lx+pnhPBnKwvydGR9KcczAsDoguaWTcTvFQeFHZcQKeKJkSs83vfYsLR7J7KjUAA=",
     "variants": [
+      {
+        "width": 256,
+        "outputWidth": 256,
+        "height": 455,
+        "src": "/photos/culatra-afterglow/image-256.webp"
+      },
+      {
+        "width": 384,
+        "outputWidth": 384,
+        "height": 683,
+        "src": "/photos/culatra-afterglow/image-384.webp"
+      },
+      {
+        "width": 480,
+        "outputWidth": 480,
+        "height": 853,
+        "src": "/photos/culatra-afterglow/image-480.webp"
+      },
+      {
+        "width": 768,
+        "outputWidth": 768,
+        "height": 1365,
+        "src": "/photos/culatra-afterglow/image-768.webp"
+      },
       {
         "width": 1024,
         "outputWidth": 1024,
-        "height": 683,
-        "src": "/photos/albufeira-cyclist/image-1024.webp"
+        "height": 1820,
+        "src": "/photos/culatra-afterglow/image-1024.webp"
+      },
+      {
+        "width": 1200,
+        "outputWidth": 1200,
+        "height": 2133,
+        "src": "/photos/culatra-afterglow/image-1200.webp"
       },
       {
         "width": 1536,
         "outputWidth": 1536,
-        "height": 1024,
-        "src": "/photos/albufeira-cyclist/image-1536.webp"
+        "height": 2731,
+        "src": "/photos/culatra-afterglow/image-1536.webp"
       },
+      {
+        "width": 1600,
+        "outputWidth": 1600,
+        "height": 2844,
+        "src": "/photos/culatra-afterglow/image-1600.webp"
+      },
+      {
+        "width": 2400,
+        "outputWidth": 2400,
+        "height": 4267,
+        "src": "/photos/culatra-afterglow/image-2400.webp"
+      }
+    ],
+    "fallback": "/photos/culatra-afterglow/image.webp",
+    "fallbackWidth": 2400,
+    "fallbackHeight": 4267,
+    "exif": {
+      "captureDate": "2026-07-17T21:28:47"
+    }
+  },
+  "culatra-channel-crossing": {
+    "source": "source.jpeg",
+    "sourceHash": "b83cc390c89dc1c1c79f2023b02f9ee99e4ce1c7601a0cfd8f919f2f4c3f03a9",
+    "pipelineSignature": "2f2fe7766d24c936",
+    "legacy": false,
+    "width": 2268,
+    "height": 4032,
+    "aspectRatio": 0.5625,
+    "orientation": "portrait",
+    "dominantColor": "#9898a8",
+    "blurDataURL": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAAAwBQCdASoYACsAPt1gpE6opiOiOrmYARAbiWVkM1rpLp8SuhvcnuWGa6AcaAEoJ1LIQAD+LD+z5/+nzI4bl5V6aP/SXQterhHfVWEx1Z5yfYOJsSUepjWEeDfi60fGbhQadbte5DGXXjkDisj8HsDrH73lKQ2cbkyLKgAA",
+    "variants": [
       {
         "width": 256,
         "outputWidth": 256,
-        "height": 171,
-        "src": "/photos/albufeira-cyclist/image-256.webp"
+        "height": 455,
+        "src": "/photos/culatra-channel-crossing/image-256.webp"
       },
       {
         "width": 384,
         "outputWidth": 384,
-        "height": 256,
-        "src": "/photos/albufeira-cyclist/image-384.webp"
+        "height": 683,
+        "src": "/photos/culatra-channel-crossing/image-384.webp"
       },
       {
         "width": 480,
         "outputWidth": 480,
-        "height": 320,
-        "src": "/photos/albufeira-cyclist/image-480.webp"
+        "height": 853,
+        "src": "/photos/culatra-channel-crossing/image-480.webp"
       },
       {
         "width": 768,
         "outputWidth": 768,
-        "height": 512,
-        "src": "/photos/albufeira-cyclist/image-768.webp"
-      }
-    ],
-    "fallback": "/photos/albufeira-cyclist/image.webp",
-    "fallbackWidth": 1536,
-    "fallbackHeight": 1024
-  },
-  "culatra-boatyard": {
-    "source": null,
-    "sourceHash": null,
-    "pipelineSignature": null,
-    "legacy": true,
-    "width": 1536,
-    "height": 1024,
-    "aspectRatio": 1.5,
-    "orientation": "landscape",
-    "dominantColor": "#787878",
-    "blurDataURL": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAACwAwCdASoYABAALsF+v1+jqysrCwDASzgABcY+ZNe0YB1fn9U+wAD+6tolvJEv/L8i01SHTQgGDwsenzAW5NSaIniu9Mni2aAAAA==",
-    "variants": [
+        "height": 1365,
+        "src": "/photos/culatra-channel-crossing/image-768.webp"
+      },
       {
         "width": 1024,
         "outputWidth": 1024,
-        "height": 683,
-        "src": "/photos/culatra-boatyard/image-1024.webp"
+        "height": 1820,
+        "src": "/photos/culatra-channel-crossing/image-1024.webp"
+      },
+      {
+        "width": 1200,
+        "outputWidth": 1200,
+        "height": 2133,
+        "src": "/photos/culatra-channel-crossing/image-1200.webp"
       },
       {
         "width": 1536,
         "outputWidth": 1536,
-        "height": 1024,
-        "src": "/photos/culatra-boatyard/image-1536.webp"
+        "height": 2731,
+        "src": "/photos/culatra-channel-crossing/image-1536.webp"
       },
+      {
+        "width": 1600,
+        "outputWidth": 1600,
+        "height": 2844,
+        "src": "/photos/culatra-channel-crossing/image-1600.webp"
+      },
+      {
+        "width": 2400,
+        "outputWidth": 2268,
+        "height": 4032,
+        "src": "/photos/culatra-channel-crossing/image-2400.webp"
+      }
+    ],
+    "fallback": "/photos/culatra-channel-crossing/image.webp",
+    "fallbackWidth": 2268,
+    "fallbackHeight": 4032,
+    "exif": {
+      "captureDate": "2026-07-17T11:11:50"
+    }
+  },
+  "culatra-cuc": {
+    "source": "source.jpeg",
+    "sourceHash": "56b38c2563396605ffbeb0d427c66f2e6f9e5989fd1af5a812e9b9742a8e0509",
+    "pipelineSignature": "2f2fe7766d24c936",
+    "legacy": false,
+    "width": 3024,
+    "height": 4032,
+    "aspectRatio": 0.75,
+    "orientation": "portrait",
+    "dominantColor": "#687888",
+    "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAABwBACdASoYACAAPu1mp06ppiOiN/VYATAdiUAW9woo5XipcXAgEv6lBqLCQAD+4On+DBWZ25rXhqXLSINhmbOUUn3Qx+McjAkHGEwVi6s1njyLAAAAAA==",
+    "variants": [
       {
         "width": 256,
         "outputWidth": 256,
-        "height": 171,
-        "src": "/photos/culatra-boatyard/image-256.webp"
+        "height": 341,
+        "src": "/photos/culatra-cuc/image-256.webp"
       },
       {
         "width": 384,
         "outputWidth": 384,
-        "height": 256,
-        "src": "/photos/culatra-boatyard/image-384.webp"
-      },
-      {
-        "width": 480,
-        "outputWidth": 480,
-        "height": 320,
-        "src": "/photos/culatra-boatyard/image-480.webp"
-      },
-      {
-        "width": 768,
-        "outputWidth": 768,
         "height": 512,
-        "src": "/photos/culatra-boatyard/image-768.webp"
-      }
-    ],
-    "fallback": "/photos/culatra-boatyard/image.webp",
-    "fallbackWidth": 1536,
-    "fallbackHeight": 1024
-  },
-  "culatra-fisherman": {
-    "source": null,
-    "sourceHash": null,
-    "pipelineSignature": null,
-    "legacy": true,
-    "width": 1122,
-    "height": 1402,
-    "aspectRatio": 0.800285,
-    "orientation": "portrait",
-    "dominantColor": "#e8e8e8",
-    "blurDataURL": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAABwBQCdASoYAB4APv1mqU6rJSOiMBgMAWAfiWMAw3A0ZR18JUCIrshwRAV28cPzNyyruM0AAP7q8d6l27zmmqWJC1tNH1XiUa9sYWvejZC/vLXR+Woq0obEzGhGl1S9rDqpz/GFc2zu0Ia1VwirBkUX3mkHwpF0yLCalQAA",
-    "variants": [
-      {
-        "width": 1024,
-        "outputWidth": 1024,
-        "height": 1280,
-        "src": "/photos/culatra-fisherman/image-1024.webp"
-      },
-      {
-        "width": 1536,
-        "outputWidth": 1122,
-        "height": 1402,
-        "src": "/photos/culatra-fisherman/image-1536.webp"
-      },
-      {
-        "width": 256,
-        "outputWidth": 256,
-        "height": 320,
-        "src": "/photos/culatra-fisherman/image-256.webp"
-      },
-      {
-        "width": 384,
-        "outputWidth": 384,
-        "height": 480,
-        "src": "/photos/culatra-fisherman/image-384.webp"
+        "src": "/photos/culatra-cuc/image-384.webp"
       },
       {
         "width": 480,
         "outputWidth": 480,
-        "height": 600,
-        "src": "/photos/culatra-fisherman/image-480.webp"
+        "height": 640,
+        "src": "/photos/culatra-cuc/image-480.webp"
       },
       {
         "width": 768,
         "outputWidth": 768,
-        "height": 960,
-        "src": "/photos/culatra-fisherman/image-768.webp"
-      }
-    ],
-    "fallback": "/photos/culatra-fisherman/image.webp",
-    "fallbackWidth": 1122,
-    "fallbackHeight": 1402
-  },
-  "culatra-lighthouse": {
-    "source": null,
-    "sourceHash": null,
-    "pipelineSignature": null,
-    "legacy": true,
-    "width": 1122,
-    "height": 1402,
-    "aspectRatio": 0.800285,
-    "orientation": "portrait",
-    "dominantColor": "#b8c8c8",
-    "blurDataURL": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAAAQBACdASoYAB4APv14sFCrKCSisBgIAWAfiWUAxNhpXxN5IGEz82ZgAAD+6nJsSiKhNmbhUdvaso6EId1b5Thy9LlmZcsWjV1JI1y/qioORtoMHJadMg1nZcEoJD3MdSSAAA==",
-    "variants": [
+        "height": 1024,
+        "src": "/photos/culatra-cuc/image-768.webp"
+      },
       {
         "width": 1024,
         "outputWidth": 1024,
-        "height": 1280,
-        "src": "/photos/culatra-lighthouse/image-1024.webp"
+        "height": 1365,
+        "src": "/photos/culatra-cuc/image-1024.webp"
+      },
+      {
+        "width": 1200,
+        "outputWidth": 1200,
+        "height": 1600,
+        "src": "/photos/culatra-cuc/image-1200.webp"
       },
       {
         "width": 1536,
-        "outputWidth": 1122,
-        "height": 1402,
-        "src": "/photos/culatra-lighthouse/image-1536.webp"
+        "outputWidth": 1536,
+        "height": 2048,
+        "src": "/photos/culatra-cuc/image-1536.webp"
       },
+      {
+        "width": 1600,
+        "outputWidth": 1600,
+        "height": 2133,
+        "src": "/photos/culatra-cuc/image-1600.webp"
+      },
+      {
+        "width": 2400,
+        "outputWidth": 2400,
+        "height": 3200,
+        "src": "/photos/culatra-cuc/image-2400.webp"
+      }
+    ],
+    "fallback": "/photos/culatra-cuc/image.webp",
+    "fallbackWidth": 2400,
+    "fallbackHeight": 3200,
+    "exif": {
+      "captureDate": "2026-07-18T14:10:30"
+    }
+  },
+  "culatra-farol": {
+    "source": "source.jpeg",
+    "sourceHash": "3ed243fee9e5a200b8ee8ad13267dea562fbcfff225d71f951b12f799a0bc1dd",
+    "pipelineSignature": "2f2fe7766d24c936",
+    "legacy": false,
+    "width": 6048,
+    "height": 8064,
+    "aspectRatio": 0.75,
+    "orientation": "portrait",
+    "dominantColor": "#8898a8",
+    "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAADQAwCdASoYACAAPvVqqk6qpqQiMAwBUB6JYwC06F3sm4LVwSXLligA5Bj6EUO/0B2B8uraWO/2HJephEg4ZELJZXuyogVan5okXaoGCZF+P+GgAAA=",
+    "variants": [
       {
         "width": 256,
         "outputWidth": 256,
-        "height": 320,
-        "src": "/photos/culatra-lighthouse/image-256.webp"
+        "height": 341,
+        "src": "/photos/culatra-farol/image-256.webp"
       },
       {
         "width": 384,
         "outputWidth": 384,
-        "height": 480,
-        "src": "/photos/culatra-lighthouse/image-384.webp"
+        "height": 512,
+        "src": "/photos/culatra-farol/image-384.webp"
       },
       {
         "width": 480,
         "outputWidth": 480,
-        "height": 600,
-        "src": "/photos/culatra-lighthouse/image-480.webp"
+        "height": 640,
+        "src": "/photos/culatra-farol/image-480.webp"
       },
       {
         "width": 768,
         "outputWidth": 768,
-        "height": 960,
-        "src": "/photos/culatra-lighthouse/image-768.webp"
+        "height": 1024,
+        "src": "/photos/culatra-farol/image-768.webp"
+      },
+      {
+        "width": 1024,
+        "outputWidth": 1024,
+        "height": 1365,
+        "src": "/photos/culatra-farol/image-1024.webp"
+      },
+      {
+        "width": 1200,
+        "outputWidth": 1200,
+        "height": 1600,
+        "src": "/photos/culatra-farol/image-1200.webp"
+      },
+      {
+        "width": 1536,
+        "outputWidth": 1536,
+        "height": 2048,
+        "src": "/photos/culatra-farol/image-1536.webp"
+      },
+      {
+        "width": 1600,
+        "outputWidth": 1600,
+        "height": 2133,
+        "src": "/photos/culatra-farol/image-1600.webp"
+      },
+      {
+        "width": 2400,
+        "outputWidth": 2400,
+        "height": 3200,
+        "src": "/photos/culatra-farol/image-2400.webp"
       }
     ],
-    "fallback": "/photos/culatra-lighthouse/image.webp",
-    "fallbackWidth": 1122,
-    "fallbackHeight": 1402
+    "fallback": "/photos/culatra-farol/image.webp",
+    "fallbackWidth": 2400,
+    "fallbackHeight": 3200,
+    "exif": {
+      "captureDate": "2026-07-19T09:42:02"
+    }
   },
-  "london-crossing": {
-    "source": null,
-    "sourceHash": null,
-    "pipelineSignature": null,
-    "legacy": true,
-    "width": 1536,
-    "height": 1024,
-    "aspectRatio": 1.5,
-    "orientation": "landscape",
+  "culatra-last-light": {
+    "source": "source.jpeg",
+    "sourceHash": "5745f97ae4bbdbb39443ae0c4bd7a22eba82bae2aa40b96e2a790c5436fd9236",
+    "pipelineSignature": "2f2fe7766d24c936",
+    "legacy": false,
+    "width": 4536,
+    "height": 8064,
+    "aspectRatio": 0.5625,
+    "orientation": "portrait",
+    "dominantColor": "#384858",
+    "blurDataURL": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAADwBACdASoYACsAPvFoqE6ppqOiNVQMATAeCWIAg6gbL0Y4bx4MeqE02ncoxFHJqwAA/vDIOfWeaP8184y+nzWyLpZ8HQzhwS1t0hHXFD08mGCagaSQg1Y1je+UzONz1GtT+C59KhLsFmWYwmbtbKyWZnZaZIQA",
+    "variants": [
+      {
+        "width": 256,
+        "outputWidth": 256,
+        "height": 455,
+        "src": "/photos/culatra-last-light/image-256.webp"
+      },
+      {
+        "width": 384,
+        "outputWidth": 384,
+        "height": 683,
+        "src": "/photos/culatra-last-light/image-384.webp"
+      },
+      {
+        "width": 480,
+        "outputWidth": 480,
+        "height": 853,
+        "src": "/photos/culatra-last-light/image-480.webp"
+      },
+      {
+        "width": 768,
+        "outputWidth": 768,
+        "height": 1365,
+        "src": "/photos/culatra-last-light/image-768.webp"
+      },
+      {
+        "width": 1024,
+        "outputWidth": 1024,
+        "height": 1820,
+        "src": "/photos/culatra-last-light/image-1024.webp"
+      },
+      {
+        "width": 1200,
+        "outputWidth": 1200,
+        "height": 2133,
+        "src": "/photos/culatra-last-light/image-1200.webp"
+      },
+      {
+        "width": 1536,
+        "outputWidth": 1536,
+        "height": 2731,
+        "src": "/photos/culatra-last-light/image-1536.webp"
+      },
+      {
+        "width": 1600,
+        "outputWidth": 1600,
+        "height": 2844,
+        "src": "/photos/culatra-last-light/image-1600.webp"
+      },
+      {
+        "width": 2400,
+        "outputWidth": 2400,
+        "height": 4267,
+        "src": "/photos/culatra-last-light/image-2400.webp"
+      }
+    ],
+    "fallback": "/photos/culatra-last-light/image.webp",
+    "fallbackWidth": 2400,
+    "fallbackHeight": 4267,
+    "exif": {
+      "captureDate": "2026-07-17T20:53:59"
+    }
+  },
+  "culatra-low-tide": {
+    "source": "source.jpeg",
+    "sourceHash": "ba5c11cdba2e431ba9eb5346e18ae8016dc79b99e878867979e5622de1943bdc",
+    "pipelineSignature": "2f2fe7766d24c936",
+    "legacy": false,
+    "width": 4536,
+    "height": 8064,
+    "aspectRatio": 0.5625,
+    "orientation": "portrait",
+    "dominantColor": "#284878",
+    "blurDataURL": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAABwBQCdASoYACsAPvlkqU6qpSOiNVQMAVAfCWIAv2vthvhXE9F4HoT/NsLszXauxupihMiQAP7rRn+6Ny/LlYIWH92EUzHfK/nv16zrNBghQX7i55CYyPFiduQO4OakwEzZqgnFvnefTWYm4c7mhL8gpRAPPGZ6LmsoAAAA",
+    "variants": [
+      {
+        "width": 256,
+        "outputWidth": 256,
+        "height": 455,
+        "src": "/photos/culatra-low-tide/image-256.webp"
+      },
+      {
+        "width": 384,
+        "outputWidth": 384,
+        "height": 683,
+        "src": "/photos/culatra-low-tide/image-384.webp"
+      },
+      {
+        "width": 480,
+        "outputWidth": 480,
+        "height": 853,
+        "src": "/photos/culatra-low-tide/image-480.webp"
+      },
+      {
+        "width": 768,
+        "outputWidth": 768,
+        "height": 1365,
+        "src": "/photos/culatra-low-tide/image-768.webp"
+      },
+      {
+        "width": 1024,
+        "outputWidth": 1024,
+        "height": 1820,
+        "src": "/photos/culatra-low-tide/image-1024.webp"
+      },
+      {
+        "width": 1200,
+        "outputWidth": 1200,
+        "height": 2133,
+        "src": "/photos/culatra-low-tide/image-1200.webp"
+      },
+      {
+        "width": 1536,
+        "outputWidth": 1536,
+        "height": 2731,
+        "src": "/photos/culatra-low-tide/image-1536.webp"
+      },
+      {
+        "width": 1600,
+        "outputWidth": 1600,
+        "height": 2844,
+        "src": "/photos/culatra-low-tide/image-1600.webp"
+      },
+      {
+        "width": 2400,
+        "outputWidth": 2400,
+        "height": 4267,
+        "src": "/photos/culatra-low-tide/image-2400.webp"
+      }
+    ],
+    "fallback": "/photos/culatra-low-tide/image.webp",
+    "fallbackWidth": 2400,
+    "fallbackHeight": 4267,
+    "exif": {
+      "captureDate": "2026-07-17T13:15:55"
+    }
+  },
+  "culatra-painted-boats": {
+    "source": "source.jpeg",
+    "sourceHash": "dfa6551ccf99e87f6a0156ffc4b809f4b6450ad25637c4c3d82f564a36a70b58",
+    "pipelineSignature": "2f2fe7766d24c936",
+    "legacy": false,
+    "width": 6048,
+    "height": 8064,
+    "aspectRatio": 0.75,
+    "orientation": "portrait",
+    "dominantColor": "#8898a8",
+    "blurDataURL": "data:image/webp;base64,UklGRowAAABXRUJQVlA4IIAAAADwBQCdASoYACAAPv10rlCrJyQisBgIAWAfiWMAnTlBVBWMX/oH0JGdsRvH4tk58y/7h1Btrha4gACo72hGjymul73nIMQapT6FU+HMyb9u0T/gXktDJWtXV67I9odWoQzKm0EHzUorn9U3JycXBql0B8NG9TkWE3zspPdDogAAAA==",
+    "variants": [
+      {
+        "width": 256,
+        "outputWidth": 256,
+        "height": 341,
+        "src": "/photos/culatra-painted-boats/image-256.webp"
+      },
+      {
+        "width": 384,
+        "outputWidth": 384,
+        "height": 512,
+        "src": "/photos/culatra-painted-boats/image-384.webp"
+      },
+      {
+        "width": 480,
+        "outputWidth": 480,
+        "height": 640,
+        "src": "/photos/culatra-painted-boats/image-480.webp"
+      },
+      {
+        "width": 768,
+        "outputWidth": 768,
+        "height": 1024,
+        "src": "/photos/culatra-painted-boats/image-768.webp"
+      },
+      {
+        "width": 1024,
+        "outputWidth": 1024,
+        "height": 1365,
+        "src": "/photos/culatra-painted-boats/image-1024.webp"
+      },
+      {
+        "width": 1200,
+        "outputWidth": 1200,
+        "height": 1600,
+        "src": "/photos/culatra-painted-boats/image-1200.webp"
+      },
+      {
+        "width": 1536,
+        "outputWidth": 1536,
+        "height": 2048,
+        "src": "/photos/culatra-painted-boats/image-1536.webp"
+      },
+      {
+        "width": 1600,
+        "outputWidth": 1600,
+        "height": 2133,
+        "src": "/photos/culatra-painted-boats/image-1600.webp"
+      },
+      {
+        "width": 2400,
+        "outputWidth": 2400,
+        "height": 3200,
+        "src": "/photos/culatra-painted-boats/image-2400.webp"
+      }
+    ],
+    "fallback": "/photos/culatra-painted-boats/image.webp",
+    "fallbackWidth": 2400,
+    "fallbackHeight": 3200,
+    "exif": {
+      "captureDate": "2026-07-19T09:21:05"
+    }
+  },
+  "culatra-under-the-trees": {
+    "source": "source.jpeg",
+    "sourceHash": "522cfc4dee27fb148d7666f71a3104039268282f9dace2ba5f810242d926af6f",
+    "pipelineSignature": "2f2fe7766d24c936",
+    "legacy": false,
+    "width": 6048,
+    "height": 8064,
+    "aspectRatio": 0.75,
+    "orientation": "portrait",
     "dominantColor": "#181818",
-    "blurDataURL": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAACwAwCdASoYABAAPv1ysFArJySisAgBYB+JaQAAUleAKzXTHAmrQAD+ufxjf/hk8OxnzP6v62RfGMMydjXClRiTlh06+8/2SCgAAA==",
+    "blurDataURL": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAAAwBQCdASoYACAAPv1sq06rJiOiMBgMAWAfiWUAw3BX6Z5gOVYjLQt4WoqYH1qNw7vvOAD+93fceTaly0/IyIW1V/2woRa5VmwmNXtpq5GmX2SchtYvNc11AvXDQ/7NSLC4k++7jH5eTvD9XyDbI6nUh764CKKBflPtggAA",
     "variants": [
+      {
+        "width": 256,
+        "outputWidth": 256,
+        "height": 341,
+        "src": "/photos/culatra-under-the-trees/image-256.webp"
+      },
+      {
+        "width": 384,
+        "outputWidth": 384,
+        "height": 512,
+        "src": "/photos/culatra-under-the-trees/image-384.webp"
+      },
+      {
+        "width": 480,
+        "outputWidth": 480,
+        "height": 640,
+        "src": "/photos/culatra-under-the-trees/image-480.webp"
+      },
+      {
+        "width": 768,
+        "outputWidth": 768,
+        "height": 1024,
+        "src": "/photos/culatra-under-the-trees/image-768.webp"
+      },
       {
         "width": 1024,
         "outputWidth": 1024,
-        "height": 683,
-        "src": "/photos/london-crossing/image-1024.webp"
+        "height": 1365,
+        "src": "/photos/culatra-under-the-trees/image-1024.webp"
+      },
+      {
+        "width": 1200,
+        "outputWidth": 1200,
+        "height": 1600,
+        "src": "/photos/culatra-under-the-trees/image-1200.webp"
       },
       {
         "width": 1536,
         "outputWidth": 1536,
-        "height": 1024,
-        "src": "/photos/london-crossing/image-1536.webp"
+        "height": 2048,
+        "src": "/photos/culatra-under-the-trees/image-1536.webp"
       },
+      {
+        "width": 1600,
+        "outputWidth": 1600,
+        "height": 2133,
+        "src": "/photos/culatra-under-the-trees/image-1600.webp"
+      },
+      {
+        "width": 2400,
+        "outputWidth": 2400,
+        "height": 3200,
+        "src": "/photos/culatra-under-the-trees/image-2400.webp"
+      }
+    ],
+    "fallback": "/photos/culatra-under-the-trees/image.webp",
+    "fallbackWidth": 2400,
+    "fallbackHeight": 3200,
+    "exif": {
+      "captureDate": "2026-07-18T18:19:59"
+    }
+  },
+  "jamor-flag-before-kickoff": {
+    "source": "source.jpeg",
+    "sourceHash": "87e941b352cce74123dd4eebac24da86ff1a3a10a05d50459942d980b09eda5d",
+    "pipelineSignature": "2f2fe7766d24c936",
+    "legacy": false,
+    "width": 2268,
+    "height": 4032,
+    "aspectRatio": 0.5625,
+    "orientation": "portrait",
+    "dominantColor": "#486878",
+    "blurDataURL": "data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAACQBQCdASoYACsAPvVkq06qpaQiNVQMAVAeiUAWWYixRufbofbcTar3Z4scF5BJCUNFTow2AAD+5TRiaqqfxzgQLUScjc3g6zHBXyd56Djq7XPL+shQqjYAVebAlsuttO5tX6oG6KO2CX7JUdWeOtRCPJU2tddunTtNnipY9VwKPyI5bZKTb1YcAAA=",
+    "variants": [
       {
         "width": 256,
         "outputWidth": 256,
-        "height": 171,
-        "src": "/photos/london-crossing/image-256.webp"
+        "height": 455,
+        "src": "/photos/jamor-flag-before-kickoff/image-256.webp"
       },
       {
         "width": 384,
         "outputWidth": 384,
-        "height": 256,
-        "src": "/photos/london-crossing/image-384.webp"
+        "height": 683,
+        "src": "/photos/jamor-flag-before-kickoff/image-384.webp"
       },
       {
         "width": 480,
         "outputWidth": 480,
-        "height": 320,
-        "src": "/photos/london-crossing/image-480.webp"
+        "height": 853,
+        "src": "/photos/jamor-flag-before-kickoff/image-480.webp"
       },
       {
         "width": 768,
         "outputWidth": 768,
-        "height": 512,
-        "src": "/photos/london-crossing/image-768.webp"
-      }
-    ],
-    "fallback": "/photos/london-crossing/image.webp",
-    "fallbackWidth": 1536,
-    "fallbackHeight": 1024
-  },
-  "london-rain": {
-    "source": null,
-    "sourceHash": null,
-    "pipelineSignature": null,
-    "legacy": true,
-    "width": 1003,
-    "height": 1568,
-    "aspectRatio": 0.639668,
-    "orientation": "portrait",
-    "dominantColor": "#081818",
-    "blurDataURL": "data:image/webp;base64,UklGRowAAABXRUJQVlA4IIAAAADQBQCdASoYACYAPuVioU6pJiMiNUwBIByJYwC7ACfdfNzraO8H+VBXenFT/Y4I9zQ8gqGRAkbQAP7svwcD2StKmOlvJfOPeDQH3zW6dUp/kNS318FNz8zmEzGjkGKyxFFfVDqWMTVFjl+piiJGIoEyA4k0ggwhoRspccLsjIAAAA==",
-    "variants": [
+        "height": 1365,
+        "src": "/photos/jamor-flag-before-kickoff/image-768.webp"
+      },
       {
         "width": 1024,
-        "outputWidth": 1003,
-        "height": 1568,
-        "src": "/photos/london-rain/image-1024.webp"
+        "outputWidth": 1024,
+        "height": 1820,
+        "src": "/photos/jamor-flag-before-kickoff/image-1024.webp"
+      },
+      {
+        "width": 1200,
+        "outputWidth": 1200,
+        "height": 2133,
+        "src": "/photos/jamor-flag-before-kickoff/image-1200.webp"
       },
       {
         "width": 1536,
-        "outputWidth": 1003,
-        "height": 1568,
-        "src": "/photos/london-rain/image-1536.webp"
+        "outputWidth": 1536,
+        "height": 2731,
+        "src": "/photos/jamor-flag-before-kickoff/image-1536.webp"
       },
+      {
+        "width": 1600,
+        "outputWidth": 1600,
+        "height": 2844,
+        "src": "/photos/jamor-flag-before-kickoff/image-1600.webp"
+      },
+      {
+        "width": 2400,
+        "outputWidth": 2268,
+        "height": 4032,
+        "src": "/photos/jamor-flag-before-kickoff/image-2400.webp"
+      }
+    ],
+    "fallback": "/photos/jamor-flag-before-kickoff/image.webp",
+    "fallbackWidth": 2268,
+    "fallbackHeight": 4032,
+    "exif": {
+      "captureDate": "2026-05-24T11:55:30"
+    }
+  },
+  "jamor-supporters-before-kickoff": {
+    "source": "source.jpeg",
+    "sourceHash": "6c4eac49630680497009471cdc4f569bfc44f05516d3030eb206751e0e49a5e8",
+    "pipelineSignature": "2f2fe7766d24c936",
+    "legacy": false,
+    "width": 4536,
+    "height": 8064,
+    "aspectRatio": 0.5625,
+    "orientation": "portrait",
+    "dominantColor": "#080808",
+    "blurDataURL": "data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAACwBQCdASoYACsAPvlqqk6qpiOiMBVdUVAfCWUAwzQqbOS6TJL3/zyLj8qxXhP2Vpi8XKqQpAAAq7ALyj/ChoTxOPoYCK82htwMUv/aE1/VmZczicQk0GTr+wwlu0wvtsYNmD9wLAiahlf9cCcxARdD8vgCIkYUFmmnlaeW0hb3fiNZHo14eBxYv+yAAA==",
+    "variants": [
       {
         "width": 256,
         "outputWidth": 256,
-        "height": 400,
-        "src": "/photos/london-rain/image-256.webp"
+        "height": 455,
+        "src": "/photos/jamor-supporters-before-kickoff/image-256.webp"
       },
       {
         "width": 384,
         "outputWidth": 384,
-        "height": 600,
-        "src": "/photos/london-rain/image-384.webp"
+        "height": 683,
+        "src": "/photos/jamor-supporters-before-kickoff/image-384.webp"
       },
       {
         "width": 480,
         "outputWidth": 480,
-        "height": 750,
-        "src": "/photos/london-rain/image-480.webp"
+        "height": 853,
+        "src": "/photos/jamor-supporters-before-kickoff/image-480.webp"
       },
       {
         "width": 768,
         "outputWidth": 768,
-        "height": 1201,
-        "src": "/photos/london-rain/image-768.webp"
+        "height": 1365,
+        "src": "/photos/jamor-supporters-before-kickoff/image-768.webp"
+      },
+      {
+        "width": 1024,
+        "outputWidth": 1024,
+        "height": 1820,
+        "src": "/photos/jamor-supporters-before-kickoff/image-1024.webp"
+      },
+      {
+        "width": 1200,
+        "outputWidth": 1200,
+        "height": 2133,
+        "src": "/photos/jamor-supporters-before-kickoff/image-1200.webp"
+      },
+      {
+        "width": 1536,
+        "outputWidth": 1536,
+        "height": 2731,
+        "src": "/photos/jamor-supporters-before-kickoff/image-1536.webp"
+      },
+      {
+        "width": 1600,
+        "outputWidth": 1600,
+        "height": 2844,
+        "src": "/photos/jamor-supporters-before-kickoff/image-1600.webp"
+      },
+      {
+        "width": 2400,
+        "outputWidth": 2400,
+        "height": 4267,
+        "src": "/photos/jamor-supporters-before-kickoff/image-2400.webp"
       }
     ],
-    "fallback": "/photos/london-rain/image.webp",
-    "fallbackWidth": 1003,
-    "fallbackHeight": 1568
+    "fallback": "/photos/jamor-supporters-before-kickoff/image.webp",
+    "fallbackWidth": 2400,
+    "fallbackHeight": 4267,
+    "exif": {
+      "captureDate": "2026-05-24T15:40:41"
+    }
+  },
+  "jamor-town-hall-celebration": {
+    "source": "source.jpeg",
+    "sourceHash": "6acec399f6b4aa09766cfe8df3bf47434f8d63fd55dbc30f7dea221083fd7467",
+    "pipelineSignature": "2f2fe7766d24c936",
+    "legacy": false,
+    "width": 4536,
+    "height": 8064,
+    "aspectRatio": 0.5625,
+    "orientation": "portrait",
+    "dominantColor": "#080808",
+    "blurDataURL": "data:image/webp;base64,UklGRq4AAABXRUJQVlA4IKIAAABQBgCdASoYACsAPvFqqk6ppqQiNVgIATAeCWIAuzOKBs+Lj4xu1C7oyuqRLkDLd6bptCUUPCYKMryegAD+8ZlUPqOsijlbXuW+1yEgunPbjx/JI418gmCG9ug5sS4Nrw/Lanzxbc8FLGc1V0enPtGyTKXOieFQiLlleeWlkKYkuMKUX7UqeW65swkStuT1GDeWwuqlysXsc/A1PLmlZfXQAAA=",
+    "variants": [
+      {
+        "width": 256,
+        "outputWidth": 256,
+        "height": 455,
+        "src": "/photos/jamor-town-hall-celebration/image-256.webp"
+      },
+      {
+        "width": 384,
+        "outputWidth": 384,
+        "height": 683,
+        "src": "/photos/jamor-town-hall-celebration/image-384.webp"
+      },
+      {
+        "width": 480,
+        "outputWidth": 480,
+        "height": 853,
+        "src": "/photos/jamor-town-hall-celebration/image-480.webp"
+      },
+      {
+        "width": 768,
+        "outputWidth": 768,
+        "height": 1365,
+        "src": "/photos/jamor-town-hall-celebration/image-768.webp"
+      },
+      {
+        "width": 1024,
+        "outputWidth": 1024,
+        "height": 1820,
+        "src": "/photos/jamor-town-hall-celebration/image-1024.webp"
+      },
+      {
+        "width": 1200,
+        "outputWidth": 1200,
+        "height": 2133,
+        "src": "/photos/jamor-town-hall-celebration/image-1200.webp"
+      },
+      {
+        "width": 1536,
+        "outputWidth": 1536,
+        "height": 2731,
+        "src": "/photos/jamor-town-hall-celebration/image-1536.webp"
+      },
+      {
+        "width": 1600,
+        "outputWidth": 1600,
+        "height": 2844,
+        "src": "/photos/jamor-town-hall-celebration/image-1600.webp"
+      },
+      {
+        "width": 2400,
+        "outputWidth": 2400,
+        "height": 4267,
+        "src": "/photos/jamor-town-hall-celebration/image-2400.webp"
+      }
+    ],
+    "fallback": "/photos/jamor-town-hall-celebration/image.webp",
+    "fallbackWidth": 2400,
+    "fallbackHeight": 4267,
+    "exif": {
+      "captureDate": "2026-05-25T00:43:00"
+    }
+  },
+  "jamor-victory-in-torres-vedras": {
+    "source": "source.jpeg",
+    "sourceHash": "ba1c050349060e9e154c16d9d10d000eb149e9b96854017916e5378d472d51e1",
+    "pipelineSignature": "2f2fe7766d24c936",
+    "legacy": false,
+    "width": 4536,
+    "height": 8064,
+    "aspectRatio": 0.5625,
+    "orientation": "portrait",
+    "dominantColor": "#080808",
+    "blurDataURL": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAABwBQCdASoYACsAPuVmpU6pJiOiNVv8ASAciWMAy6RpfWbmoPoL4WsZYhxGtqmCfbLr0MWwAP772SFFLfqhvQasV05Xa7X+WhKjvxrBc0VbUyk1YP9mVv1tIrRxW/4vzBYLG2JTgAAAAA==",
+    "variants": [
+      {
+        "width": 256,
+        "outputWidth": 256,
+        "height": 455,
+        "src": "/photos/jamor-victory-in-torres-vedras/image-256.webp"
+      },
+      {
+        "width": 384,
+        "outputWidth": 384,
+        "height": 683,
+        "src": "/photos/jamor-victory-in-torres-vedras/image-384.webp"
+      },
+      {
+        "width": 480,
+        "outputWidth": 480,
+        "height": 853,
+        "src": "/photos/jamor-victory-in-torres-vedras/image-480.webp"
+      },
+      {
+        "width": 768,
+        "outputWidth": 768,
+        "height": 1365,
+        "src": "/photos/jamor-victory-in-torres-vedras/image-768.webp"
+      },
+      {
+        "width": 1024,
+        "outputWidth": 1024,
+        "height": 1820,
+        "src": "/photos/jamor-victory-in-torres-vedras/image-1024.webp"
+      },
+      {
+        "width": 1200,
+        "outputWidth": 1200,
+        "height": 2133,
+        "src": "/photos/jamor-victory-in-torres-vedras/image-1200.webp"
+      },
+      {
+        "width": 1536,
+        "outputWidth": 1536,
+        "height": 2731,
+        "src": "/photos/jamor-victory-in-torres-vedras/image-1536.webp"
+      },
+      {
+        "width": 1600,
+        "outputWidth": 1600,
+        "height": 2844,
+        "src": "/photos/jamor-victory-in-torres-vedras/image-1600.webp"
+      },
+      {
+        "width": 2400,
+        "outputWidth": 2400,
+        "height": 4267,
+        "src": "/photos/jamor-victory-in-torres-vedras/image-2400.webp"
+      }
+    ],
+    "fallback": "/photos/jamor-victory-in-torres-vedras/image.webp",
+    "fallbackWidth": 2400,
+    "fallbackHeight": 4267,
+    "exif": {
+      "captureDate": "2026-05-24T23:47:54"
+    }
+  },
+  "rock-in-rio-dj-muggs": {
+    "source": "source.jpeg",
+    "sourceHash": "0544525071fc7c4a244dc53facb22d984d49729e03e18f9d03b4cbc5aafc18cb",
+    "pipelineSignature": "2f2fe7766d24c936",
+    "legacy": false,
+    "width": 4536,
+    "height": 8064,
+    "aspectRatio": 0.5625,
+    "orientation": "portrait",
+    "dominantColor": "#080808",
+    "blurDataURL": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAADQBACdASoYACsAPt1Uo06opKMiOrzIARAbiUAZbQ3UMo9f18guhS3etyUyAQeLAAD+9Y97aSRvm4tVL6fXr3XkAbILSsnsjUH8WLc9m4stXCTCrlXwSJerez/UaiEyiyFz+B1tzCn8JY4ykX6ajREvBqgSUAAA",
+    "variants": [
+      {
+        "width": 256,
+        "outputWidth": 256,
+        "height": 455,
+        "src": "/photos/rock-in-rio-dj-muggs/image-256.webp"
+      },
+      {
+        "width": 384,
+        "outputWidth": 384,
+        "height": 683,
+        "src": "/photos/rock-in-rio-dj-muggs/image-384.webp"
+      },
+      {
+        "width": 480,
+        "outputWidth": 480,
+        "height": 853,
+        "src": "/photos/rock-in-rio-dj-muggs/image-480.webp"
+      },
+      {
+        "width": 768,
+        "outputWidth": 768,
+        "height": 1365,
+        "src": "/photos/rock-in-rio-dj-muggs/image-768.webp"
+      },
+      {
+        "width": 1024,
+        "outputWidth": 1024,
+        "height": 1820,
+        "src": "/photos/rock-in-rio-dj-muggs/image-1024.webp"
+      },
+      {
+        "width": 1200,
+        "outputWidth": 1200,
+        "height": 2133,
+        "src": "/photos/rock-in-rio-dj-muggs/image-1200.webp"
+      },
+      {
+        "width": 1536,
+        "outputWidth": 1536,
+        "height": 2731,
+        "src": "/photos/rock-in-rio-dj-muggs/image-1536.webp"
+      },
+      {
+        "width": 1600,
+        "outputWidth": 1600,
+        "height": 2844,
+        "src": "/photos/rock-in-rio-dj-muggs/image-1600.webp"
+      },
+      {
+        "width": 2400,
+        "outputWidth": 2400,
+        "height": 4267,
+        "src": "/photos/rock-in-rio-dj-muggs/image-2400.webp"
+      }
+    ],
+    "fallback": "/photos/rock-in-rio-dj-muggs/image.webp",
+    "fallbackWidth": 2400,
+    "fallbackHeight": 4267,
+    "exif": {
+      "captureDate": "2026-06-21T21:55:11"
+    }
+  },
+  "rock-in-rio-flyover": {
+    "source": "source.jpeg",
+    "sourceHash": "c26df2768a24940a42ee8ffa3ce583af62b3a6e916c20b45c4353eb1f123de3b",
+    "pipelineSignature": "2f2fe7766d24c936",
+    "legacy": false,
+    "width": 3364,
+    "height": 5980,
+    "aspectRatio": 0.562542,
+    "orientation": "portrait",
+    "dominantColor": "#787888",
+    "blurDataURL": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAABQAwCdASoYACsAPv12sFErJ6UiqqoBYB+JZwDDcCRtytv9QAD8uVPQ4YTfaurCgSaX9g1coFnHkBfxOwhN553kQAA=",
+    "variants": [
+      {
+        "width": 256,
+        "outputWidth": 256,
+        "height": 455,
+        "src": "/photos/rock-in-rio-flyover/image-256.webp"
+      },
+      {
+        "width": 384,
+        "outputWidth": 384,
+        "height": 683,
+        "src": "/photos/rock-in-rio-flyover/image-384.webp"
+      },
+      {
+        "width": 480,
+        "outputWidth": 480,
+        "height": 853,
+        "src": "/photos/rock-in-rio-flyover/image-480.webp"
+      },
+      {
+        "width": 768,
+        "outputWidth": 768,
+        "height": 1365,
+        "src": "/photos/rock-in-rio-flyover/image-768.webp"
+      },
+      {
+        "width": 1024,
+        "outputWidth": 1024,
+        "height": 1820,
+        "src": "/photos/rock-in-rio-flyover/image-1024.webp"
+      },
+      {
+        "width": 1200,
+        "outputWidth": 1200,
+        "height": 2133,
+        "src": "/photos/rock-in-rio-flyover/image-1200.webp"
+      },
+      {
+        "width": 1536,
+        "outputWidth": 1536,
+        "height": 2730,
+        "src": "/photos/rock-in-rio-flyover/image-1536.webp"
+      },
+      {
+        "width": 1600,
+        "outputWidth": 1600,
+        "height": 2844,
+        "src": "/photos/rock-in-rio-flyover/image-1600.webp"
+      },
+      {
+        "width": 2400,
+        "outputWidth": 2400,
+        "height": 4266,
+        "src": "/photos/rock-in-rio-flyover/image-2400.webp"
+      }
+    ],
+    "fallback": "/photos/rock-in-rio-flyover/image.webp",
+    "fallbackWidth": 2400,
+    "fallbackHeight": 4266,
+    "exif": {
+      "captureDate": "2026-06-21T20:07:10"
+    }
+  },
+  "rock-in-rio-linkinata": {
+    "source": "source.jpeg",
+    "sourceHash": "f8c11cd728bffec44f04faa6b7cf69b5882fadf486dfe8ce1e4e42e393b6c868",
+    "pipelineSignature": "2f2fe7766d24c936",
+    "legacy": false,
+    "width": 2268,
+    "height": 4032,
+    "aspectRatio": 0.5625,
+    "orientation": "portrait",
+    "dominantColor": "#485848",
+    "blurDataURL": "data:image/webp;base64,UklGRqYAAABXRUJQVlA4IJoAAADQBgCdASoYACsAPuVcpU6pJSOiOrmYASAciWMAqPRdHBlWJialTRTDyObIVdUGLg8W/rIN3WMW/xbsm5RyDAAA/vD1dHH28KUQvvLIENbJNUJGRdBwWdwaNZZdlErx7wG7X4aSEhEBvcPRiuhJsgdtPhsX3QBc35PDTCzsoBCYHX10Zx4HDUOMZKXnZ8oaJhV+9yqPZgyxFwAA",
+    "variants": [
+      {
+        "width": 256,
+        "outputWidth": 256,
+        "height": 455,
+        "src": "/photos/rock-in-rio-linkinata/image-256.webp"
+      },
+      {
+        "width": 384,
+        "outputWidth": 384,
+        "height": 683,
+        "src": "/photos/rock-in-rio-linkinata/image-384.webp"
+      },
+      {
+        "width": 480,
+        "outputWidth": 480,
+        "height": 853,
+        "src": "/photos/rock-in-rio-linkinata/image-480.webp"
+      },
+      {
+        "width": 768,
+        "outputWidth": 768,
+        "height": 1365,
+        "src": "/photos/rock-in-rio-linkinata/image-768.webp"
+      },
+      {
+        "width": 1024,
+        "outputWidth": 1024,
+        "height": 1820,
+        "src": "/photos/rock-in-rio-linkinata/image-1024.webp"
+      },
+      {
+        "width": 1200,
+        "outputWidth": 1200,
+        "height": 2133,
+        "src": "/photos/rock-in-rio-linkinata/image-1200.webp"
+      },
+      {
+        "width": 1536,
+        "outputWidth": 1536,
+        "height": 2731,
+        "src": "/photos/rock-in-rio-linkinata/image-1536.webp"
+      },
+      {
+        "width": 1600,
+        "outputWidth": 1600,
+        "height": 2844,
+        "src": "/photos/rock-in-rio-linkinata/image-1600.webp"
+      },
+      {
+        "width": 2400,
+        "outputWidth": 2268,
+        "height": 4032,
+        "src": "/photos/rock-in-rio-linkinata/image-2400.webp"
+      }
+    ],
+    "fallback": "/photos/rock-in-rio-linkinata/image.webp",
+    "fallbackWidth": 2268,
+    "fallbackHeight": 4032,
+    "exif": {
+      "captureDate": "2026-06-20T11:17:15"
+    }
+  },
+  "rock-in-rio-night-crowd": {
+    "source": "source.jpeg",
+    "sourceHash": "d6fd18db89a952205db27928ac83a110e03ea6b570739b555c6aa2d6444acb65",
+    "pipelineSignature": "2f2fe7766d24c936",
+    "legacy": false,
+    "width": 4536,
+    "height": 8064,
+    "aspectRatio": 0.5625,
+    "orientation": "portrait",
+    "dominantColor": "#080808",
+    "blurDataURL": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAAAwBQCdASoYACsAPuVgpk6pJaOiOrZoASAciWMAyRBdQCbuV/Mo5IH2Adh1qAbunw6AAAD+8yZVaGgvDTw7ij6Oa4gf+gSAWlS/PwvGULpYHp4/8u6AuMIfygCCfRljje7bTVUgsbMMox2vFm0AAA==",
+    "variants": [
+      {
+        "width": 256,
+        "outputWidth": 256,
+        "height": 455,
+        "src": "/photos/rock-in-rio-night-crowd/image-256.webp"
+      },
+      {
+        "width": 384,
+        "outputWidth": 384,
+        "height": 683,
+        "src": "/photos/rock-in-rio-night-crowd/image-384.webp"
+      },
+      {
+        "width": 480,
+        "outputWidth": 480,
+        "height": 853,
+        "src": "/photos/rock-in-rio-night-crowd/image-480.webp"
+      },
+      {
+        "width": 768,
+        "outputWidth": 768,
+        "height": 1365,
+        "src": "/photos/rock-in-rio-night-crowd/image-768.webp"
+      },
+      {
+        "width": 1024,
+        "outputWidth": 1024,
+        "height": 1820,
+        "src": "/photos/rock-in-rio-night-crowd/image-1024.webp"
+      },
+      {
+        "width": 1200,
+        "outputWidth": 1200,
+        "height": 2133,
+        "src": "/photos/rock-in-rio-night-crowd/image-1200.webp"
+      },
+      {
+        "width": 1536,
+        "outputWidth": 1536,
+        "height": 2731,
+        "src": "/photos/rock-in-rio-night-crowd/image-1536.webp"
+      },
+      {
+        "width": 1600,
+        "outputWidth": 1600,
+        "height": 2844,
+        "src": "/photos/rock-in-rio-night-crowd/image-1600.webp"
+      },
+      {
+        "width": 2400,
+        "outputWidth": 2400,
+        "height": 4267,
+        "src": "/photos/rock-in-rio-night-crowd/image-2400.webp"
+      }
+    ],
+    "fallback": "/photos/rock-in-rio-night-crowd/image.webp",
+    "fallbackWidth": 2400,
+    "fallbackHeight": 4267,
+    "exif": {
+      "captureDate": "2026-06-22T01:36:01"
+    }
+  },
+  "rock-in-rio-taylor-momsen": {
+    "source": "source.jpeg",
+    "sourceHash": "b4147b203030f050857aa22d8d7e0a7d4747a6dd0669c53dfd3011d9a4578075",
+    "pipelineSignature": "2f2fe7766d24c936",
+    "legacy": false,
+    "width": 4536,
+    "height": 8064,
+    "aspectRatio": 0.5625,
+    "orientation": "portrait",
+    "dominantColor": "#a8a8a8",
+    "blurDataURL": "data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAAAQBQCdASoYACsAPu1cp06ppKOjOrZoATAdiUAZL+X5JIzlDiZhyv/hXyzSJQvp0R0AAP7rdoqu2vVa0tAUOjM79IiFdhcApnWBQXZTlT2dDo/sLupCceLf04doe47Gxmdx9v9eEfgRFJUbqVJuEAAA",
+    "variants": [
+      {
+        "width": 256,
+        "outputWidth": 256,
+        "height": 455,
+        "src": "/photos/rock-in-rio-taylor-momsen/image-256.webp"
+      },
+      {
+        "width": 384,
+        "outputWidth": 384,
+        "height": 683,
+        "src": "/photos/rock-in-rio-taylor-momsen/image-384.webp"
+      },
+      {
+        "width": 480,
+        "outputWidth": 480,
+        "height": 853,
+        "src": "/photos/rock-in-rio-taylor-momsen/image-480.webp"
+      },
+      {
+        "width": 768,
+        "outputWidth": 768,
+        "height": 1365,
+        "src": "/photos/rock-in-rio-taylor-momsen/image-768.webp"
+      },
+      {
+        "width": 1024,
+        "outputWidth": 1024,
+        "height": 1820,
+        "src": "/photos/rock-in-rio-taylor-momsen/image-1024.webp"
+      },
+      {
+        "width": 1200,
+        "outputWidth": 1200,
+        "height": 2133,
+        "src": "/photos/rock-in-rio-taylor-momsen/image-1200.webp"
+      },
+      {
+        "width": 1536,
+        "outputWidth": 1536,
+        "height": 2731,
+        "src": "/photos/rock-in-rio-taylor-momsen/image-1536.webp"
+      },
+      {
+        "width": 1600,
+        "outputWidth": 1600,
+        "height": 2844,
+        "src": "/photos/rock-in-rio-taylor-momsen/image-1600.webp"
+      },
+      {
+        "width": 2400,
+        "outputWidth": 2400,
+        "height": 4267,
+        "src": "/photos/rock-in-rio-taylor-momsen/image-2400.webp"
+      }
+    ],
+    "fallback": "/photos/rock-in-rio-taylor-momsen/image.webp",
+    "fallbackWidth": 2400,
+    "fallbackHeight": 4267,
+    "exif": {
+      "captureDate": "2026-06-21T19:57:46"
+    }
   }
 }

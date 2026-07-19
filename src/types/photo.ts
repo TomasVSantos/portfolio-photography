@@ -17,7 +17,7 @@ export interface PhotoFrontmatter {
   featured?: boolean;
   tags?: string[];
   alt?: string;
-  order?: number;
+  seriesOrder?: number;
   draft?: boolean;
 }
 
@@ -63,13 +63,14 @@ export interface Photo {
   camera?: string;
   lens?: string;
   date: string;
+  capturedAt?: string;
   series: string;
   category: PhotoCategory;
   venue?: string;
   featured: boolean;
   tags: string[];
   alt: string;
-  order?: number;
+  seriesOrder?: number;
   story: string;
   orientation: PhotoOrientation;
   image: PhotoImageManifestEntry;

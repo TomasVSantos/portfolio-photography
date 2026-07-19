@@ -60,11 +60,11 @@ export function validateEditorialData(data, slug) {
     );
   }
   if (
-    data.order !== undefined &&
-    (!Number.isInteger(data.order) || data.order < 0)
+    data.seriesOrder !== undefined &&
+    (!Number.isInteger(data.seriesOrder) || data.seriesOrder < 0)
   ) {
     errors.push(
-      `[${slug}] Frontmatter field "order" must be a non-negative integer.`,
+      `[${slug}] Frontmatter field "seriesOrder" must be a non-negative integer.`,
     );
   }
 
