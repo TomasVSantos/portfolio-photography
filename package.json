@@ -11,7 +11,8 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "images:build": "node scripts/generate-responsive-images.mjs"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "latest",
@@ -19,6 +20,7 @@
     "class-variance-authority": "latest",
     "clsx": "latest",
     "framer-motion": "latest",
+    "gray-matter": "^4.0.3",
     "lucide-react": "latest",
     "next": "15.5.20",
     "next-mdx-remote": "latest",
@@ -37,6 +39,7 @@
     "eslint-config-prettier": "latest",
     "prettier": "latest",
     "prettier-plugin-tailwindcss": "latest",
+    "sharp": "^0.35.3",
     "tailwindcss": "latest",
     "typescript": "^5.9.0"
   }
