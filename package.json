@@ -5,15 +5,17 @@
   "packageManager": "pnpm@10.32.1",
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
-    "build:cf": "next build",
+    "build": "pnpm images:check && next build",
+    "build:cf": "pnpm images:check && next build",
     "start": "next start",
     "lint": "eslint .",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "images:build": "node scripts/generate-responsive-images.mjs"
+    "images:build": "node scripts/generate-responsive-images.mjs",
+    "images:check": "node scripts/check-images.mjs",
+    "photo:new": "node scripts/create-photo.mjs"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "latest",

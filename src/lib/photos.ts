@@ -2,56 +2,86 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 
+import imageManifestJson from "@/generated/photos.json";
+import { validateEditorialData } from "@/lib/photo-editorial.mjs";
 import { slugify } from "@/lib/slugs";
 import {
   photoCategories,
   type Photo,
   type PhotoFrontmatter,
+  type PhotoImageManifestEntry,
   type Series,
   type SeriesFrontmatter,
 } from "@/types/photo";
 
 const photosDirectory = path.join(process.cwd(), "src/content/photos");
 const seriesDirectory = path.join(process.cwd(), "src/content/series");
+const imageManifest = imageManifestJson as Record<
+  string,
+  PhotoImageManifestEntry
+>;
 
-function assertFrontmatter(value: unknown, slug: string): PhotoFrontmatter {
-  const data = value as Partial<PhotoFrontmatter>;
-  const required = [
-    "title",
-    "location",
-    "camera",
-    "lens",
-    "date",
-    "series",
-    "featured",
-    "tags",
-    "image",
-    "width",
-    "height",
-    "color",
-    "alt",
-  ] as const;
+function normalizeDate(value: unknown) {
+  return value instanceof Date
+    ? value.toISOString().slice(0, 10)
+    : String(value);
+}
 
-  for (const key of required) {
-    if (data[key] === undefined) {
-      throw new Error(`Photo "${slug}" is missing frontmatter field "${key}".`);
-    }
+export function mergeEditorialWithDerived(
+  data: PhotoFrontmatter,
+  image: PhotoImageManifestEntry,
+) {
+  return {
+    camera: data.camera?.trim() || image.exif?.camera,
+    lens: data.lens?.trim() || image.exif?.lens,
+  };
+}
+
+function assertPublishedFrontmatter(
+  value: unknown,
+  slug: string,
+  image: PhotoImageManifestEntry | undefined,
+) {
+  const data = value as PhotoFrontmatter;
+  const normalized = {
+    ...data,
+    ...(data.date === undefined ? {} : { date: normalizeDate(data.date) }),
+  };
+  const validation = validateEditorialData(
+    normalized as Record<string, unknown>,
+    slug,
+  );
+  if (validation.errors.length > 0) {
+    throw new Error(validation.errors.join("\n"));
   }
-
-  const rawDate = (data as unknown as Record<string, unknown>).date;
-  if (data.category !== undefined && !photoCategories.includes(data.category)) {
+  if (!image) {
     throw new Error(
-      `Photo "${slug}" has unsupported category "${String(data.category)}".`,
+      `[${slug}] Missing generated image data. Run pnpm images:build -- ${slug} and commit src/generated/photos.json.`,
     );
   }
 
   return {
-    ...(data as PhotoFrontmatter),
-    date:
-      rawDate instanceof Date
-        ? rawDate.toISOString().slice(0, 10)
-        : String(rawDate),
+    title: normalized.title as string,
+    location: normalized.location as string,
+    date: normalized.date as string,
+    series: normalized.series as string,
+    category: normalized.category as Photo["category"],
+    venue: normalized.venue,
+    featured: normalized.featured as boolean,
+    tags: normalized.tags as string[],
+    alt: normalized.alt as string,
+    order: normalized.order,
+    ...mergeEditorialWithDerived(normalized, image),
   };
+}
+
+export function comparePhotos(a: Photo, b: Photo) {
+  const aOrdered = a.order !== undefined;
+  const bOrdered = b.order !== undefined;
+  if (aOrdered && bOrdered && a.order !== b.order) return a.order! - b.order!;
+  if (aOrdered !== bOrdered) return aOrdered ? -1 : 1;
+  const dateOrder = b.date.localeCompare(a.date);
+  return dateOrder || a.slug.localeCompare(b.slug);
 }
 
 function getSeriesMetadata(slug: string): SeriesFrontmatter | undefined {
@@ -74,24 +104,33 @@ function getSeriesMetadata(slug: string): SeriesFrontmatter | undefined {
 export function getAllPhotos(): Photo[] {
   if (!fs.existsSync(photosDirectory)) return [];
 
-  return fs
+  const photos: Photo[] = [];
+  const entries = fs
     .readdirSync(photosDirectory, { withFileTypes: true })
-    .filter((entry) => entry.isDirectory())
-    .map((entry) => {
-      const filePath = path.join(photosDirectory, entry.name, "page.mdx");
-      const file = fs.readFileSync(filePath, "utf8");
-      const { data, content } = matter(file);
-      const frontmatter = assertFrontmatter(data, entry.name);
+    .filter((entry) => entry.isDirectory());
 
-      return {
-        ...frontmatter,
-        slug: entry.name,
-        story: content.trim(),
-        orientation:
-          frontmatter.height > frontmatter.width ? "portrait" : "landscape",
-      } satisfies Photo;
-    })
-    .sort((a, b) => b.date.localeCompare(a.date));
+  for (const entry of entries) {
+    const filePath = path.join(photosDirectory, entry.name, "page.mdx");
+    const file = fs.readFileSync(filePath, "utf8");
+    const { data, content } = matter(file);
+    const draftValidation = validateEditorialData(data, entry.name);
+    if (draftValidation.errors.length > 0) {
+      throw new Error(draftValidation.errors.join("\n"));
+    }
+    if (draftValidation.draft) continue;
+
+    const image = imageManifest[entry.name];
+    const frontmatter = assertPublishedFrontmatter(data, entry.name, image);
+    photos.push({
+      ...frontmatter,
+      slug: entry.name,
+      story: content.trim(),
+      orientation: image.orientation,
+      image,
+    });
+  }
+
+  return photos.sort(comparePhotos);
 }
 
 export function getPhoto(slug: string) {

@@ -1,29 +1,107 @@
-import { readdir } from "node:fs/promises";
+import { mkdir, readdir } from "node:fs/promises";
 import path from "node:path";
-import sharp from "sharp";
+
+import {
+  createLegacyManifestEntry,
+  discoverSource,
+  generatePhotoAssets,
+  isGeneratedImage,
+  isSourceEntryCurrent,
+  readManifest,
+  writeManifestAtomic,
+} from "./image-pipeline/core.mjs";
 
 const root = path.join(process.cwd(), "public/photos");
-const widths = [256, 384, 480, 768, 1024, 1536];
-const folders = await readdir(root, { withFileTypes: true });
+const manifestPath = path.join(process.cwd(), "src/generated/photos.json");
+const args = process.argv.slice(2).filter((argument) => argument !== "--");
+const force = args.includes("--force");
+const verbose = args.includes("--verbose");
+const slugs = args.filter((argument) => !argument.startsWith("--"));
 
-for (const folder of folders.filter((entry) => entry.isDirectory())) {
-  const source = path.join(root, folder.name, "image.png");
-  const directory = path.dirname(source);
-
-  await sharp(source)
-    .webp({ quality: 84, effort: 5 })
-    .toFile(path.join(directory, "image.webp"));
-
-  await Promise.all(
-    widths.map((width) =>
-      sharp(source)
-        .resize({ width, withoutEnlargement: true })
-        .webp({ quality: 82, effort: 5 })
-        .toFile(path.join(directory, `image-${width}.webp`)),
-    ),
-  );
+if (slugs.length > 1) {
+  console.error("Usage: pnpm images:build -- [slug] [--force] [--verbose]");
+  process.exit(1);
 }
 
-console.log(
-  `Generated ${widths.length + 1} WebP assets for ${folders.length} photographs.`,
-);
+await mkdir(root, { recursive: true });
+await mkdir(path.dirname(manifestPath), { recursive: true });
+
+const folders = (await readdir(root, { withFileTypes: true }))
+  .filter((entry) => entry.isDirectory())
+  .map((entry) => entry.name)
+  .sort((a, b) => a.localeCompare(b));
+const selected = slugs[0]
+  ? folders.filter((slug) => slug === slugs[0])
+  : folders;
+
+if (slugs[0] && selected.length === 0) {
+  console.error(
+    `[${slugs[0]}] Photo folder not found at public/photos/${slugs[0]}/.`,
+  );
+  process.exit(1);
+}
+
+const manifest = await readManifest(manifestPath);
+let manifestChanged = false;
+const summary = { processed: 0, skipped: 0, warnings: 0, failed: 0 };
+
+for (const slug of selected) {
+  const directory = path.join(root, slug);
+  try {
+    const files = await readdir(directory);
+    const source = discoverSource(files, slug);
+
+    if (!source) {
+      const hasGeneratedAssets = files.some(isGeneratedImage);
+      summary.warnings += 1;
+      if (hasGeneratedAssets) {
+        console.warn(
+          `[${slug}] No source.* original found; keeping existing generated assets unchanged. Add the original to regenerate this photograph.`,
+        );
+        if (!manifest[slug]) {
+          const legacyEntry = await createLegacyManifestEntry(directory, slug);
+          if (legacyEntry) {
+            manifest[slug] = legacyEntry;
+            manifestChanged = true;
+          }
+        }
+      } else {
+        console.warn(
+          `[${slug}] No source image found. Add source.jpg (or another supported source format) before building images.`,
+        );
+      }
+      continue;
+    }
+
+    if (
+      !force &&
+      (await isSourceEntryCurrent(directory, manifest[slug], source))
+    ) {
+      summary.skipped += 1;
+      if (verbose) console.log(`[${slug}] Unchanged.`);
+      continue;
+    }
+
+    manifest[slug] = await generatePhotoAssets({ directory, slug, source });
+    manifestChanged = true;
+    summary.processed += 1;
+    console.log(
+      `[${slug}] Generated responsive WebP assets from ${source.fileName}${source.legacy ? " (legacy source name)" : ""}.`,
+    );
+  } catch (error) {
+    summary.failed += 1;
+    console.error(
+      error instanceof Error ? error.message : `[${slug}] ${String(error)}`,
+    );
+  }
+}
+
+if (manifestChanged) await writeManifestAtomic(manifestPath, manifest);
+
+console.log("");
+console.log(`Processed: ${summary.processed}`);
+console.log(`Skipped unchanged: ${summary.skipped}`);
+console.log(`Warnings: ${summary.warnings}`);
+console.log(`Failed: ${summary.failed}`);
+
+if (summary.failed > 0) process.exitCode = 1;

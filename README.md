@@ -7,6 +7,9 @@ A static-first photography portfolio built with Next.js 15, React 19, TypeScript
 ```bash
 pnpm install
 pnpm dev
+pnpm photo:new
+pnpm images:build
+pnpm images:check
 pnpm typecheck
 pnpm lint
 pnpm test
@@ -14,18 +17,95 @@ pnpm format:check
 pnpm build
 ```
 
-## Adding a photograph
+## Publishing photographs
 
-Every photograph has a content folder and a public image folder with the same slug:
+Every photograph keeps editorial content and image assets in matching slug
+folders:
 
 ```text
 src/content/photos/culatra-lighthouse/page.mdx
-public/photos/culatra-lighthouse/image.webp
+public/photos/culatra-lighthouse/source.jpg
 ```
 
-The MDX frontmatter is the source of truth for routing, series, metadata, image dimensions, blur colour, and display text. The body is rendered as the photo story. Adding the folder automatically adds the photograph to the gallery, series route, sitemap, and previous/next sequence.
+The MDX file contains human decisions; `src/generated/photos.json` contains
+machine-derived image data. A published photograph is automatically included in
+the gallery, search, series pages, sitemap, and previous/next sequence.
 
-Required frontmatter:
+### Add a photograph
+
+1. Run `pnpm photo:new` and answer the prompts. For automation, arguments are
+   also supported, for example:
+
+   ```bash
+   pnpm photo:new -- --slug under-the-lights --title "Under the Lights" --date 2026-06-20 --location "Lisbon, Portugal" --series "Live Music" --category concert --tags "concert,live music" --alt "A performer beneath white stage lights"
+   ```
+
+2. Put the original in `public/photos/<slug>/` using a stable source name such
+   as `source.jpg`.
+3. Run `pnpm images:build -- <slug>`.
+4. Refine the MDX metadata and story, then remove `draft: true`.
+5. Run:
+
+   ```bash
+   pnpm images:check
+   pnpm typecheck
+   pnpm lint
+   pnpm build
+   ```
+
+### Replace a photograph
+
+1. Replace its single `source.<extension>` file.
+2. Run `pnpm images:build -- <slug>`.
+3. Review the alt text and any editorial metadata affected by the replacement.
+4. Run the verification commands above.
+
+Use `pnpm images:build -- <slug> --force` to regenerate unchanged input. Running
+`pnpm images:build` without a slug checks the full collection and processes only
+sources whose content hash or pipeline configuration changed.
+
+### Source and generated files
+
+Supported source names are `source.jpg`, `source.jpeg`, `source.png`,
+`source.webp`, `source.tif`, `source.tiff`, and `source.avif`. The installed Sharp
+build handles these formats reliably. HEIC/HEIF is intentionally rejected; export
+JPEG, TIFF, or PNG first. The legacy name `image.png` remains supported and can
+be migrated with:
+
+```bash
+mv public/photos/<slug>/image.png public/photos/<slug>/source.png
+pnpm images:build -- <slug> --force
+```
+
+The generator never selects `image.webp`, `image-*.webp`, placeholders, or
+other arbitrary files as a source. Multiple `source.*` files are an error.
+
+Generated derivatives use photographic WebP quality 86 for the canonical
+`image.webp` and 82 for responsive variants. The configured requested widths are
+256, 384, 480, 768, 1024, 1200, 1536, 1600, and 2400 pixels. The first four
+legacy widths are retained so existing public URLs continue to work. Images are
+never enlarged; a requested-width filename may contain a smaller image when the
+original is narrower.
+
+Generation uses temporary files and only replaces public derivatives after all
+new files have completed. Obsolete `image-<width>.webp` files are removed after
+a successful generation, while source and unrelated files are preserved.
+
+`src/generated/photos.json` records source dimensions, aspect ratio,
+orientation, dominant colour, a compact blur data URL, variant paths and sizes,
+the source SHA-256 hash, and the pipeline configuration signature. Do not edit
+this file manually. `pnpm images:check` detects stale hashes, missing variants,
+invalid MDX, and orphaned manifest entries. Application and Cloudflare builds run
+this check but do not process originals.
+
+Source originals, generated derivatives, and the generated manifest are committed
+to Git in the current repository policy. This keeps local and CI validation
+reproducible; the image-provider boundary still allows originals or derivatives
+to move to R2 later.
+
+### Editorial metadata
+
+Published photographs require the following human-authored frontmatter:
 
 ```yaml
 ---
@@ -35,17 +115,36 @@ camera: iPhone 17 Pro
 lens: 26mm equivalent
 date: 2026-07-18
 series: Culatra
-category: travel # optional
+category: travel
 venue: MEO Arena # optional
 featured: true
 tags: [lighthouse, sea, algarve]
-image: image.webp
-width: 1122
-height: 1402
-color: "#aeb2ae"
 alt: A white lighthouse beyond sand dunes
+order: 10 # optional
 ---
 ```
+
+Camera and lens are optional editorial overrides. The data model permits safe
+EXIF-derived defaults, but the current pipeline deliberately does not publish raw
+EXIF. GPS, serial numbers, owner names, and software history are never copied to
+the public manifest. Alt text always remains human-authored.
+
+`draft: true` allows incomplete work to exist without an image manifest entry.
+Drafts are excluded from production gallery, search, series, sitemap, and photo
+navigation. Incomplete non-drafts fail validation.
+
+Portfolio order is deterministic: explicit `order` values come first in ascending
+order, followed by date descending, then slug ascending for ties. The same order
+feeds galleries, series, featured selections, and previous/next navigation.
+
+### Existing generated-only photographs
+
+The six original sample folders contain generated WebPs but no recoverable source
+originals. They have been preserved as explicit legacy entries in the manifest;
+`images:build` skips them safely and `images:check` reports a warning rather than
+corrupting their assets. To complete their migration, add the true original as
+`source.<extension>` and run `pnpm images:build -- <slug>`. Do not rename
+`image.webp` into a source file.
 
 ## Architecture
 
@@ -57,14 +156,16 @@ alt: A white lighthouse beyond sand dunes
 - `src/lib/search-index.ts` — build-time search records for photos, series, and pages
 - `src/lib/search.ts` — client-safe search normalization and ranking
 - `src/lib/gallery-filter.ts` — shareable URL-filter matching
-- `src/lib/images.ts` — image-provider boundary used by every frontend surface
+- `src/lib/images.ts` — manifest-backed image-provider boundary used by every frontend surface
+- `src/generated/photos.json` — generated technical image metadata
+- `scripts/image-pipeline` — source discovery and atomic responsive generation
 - `public/photos` — current local image storage, including responsive WebP variants
 
-The frontend never constructs a storage URL directly. `getPhotoImage()` is the sole image rendering boundary, so an R2 provider can replace the local provider without changes to cards, galleries, photo pages, or metadata generation. Run `pnpm images:build` after adding a source PNG to generate the responsive WebP set.
+The frontend never constructs a storage URL directly. `getPhotoImage()` is the sole image rendering boundary, so an R2 provider can replace the local provider without changes to cards, galleries, photo pages, or metadata generation.
 
 ### Categories and series metadata
 
-`category` accepts `documentary`, `street`, `travel`, `concert`, `music`, `portrait`, or `other`. Both `category` and `venue` are optional, so older photo records remain valid.
+`category` accepts `documentary`, `street`, `travel`, `concert`, `music`, `portrait`, or `other`. `venue` is optional.
 
 A series is generated automatically from photo frontmatter. Optional editorial metadata can be added without changing any photo:
 
@@ -109,4 +210,4 @@ The app uses native Next.js static export and does not require a Node runtime at
 
 ## Sample imagery
 
-The repository includes six generated editorial photographs so every layout and interaction is production-testable. Replace the matching source image, run `pnpm images:build`, and update its MDX metadata when original work is ready.
+The repository includes six generated editorial photographs so every layout and interaction is production-testable. Add the matching original source when available, run `pnpm images:build -- <slug>`, and update editorial MDX only where the real photograph requires it.

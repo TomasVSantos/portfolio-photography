@@ -85,8 +85,12 @@ export default async function PhotoPage({ params }: PhotoPageProps) {
       value: formattedDate,
       href: `/gallery?year=${year}`,
     },
-    { term: "Camera", value: photo.camera, href: undefined },
-    { term: "Lens", value: photo.lens, href: undefined },
+    ...(photo.camera
+      ? [{ term: "Camera", value: photo.camera, href: undefined }]
+      : []),
+    ...(photo.lens
+      ? [{ term: "Lens", value: photo.lens, href: undefined }]
+      : []),
     {
       term: "Series",
       value: photo.series,

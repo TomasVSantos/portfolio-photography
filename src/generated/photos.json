@@ -1,0 +1,320 @@
+{
+  "albufeira-cyclist": {
+    "source": null,
+    "sourceHash": null,
+    "pipelineSignature": null,
+    "legacy": true,
+    "width": 1536,
+    "height": 1024,
+    "aspectRatio": 1.5,
+    "orientation": "landscape",
+    "dominantColor": "#e8e8e8",
+    "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADQAwCdASoYABAAPv1qsE6rJiUiMAgBYB+JZwDA3BR8i3vsGPhxNVAAw7+ieI5KHY/eSD26AoCY+RX2w+HZCAWVjVozTRCyWya/hpxEAd6N3nKAD4AAAA==",
+    "variants": [
+      {
+        "width": 1024,
+        "outputWidth": 1024,
+        "height": 683,
+        "src": "/photos/albufeira-cyclist/image-1024.webp"
+      },
+      {
+        "width": 1536,
+        "outputWidth": 1536,
+        "height": 1024,
+        "src": "/photos/albufeira-cyclist/image-1536.webp"
+      },
+      {
+        "width": 256,
+        "outputWidth": 256,
+        "height": 171,
+        "src": "/photos/albufeira-cyclist/image-256.webp"
+      },
+      {
+        "width": 384,
+        "outputWidth": 384,
+        "height": 256,
+        "src": "/photos/albufeira-cyclist/image-384.webp"
+      },
+      {
+        "width": 480,
+        "outputWidth": 480,
+        "height": 320,
+        "src": "/photos/albufeira-cyclist/image-480.webp"
+      },
+      {
+        "width": 768,
+        "outputWidth": 768,
+        "height": 512,
+        "src": "/photos/albufeira-cyclist/image-768.webp"
+      }
+    ],
+    "fallback": "/photos/albufeira-cyclist/image.webp",
+    "fallbackWidth": 1536,
+    "fallbackHeight": 1024
+  },
+  "culatra-boatyard": {
+    "source": null,
+    "sourceHash": null,
+    "pipelineSignature": null,
+    "legacy": true,
+    "width": 1536,
+    "height": 1024,
+    "aspectRatio": 1.5,
+    "orientation": "landscape",
+    "dominantColor": "#787878",
+    "blurDataURL": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAACwAwCdASoYABAALsF+v1+jqysrCwDASzgABcY+ZNe0YB1fn9U+wAD+6tolvJEv/L8i01SHTQgGDwsenzAW5NSaIniu9Mni2aAAAA==",
+    "variants": [
+      {
+        "width": 1024,
+        "outputWidth": 1024,
+        "height": 683,
+        "src": "/photos/culatra-boatyard/image-1024.webp"
+      },
+      {
+        "width": 1536,
+        "outputWidth": 1536,
+        "height": 1024,
+        "src": "/photos/culatra-boatyard/image-1536.webp"
+      },
+      {
+        "width": 256,
+        "outputWidth": 256,
+        "height": 171,
+        "src": "/photos/culatra-boatyard/image-256.webp"
+      },
+      {
+        "width": 384,
+        "outputWidth": 384,
+        "height": 256,
+        "src": "/photos/culatra-boatyard/image-384.webp"
+      },
+      {
+        "width": 480,
+        "outputWidth": 480,
+        "height": 320,
+        "src": "/photos/culatra-boatyard/image-480.webp"
+      },
+      {
+        "width": 768,
+        "outputWidth": 768,
+        "height": 512,
+        "src": "/photos/culatra-boatyard/image-768.webp"
+      }
+    ],
+    "fallback": "/photos/culatra-boatyard/image.webp",
+    "fallbackWidth": 1536,
+    "fallbackHeight": 1024
+  },
+  "culatra-fisherman": {
+    "source": null,
+    "sourceHash": null,
+    "pipelineSignature": null,
+    "legacy": true,
+    "width": 1122,
+    "height": 1402,
+    "aspectRatio": 0.800285,
+    "orientation": "portrait",
+    "dominantColor": "#e8e8e8",
+    "blurDataURL": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAABwBQCdASoYAB4APv1mqU6rJSOiMBgMAWAfiWMAw3A0ZR18JUCIrshwRAV28cPzNyyruM0AAP7q8d6l27zmmqWJC1tNH1XiUa9sYWvejZC/vLXR+Woq0obEzGhGl1S9rDqpz/GFc2zu0Ia1VwirBkUX3mkHwpF0yLCalQAA",
+    "variants": [
+      {
+        "width": 1024,
+        "outputWidth": 1024,
+        "height": 1280,
+        "src": "/photos/culatra-fisherman/image-1024.webp"
+      },
+      {
+        "width": 1536,
+        "outputWidth": 1122,
+        "height": 1402,
+        "src": "/photos/culatra-fisherman/image-1536.webp"
+      },
+      {
+        "width": 256,
+        "outputWidth": 256,
+        "height": 320,
+        "src": "/photos/culatra-fisherman/image-256.webp"
+      },
+      {
+        "width": 384,
+        "outputWidth": 384,
+        "height": 480,
+        "src": "/photos/culatra-fisherman/image-384.webp"
+      },
+      {
+        "width": 480,
+        "outputWidth": 480,
+        "height": 600,
+        "src": "/photos/culatra-fisherman/image-480.webp"
+      },
+      {
+        "width": 768,
+        "outputWidth": 768,
+        "height": 960,
+        "src": "/photos/culatra-fisherman/image-768.webp"
+      }
+    ],
+    "fallback": "/photos/culatra-fisherman/image.webp",
+    "fallbackWidth": 1122,
+    "fallbackHeight": 1402
+  },
+  "culatra-lighthouse": {
+    "source": null,
+    "sourceHash": null,
+    "pipelineSignature": null,
+    "legacy": true,
+    "width": 1122,
+    "height": 1402,
+    "aspectRatio": 0.800285,
+    "orientation": "portrait",
+    "dominantColor": "#b8c8c8",
+    "blurDataURL": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAAAQBACdASoYAB4APv14sFCrKCSisBgIAWAfiWUAxNhpXxN5IGEz82ZgAAD+6nJsSiKhNmbhUdvaso6EId1b5Thy9LlmZcsWjV1JI1y/qioORtoMHJadMg1nZcEoJD3MdSSAAA==",
+    "variants": [
+      {
+        "width": 1024,
+        "outputWidth": 1024,
+        "height": 1280,
+        "src": "/photos/culatra-lighthouse/image-1024.webp"
+      },
+      {
+        "width": 1536,
+        "outputWidth": 1122,
+        "height": 1402,
+        "src": "/photos/culatra-lighthouse/image-1536.webp"
+      },
+      {
+        "width": 256,
+        "outputWidth": 256,
+        "height": 320,
+        "src": "/photos/culatra-lighthouse/image-256.webp"
+      },
+      {
+        "width": 384,
+        "outputWidth": 384,
+        "height": 480,
+        "src": "/photos/culatra-lighthouse/image-384.webp"
+      },
+      {
+        "width": 480,
+        "outputWidth": 480,
+        "height": 600,
+        "src": "/photos/culatra-lighthouse/image-480.webp"
+      },
+      {
+        "width": 768,
+        "outputWidth": 768,
+        "height": 960,
+        "src": "/photos/culatra-lighthouse/image-768.webp"
+      }
+    ],
+    "fallback": "/photos/culatra-lighthouse/image.webp",
+    "fallbackWidth": 1122,
+    "fallbackHeight": 1402
+  },
+  "london-crossing": {
+    "source": null,
+    "sourceHash": null,
+    "pipelineSignature": null,
+    "legacy": true,
+    "width": 1536,
+    "height": 1024,
+    "aspectRatio": 1.5,
+    "orientation": "landscape",
+    "dominantColor": "#181818",
+    "blurDataURL": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAACwAwCdASoYABAAPv1ysFArJySisAgBYB+JaQAAUleAKzXTHAmrQAD+ufxjf/hk8OxnzP6v62RfGMMydjXClRiTlh06+8/2SCgAAA==",
+    "variants": [
+      {
+        "width": 1024,
+        "outputWidth": 1024,
+        "height": 683,
+        "src": "/photos/london-crossing/image-1024.webp"
+      },
+      {
+        "width": 1536,
+        "outputWidth": 1536,
+        "height": 1024,
+        "src": "/photos/london-crossing/image-1536.webp"
+      },
+      {
+        "width": 256,
+        "outputWidth": 256,
+        "height": 171,
+        "src": "/photos/london-crossing/image-256.webp"
+      },
+      {
+        "width": 384,
+        "outputWidth": 384,
+        "height": 256,
+        "src": "/photos/london-crossing/image-384.webp"
+      },
+      {
+        "width": 480,
+        "outputWidth": 480,
+        "height": 320,
+        "src": "/photos/london-crossing/image-480.webp"
+      },
+      {
+        "width": 768,
+        "outputWidth": 768,
+        "height": 512,
+        "src": "/photos/london-crossing/image-768.webp"
+      }
+    ],
+    "fallback": "/photos/london-crossing/image.webp",
+    "fallbackWidth": 1536,
+    "fallbackHeight": 1024
+  },
+  "london-rain": {
+    "source": null,
+    "sourceHash": null,
+    "pipelineSignature": null,
+    "legacy": true,
+    "width": 1003,
+    "height": 1568,
+    "aspectRatio": 0.639668,
+    "orientation": "portrait",
+    "dominantColor": "#081818",
+    "blurDataURL": "data:image/webp;base64,UklGRowAAABXRUJQVlA4IIAAAADQBQCdASoYACYAPuVioU6pJiMiNUwBIByJYwC7ACfdfNzraO8H+VBXenFT/Y4I9zQ8gqGRAkbQAP7svwcD2StKmOlvJfOPeDQH3zW6dUp/kNS318FNz8zmEzGjkGKyxFFfVDqWMTVFjl+piiJGIoEyA4k0ggwhoRspccLsjIAAAA==",
+    "variants": [
+      {
+        "width": 1024,
+        "outputWidth": 1003,
+        "height": 1568,
+        "src": "/photos/london-rain/image-1024.webp"
+      },
+      {
+        "width": 1536,
+        "outputWidth": 1003,
+        "height": 1568,
+        "src": "/photos/london-rain/image-1536.webp"
+      },
+      {
+        "width": 256,
+        "outputWidth": 256,
+        "height": 400,
+        "src": "/photos/london-rain/image-256.webp"
+      },
+      {
+        "width": 384,
+        "outputWidth": 384,
+        "height": 600,
+        "src": "/photos/london-rain/image-384.webp"
+      },
+      {
+        "width": 480,
+        "outputWidth": 480,
+        "height": 750,
+        "src": "/photos/london-rain/image-480.webp"
+      },
+      {
+        "width": 768,
+        "outputWidth": 768,
+        "height": 1201,
+        "src": "/photos/london-rain/image-768.webp"
+      }
+    ],
+    "fallback": "/photos/london-rain/image.webp",
+    "fallbackWidth": 1003,
+    "fallbackHeight": 1568
+  }
+}
