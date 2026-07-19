@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { getPhotoImage } from "@/lib/images";
+import { getLocationSlug, slugify } from "@/lib/slugs";
 import type { Photo } from "@/types/photo";
 
 export function PhotoCard({
@@ -37,13 +38,19 @@ export function PhotoCard({
           <h3 className="font-serif text-xl tracking-[-0.02em]">
             {photo.title}
           </h3>
-          <p className="text-muted-foreground mt-1 text-xs tracking-[0.08em]">
+          <Link
+            href={`/gallery?location=${getLocationSlug(photo.location)}`}
+            className="text-muted-foreground hover:text-foreground mt-1 block text-xs tracking-[0.08em] transition-colors"
+          >
             {photo.location}
-          </p>
+          </Link>
         </div>
-        <p className="text-muted-foreground pt-1 text-[0.65rem] tracking-[0.18em] uppercase">
+        <Link
+          href={`/gallery?series=${slugify(photo.series)}`}
+          className="text-muted-foreground hover:text-foreground pt-1 text-[0.65rem] tracking-[0.18em] uppercase transition-colors"
+        >
           {photo.series}
-        </p>
+        </Link>
       </div>
     </article>
   );

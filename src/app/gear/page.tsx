@@ -17,7 +17,11 @@ const currentGear = [
   },
 ];
 
-const wishlist = ["Fujifilm X-T5", "More time in good light"];
+const wishlist = [
+  "Fujifilm X-T5",
+  "Fujifilm XF 16-50mm f/2.8-4.8 R LM WR",
+  "More time in good light",
+];
 
 export default function GearPage() {
   return (

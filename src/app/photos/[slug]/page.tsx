@@ -9,8 +9,10 @@ import { Container } from "@/components/layout/container";
 import { PageShell } from "@/components/layout/page-shell";
 import { ShareButton } from "@/components/photo/share-button";
 import { siteConfig } from "@/config/site";
+import { formatFilterValue } from "@/lib/gallery-filter";
 import { getPhotoImage } from "@/lib/images";
 import { getAllPhotos, getPhoto, getPhotoNeighbors } from "@/lib/photos";
+import { getLocationSlug, slugify } from "@/lib/slugs";
 
 type PhotoPageProps = { params: Promise<{ slug: string }> };
 
@@ -68,6 +70,38 @@ export default async function PhotoPage({ params }: PhotoPageProps) {
     month: "long",
     year: "numeric",
   }).format(new Date(`${photo.date}T12:00:00`));
+  const year = photo.date.slice(0, 4);
+  const metadataRows = [
+    {
+      term: "Location",
+      value: photo.location,
+      href: `/gallery?location=${getLocationSlug(photo.location)}`,
+    },
+    ...(photo.venue
+      ? [{ term: "Venue", value: photo.venue, href: undefined }]
+      : []),
+    {
+      term: "Date",
+      value: formattedDate,
+      href: `/gallery?year=${year}`,
+    },
+    { term: "Camera", value: photo.camera, href: undefined },
+    { term: "Lens", value: photo.lens, href: undefined },
+    {
+      term: "Series",
+      value: photo.series,
+      href: `/gallery?series=${slugify(photo.series)}`,
+    },
+    ...(photo.category
+      ? [
+          {
+            term: "Category",
+            value: formatFilterValue(photo.category),
+            href: `/gallery?category=${photo.category}`,
+          },
+        ]
+      : []),
+  ];
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Photograph",
@@ -75,7 +109,9 @@ export default async function PhotoPage({ params }: PhotoPageProps) {
     description: photo.story.split("\n")[0],
     contentUrl: `${siteConfig.url}${image.src}`,
     dateCreated: photo.date,
-    keywords: photo.tags.join(", "),
+    keywords: [...photo.tags, ...(photo.category ? [photo.category] : [])].join(
+      ", ",
+    ),
     creator: { "@type": "Person", name: siteConfig.name },
     contentLocation: { "@type": "Place", name: photo.location },
   };
@@ -111,7 +147,19 @@ export default async function PhotoPage({ params }: PhotoPageProps) {
           <div className="mx-auto mt-14 grid max-w-6xl gap-14 lg:mt-20 lg:grid-cols-[1fr_0.62fr] lg:gap-24">
             <article>
               <p className="text-muted-foreground text-[0.68rem] tracking-[0.22em] uppercase">
-                {photo.series} · {formattedDate}
+                <Link
+                  href={`/gallery?series=${slugify(photo.series)}`}
+                  className="hover:text-foreground transition-colors"
+                >
+                  {photo.series}
+                </Link>{" "}
+                ·{" "}
+                <Link
+                  href={`/gallery?year=${year}`}
+                  className="hover:text-foreground transition-colors"
+                >
+                  {formattedDate}
+                </Link>
               </p>
               <h1 className="mt-5 font-serif text-5xl tracking-[-0.045em] sm:text-7xl">
                 {photo.title}
@@ -123,37 +171,46 @@ export default async function PhotoPage({ params }: PhotoPageProps) {
 
             <aside className="lg:pt-12">
               <dl className="border-border border-t text-sm">
-                {[
-                  ["Location", photo.location],
-                  ["Date", formattedDate],
-                  ["Camera", photo.camera],
-                  ["Lens", photo.lens],
-                  ["Series", photo.series],
-                ].map(([term, value]) => (
+                {metadataRows.map(({ term, value, href }) => (
                   <div
                     key={term}
                     className="border-border grid grid-cols-[0.65fr_1fr] gap-5 border-b py-4"
                   >
                     <dt className="text-muted-foreground">{term}</dt>
-                    <dd>{value}</dd>
+                    <dd>
+                      {href ? (
+                        <Link
+                          href={href}
+                          className="underline decoration-transparent underline-offset-4 transition-colors hover:decoration-current"
+                        >
+                          {value}
+                        </Link>
+                      ) : (
+                        value
+                      )}
+                    </dd>
                   </div>
                 ))}
               </dl>
               <div className="mt-6 flex flex-wrap gap-2">
                 {photo.tags.map((tag) => (
-                  <span
+                  <Link
                     key={tag}
+                    href={`/gallery?tag=${slugify(tag)}`}
                     className="border-border text-muted-foreground rounded-full border px-3 py-1.5 text-[0.62rem] tracking-[0.13em] uppercase"
                   >
                     {tag}
-                  </span>
+                  </Link>
                 ))}
               </div>
               <div className="border-border mt-8 flex items-center justify-between border-t pt-6">
-                <span className="text-muted-foreground inline-flex items-center gap-2 text-xs">
+                <Link
+                  href={`/gallery?location=${getLocationSlug(photo.location)}`}
+                  className="text-muted-foreground hover:text-foreground inline-flex items-center gap-2 text-xs transition-colors"
+                >
                   <MapPin className="size-4" />
                   {photo.location}
-                </span>
+                </Link>
                 <ShareButton title={`${photo.title} — ${siteConfig.name}`} />
               </div>
             </aside>

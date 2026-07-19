@@ -39,9 +39,8 @@ export default function Home() {
                 <span>Hobby Photographer</span>
               </div>
               <p className="text-muted-foreground mt-8 max-w-md text-base leading-7">
-                Observations from the places between arrival and
-                departure—photographs of people, light, and the quiet details
-                that hold a place together.
+                Photographs of places, people, live music, and the small details
+                that give a moment its identity.
               </p>
               <Link
                 href="/gallery"
@@ -78,8 +77,8 @@ export default function Home() {
         <section className="border-border/70 border-y py-24 lg:py-36">
           <Container>
             <Reveal className="flex flex-col justify-between gap-8 sm:flex-row sm:items-end">
-              <SectionHeading eyebrow="Selected photographs">
-                Featured work
+              <SectionHeading eyebrow="A few recent frames">
+                Selected photographs
               </SectionHeading>
               <Link
                 href="/gallery"
@@ -120,7 +119,7 @@ export default function Home() {
             </Reveal>
             <Reveal delay={0.08}>
               <p className="text-muted-foreground text-[0.68rem] tracking-[0.22em] uppercase">
-                Latest series ·{" "}
+                Selected series ·{" "}
                 {latestSeries.photos.length.toString().padStart(2, "0")}
               </p>
               <h2 className="mt-6 font-serif text-5xl tracking-[-0.045em] sm:text-6xl">
@@ -147,10 +146,11 @@ export default function Home() {
             </Reveal>
             <Reveal delay={0.08} className="max-w-xl lg:pt-10">
               <p className="text-muted-foreground text-lg leading-8">
-                I’m a Software Engineer from Portugal with a growing passion for
-                documentary, travel, and street photography. The camera is how I
-                slow down, look longer, and keep a small record of ordinary
-                life.
+                I’m a Software Engineer from Portugal and a hobby photographer,
+                still learning what makes a frame stay with me. Photography
+                began as a record of travel and everyday life; my love of music
+                is gradually bringing stages, performers, and live atmosphere
+                into that record too.
               </p>
               <Link
                 href="/about"

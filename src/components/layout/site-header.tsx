@@ -1,21 +1,63 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, Search, X } from "lucide-react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import { navigation } from "@/config/site";
 import { cn } from "@/lib/utils";
 
 import { Container } from "./container";
 
+const GlobalSearch = dynamic(() =>
+  import("@/components/search/global-search").then(
+    (module) => module.GlobalSearch,
+  ),
+);
+
 export function SiteHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchReady, setSearchReady] = useState(false);
+
+  const openSearch = useCallback(() => {
+    setSearchReady(true);
+    setSearchOpen(true);
+  }, []);
 
   useEffect(() => setOpen(false), [pathname]);
+
+  useEffect(() => {
+    function handleShortcut(event: KeyboardEvent) {
+      const target = event.target as HTMLElement | null;
+      const isTyping =
+        target?.isContentEditable ||
+        target?.tagName === "INPUT" ||
+        target?.tagName === "TEXTAREA" ||
+        target?.tagName === "SELECT";
+      const commandK =
+        event.key.toLowerCase() === "k" && (event.metaKey || event.ctrlKey);
+      const slash =
+        event.key === "/" &&
+        !isTyping &&
+        !event.metaKey &&
+        !event.ctrlKey &&
+        !event.altKey;
+
+      if (commandK || slash) {
+        event.preventDefault();
+        openSearch();
+      }
+      if (event.key === "Escape" && searchOpen) setSearchOpen(false);
+    }
+
+    window.addEventListener("keydown", handleShortcut);
+    return () => window.removeEventListener("keydown", handleShortcut);
+  }, [openSearch, searchOpen]);
 
   return (
     <header className="border-border/70 bg-background/90 relative z-40 border-b backdrop-blur-sm">
@@ -56,6 +98,20 @@ export function SiteHeader() {
               </Link>
             );
           })}
+          <button
+            type="button"
+            onClick={openSearch}
+            onMouseEnter={() => setSearchReady(true)}
+            onFocus={() => setSearchReady(true)}
+            className="text-muted-foreground hover:text-foreground border-border/70 ml-1 inline-flex items-center gap-2 border-l py-2 pl-7 text-xs tracking-[0.14em] uppercase transition-colors"
+            aria-label="Search portfolio"
+          >
+            <Search className="size-3.5" />
+            <span>Search</span>
+            <kbd className="border-border ml-1 border px-1.5 py-0.5 text-[0.55rem] tracking-normal normal-case opacity-65">
+              ⌘K
+            </kbd>
+          </button>
         </nav>
 
         <button
@@ -87,10 +143,24 @@ export function SiteHeader() {
                   {item.label}
                 </Link>
               ))}
+              <button
+                type="button"
+                onClick={() => {
+                  setOpen(false);
+                  openSearch();
+                }}
+                className="border-border/60 text-muted-foreground flex items-center justify-between border-b py-5 text-left text-2xl font-light"
+              >
+                Search
+                <Search className="size-5" />
+              </button>
             </Container>
           </motion.nav>
         )}
       </AnimatePresence>
+      {searchReady && (
+        <GlobalSearch open={searchOpen} onOpenChange={setSearchOpen} />
+      )}
     </header>
   );
 }

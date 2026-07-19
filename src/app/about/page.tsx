@@ -10,7 +10,7 @@ import { getPhoto } from "@/lib/photos";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "About Tomás Santos and his approach to documentary, travel, and street photography.",
+    "About Tomás Santos and his developing interest in everyday life, travel, and live music photography.",
 };
 
 export default function AboutPage() {
@@ -31,19 +31,21 @@ export default function AboutPage() {
               </h1>
               <div className="text-muted-foreground mt-10 max-w-lg space-y-6 text-lg leading-8">
                 <p>
-                  I’m Tomás, a Software Engineer from Portugal with a growing
-                  passion for documentary, travel, and street photography.
+                  I’m Tomás, a Software Engineer from Portugal and a hobby
+                  photographer still developing my eye.
                 </p>
                 <p>
-                  Photography gives me a different relationship with time. It
-                  asks me to notice the gesture at the edge of the frame, the
-                  way light reorganises a familiar street, or the small evidence
-                  of work left behind in a place.
+                  I started taking photography more seriously as a way to keep a
+                  record of places I visited and details I would otherwise
+                  forget. It became a reason to slow down, look longer, and pay
+                  closer attention to ordinary life.
                 </p>
                 <p>
-                  This collection is an evolving record of those observations.
-                  Made while travelling, walking close to home, and learning to
-                  trust quieter photographs.
+                  Music has been part of my life for much longer than
+                  photography, so the camera is beginning to follow me towards
+                  concerts too—the performers, the rooms, and the energy around
+                  a stage. This collection leaves room for both the quiet walks
+                  and the louder nights.
                 </p>
               </div>
             </Reveal>

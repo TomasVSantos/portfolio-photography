@@ -19,6 +19,11 @@ export interface GalleryItem {
   title: string;
   location: string;
   series: string;
+  date: string;
+  tags: string[];
+  category?: string;
+  locationSlug: string;
+  seriesSlug: string;
   src: string;
   alt: string;
   width: number;
@@ -88,13 +93,19 @@ export function GalleryLightbox({ items }: { items: GalleryItem[] }) {
                 >
                   {photo.title}
                 </Link>
-                <p className="text-muted-foreground mt-1 text-xs tracking-[0.08em]">
+                <Link
+                  href={`/gallery?location=${photo.locationSlug}`}
+                  className="text-muted-foreground hover:text-foreground mt-1 block text-xs tracking-[0.08em] transition-colors"
+                >
                   {photo.location}
-                </p>
+                </Link>
               </div>
-              <p className="text-muted-foreground pt-1 text-[0.65rem] tracking-[0.18em] uppercase">
+              <Link
+                href={`/gallery?series=${photo.seriesSlug}`}
+                className="text-muted-foreground hover:text-foreground pt-1 text-[0.65rem] tracking-[0.18em] uppercase transition-colors"
+              >
                 {photo.series}
-              </p>
+              </Link>
             </div>
           </article>
         ))}

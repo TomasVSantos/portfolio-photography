@@ -2,13 +2,21 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 
-import type { Photo, PhotoFrontmatter, Series } from "@/types/photo";
+import { slugify } from "@/lib/slugs";
+import {
+  photoCategories,
+  type Photo,
+  type PhotoFrontmatter,
+  type Series,
+  type SeriesFrontmatter,
+} from "@/types/photo";
 
 const photosDirectory = path.join(process.cwd(), "src/content/photos");
+const seriesDirectory = path.join(process.cwd(), "src/content/series");
 
 function assertFrontmatter(value: unknown, slug: string): PhotoFrontmatter {
   const data = value as Partial<PhotoFrontmatter>;
-  const required: (keyof PhotoFrontmatter)[] = [
+  const required = [
     "title",
     "location",
     "camera",
@@ -22,7 +30,7 @@ function assertFrontmatter(value: unknown, slug: string): PhotoFrontmatter {
     "height",
     "color",
     "alt",
-  ];
+  ] as const;
 
   for (const key of required) {
     if (data[key] === undefined) {
@@ -31,6 +39,11 @@ function assertFrontmatter(value: unknown, slug: string): PhotoFrontmatter {
   }
 
   const rawDate = (data as unknown as Record<string, unknown>).date;
+  if (data.category !== undefined && !photoCategories.includes(data.category)) {
+    throw new Error(
+      `Photo "${slug}" has unsupported category "${String(data.category)}".`,
+    );
+  }
 
   return {
     ...(data as PhotoFrontmatter),
@@ -39,6 +52,23 @@ function assertFrontmatter(value: unknown, slug: string): PhotoFrontmatter {
         ? rawDate.toISOString().slice(0, 10)
         : String(rawDate),
   };
+}
+
+function getSeriesMetadata(slug: string): SeriesFrontmatter | undefined {
+  const filePath = path.join(seriesDirectory, `${slug}.mdx`);
+  if (!fs.existsSync(filePath)) return undefined;
+
+  const { data } = matter(fs.readFileSync(filePath, "utf8"));
+  const metadata = data as SeriesFrontmatter;
+  if (
+    metadata.category !== undefined &&
+    !photoCategories.includes(metadata.category)
+  ) {
+    throw new Error(
+      `Series "${slug}" has unsupported category "${String(metadata.category)}".`,
+    );
+  }
+  return metadata;
 }
 
 export function getAllPhotos(): Photo[] {
@@ -84,11 +114,17 @@ export function getAllSeries(): Series[] {
     grouped.set(photo.series, [...current, photo]);
   }
 
-  return Array.from(grouped, ([name, photos]) => ({
-    name,
-    slug: name.toLowerCase().replace(/\s+/g, "-"),
-    photos,
-  }));
+  return Array.from(grouped, ([name, photos]) => {
+    const fallbackSlug = slugify(name);
+    const metadata = getSeriesMetadata(fallbackSlug);
+    return {
+      name: metadata?.title ?? name,
+      slug: metadata?.slug ?? fallbackSlug,
+      description: metadata?.description,
+      category: metadata?.category,
+      photos,
+    } satisfies Series;
+  });
 }
 
 export function getSeries(slug: string) {

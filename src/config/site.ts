@@ -1,7 +1,8 @@
 export const siteConfig = {
   name: "Tomás Santos",
   title: "Tomás Santos — Photography",
-  description: "Documentary, travel, and street photography by Tomás Santos.",
+  description:
+    "Photography of places, people, live music, and everyday moments by Tomás Santos.",
   url: "https://tomasvsantos.pt",
   email: "tomasvsantos04@gmail.com",
   instagram: "https://instagram.com/tomas.vsantos",
