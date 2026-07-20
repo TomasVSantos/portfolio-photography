@@ -207,8 +207,16 @@ The app uses native Next.js static export and does not require a Node runtime at
 - Build command: `pnpm build:cf`
 - Build output directory: `out`
 - Node version: `20` or newer
+- Cloudflare Pages project: `portfolio`
 
-`wrangler.toml` records the Pages output directory. All photo and series routes are produced at build time with `generateStaticParams`.
+`wrangler.toml` records the Pages project and output directory. All photo and
+series routes are produced at build time with `generateStaticParams`.
+
+Pushes to `main` deploy through `.github/workflows/deploy.yml`. The GitHub
+repository must define `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` as
+Actions secrets. The token needs Cloudflare Pages edit permission for the
+account that owns the `portfolio` project. No application runtime secrets are
+required by this static site.
 
 ## Photography collection
 
