@@ -120,7 +120,7 @@ venue: MEO Arena # optional
 featured: true
 tags: [lighthouse, sea, algarve]
 alt: A white lighthouse beyond sand dunes
-seriesOrder: 10 # optional; controls order only within this series
+seriesOrder: 10 # optional; controls order only within its series
 ---
 ```
 
