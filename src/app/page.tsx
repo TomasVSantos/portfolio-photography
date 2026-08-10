@@ -16,7 +16,10 @@ export default function Home() {
     photos.find((photo) => photo.slug === "surfs-up") ?? photos[0];
   const featured = photos.filter((photo) => photo.featured).slice(0, 3);
   const latestSeries = getAllSeries()[0];
-  const latestImage = getPhotoImage(latestSeries.photos[0]);
+  const latestCoverPhoto =
+    latestSeries.photos.find((photo) => photo.slug === "the-crossing") ??
+    latestSeries.photos[0];
+  const latestImage = getPhotoImage(latestCoverPhoto);
   const heroImage = getPhotoImage(heroPhoto);
 
   return (
@@ -126,8 +129,8 @@ export default function Home() {
                 {latestSeries.name}
               </h2>
               <p className="text-muted-foreground mt-7 max-w-sm text-base leading-7">
-                A walk through an island shaped by tides, work, and the distance
-                between harbour and Atlantic.
+                {latestSeries.description ??
+                  "Photographs connected by a place, subject, or the atmosphere around a shared moment."}
               </p>
               <Link
                 href={`/series/${latestSeries.slug}`}
