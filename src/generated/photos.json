@@ -1,4 +1,152 @@
 {
+  "berwick-street": {
+    "source": "source.avif",
+    "sourceHash": "7787f82e0ab42d35d69b6dabef63880a8dcf12414bf8dea8b30c4c0ebf708e8b",
+    "pipelineSignature": "2f2fe7766d24c936",
+    "legacy": false,
+    "width": 3857,
+    "height": 3857,
+    "aspectRatio": 1,
+    "orientation": "square",
+    "dominantColor": "#f8f8f8",
+    "blurDataURL": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAACwBACdASoYABgAPv1krk6rJSSiMBgMAWAfiWcAw6wO0J+qECRml2VQjGbHM5uAAPtiz1V86VnCdHQaiYLHXIIuU0oNq0NezRltTay0gsetBVhK0M/tTcSUDn0NFFsTRL+D1itY2iAAAA==",
+    "variants": [
+      {
+        "width": 256,
+        "outputWidth": 256,
+        "height": 256,
+        "src": "/photos/berwick-street/image-256.webp"
+      },
+      {
+        "width": 384,
+        "outputWidth": 384,
+        "height": 384,
+        "src": "/photos/berwick-street/image-384.webp"
+      },
+      {
+        "width": 480,
+        "outputWidth": 480,
+        "height": 480,
+        "src": "/photos/berwick-street/image-480.webp"
+      },
+      {
+        "width": 768,
+        "outputWidth": 768,
+        "height": 768,
+        "src": "/photos/berwick-street/image-768.webp"
+      },
+      {
+        "width": 1024,
+        "outputWidth": 1024,
+        "height": 1024,
+        "src": "/photos/berwick-street/image-1024.webp"
+      },
+      {
+        "width": 1200,
+        "outputWidth": 1200,
+        "height": 1200,
+        "src": "/photos/berwick-street/image-1200.webp"
+      },
+      {
+        "width": 1536,
+        "outputWidth": 1536,
+        "height": 1536,
+        "src": "/photos/berwick-street/image-1536.webp"
+      },
+      {
+        "width": 1600,
+        "outputWidth": 1600,
+        "height": 1600,
+        "src": "/photos/berwick-street/image-1600.webp"
+      },
+      {
+        "width": 2400,
+        "outputWidth": 2400,
+        "height": 2400,
+        "src": "/photos/berwick-street/image-2400.webp"
+      }
+    ],
+    "fallback": "/photos/berwick-street/image.webp",
+    "fallbackWidth": 2400,
+    "fallbackHeight": 2400,
+    "exif": {
+      "captureDate": "2026-08-06T13:10:55"
+    }
+  },
+  "brixton-after-dark": {
+    "source": "source.avif",
+    "sourceHash": "832cf58f24f8c7a9bb3a2654d15b4dfc8cb6ee3de0578ea7a8b4be285a6e20e8",
+    "pipelineSignature": "2f2fe7766d24c936",
+    "legacy": false,
+    "width": 4284,
+    "height": 2856,
+    "aspectRatio": 1.5,
+    "orientation": "landscape",
+    "dominantColor": "#080808",
+    "blurDataURL": "data:image/webp;base64,UklGRkIAAABXRUJQVlA4IDYAAABwAwCdASoYABAAPv1orU8rJiQiMAgBYB+JaQAAetFPDtGzDAAA/vBwva9OA4ev1nLY7mcAAAA=",
+    "variants": [
+      {
+        "width": 256,
+        "outputWidth": 256,
+        "height": 171,
+        "src": "/photos/brixton-after-dark/image-256.webp"
+      },
+      {
+        "width": 384,
+        "outputWidth": 384,
+        "height": 256,
+        "src": "/photos/brixton-after-dark/image-384.webp"
+      },
+      {
+        "width": 480,
+        "outputWidth": 480,
+        "height": 320,
+        "src": "/photos/brixton-after-dark/image-480.webp"
+      },
+      {
+        "width": 768,
+        "outputWidth": 768,
+        "height": 512,
+        "src": "/photos/brixton-after-dark/image-768.webp"
+      },
+      {
+        "width": 1024,
+        "outputWidth": 1024,
+        "height": 683,
+        "src": "/photos/brixton-after-dark/image-1024.webp"
+      },
+      {
+        "width": 1200,
+        "outputWidth": 1200,
+        "height": 800,
+        "src": "/photos/brixton-after-dark/image-1200.webp"
+      },
+      {
+        "width": 1536,
+        "outputWidth": 1536,
+        "height": 1024,
+        "src": "/photos/brixton-after-dark/image-1536.webp"
+      },
+      {
+        "width": 1600,
+        "outputWidth": 1600,
+        "height": 1067,
+        "src": "/photos/brixton-after-dark/image-1600.webp"
+      },
+      {
+        "width": 2400,
+        "outputWidth": 2400,
+        "height": 1600,
+        "src": "/photos/brixton-after-dark/image-2400.webp"
+      }
+    ],
+    "fallback": "/photos/brixton-after-dark/image.webp",
+    "fallbackWidth": 2400,
+    "fallbackHeight": 1600,
+    "exif": {
+      "captureDate": "2026-08-06T23:45:09"
+    }
+  },
   "culatra-afterglow": {
     "source": "source.jpeg",
     "sourceHash": "5077e9bcae784afa9966a4662a6842335d372b6d39be3c93c39be847e5815f48",
@@ -589,6 +737,154 @@
     "fallbackHeight": 3200,
     "exif": {
       "captureDate": "2026-07-18T18:19:59"
+    }
+  },
+  "eaton-square": {
+    "source": "source.avif",
+    "sourceHash": "c699e4bb413b221f53dc529128fdebbc615a9cacdab9438b113a0f77fc75a17f",
+    "pipelineSignature": "2f2fe7766d24c936",
+    "legacy": false,
+    "width": 2752,
+    "height": 3670,
+    "aspectRatio": 0.749864,
+    "orientation": "portrait",
+    "dominantColor": "#585858",
+    "blurDataURL": "data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAACwBACdASoYACAAPvFmqU6ppaQiN/VYATAeCWcAz2RFSesYKfCbBziF0kGi6igAAPoiPmBqPbucyzeBEh6mNegrF7UD1fGkOU8N0z8hFuA2G2G59ukEjbKb406PooxbvQnrFgtsE7NEPZAA",
+    "variants": [
+      {
+        "width": 256,
+        "outputWidth": 256,
+        "height": 341,
+        "src": "/photos/eaton-square/image-256.webp"
+      },
+      {
+        "width": 384,
+        "outputWidth": 384,
+        "height": 512,
+        "src": "/photos/eaton-square/image-384.webp"
+      },
+      {
+        "width": 480,
+        "outputWidth": 480,
+        "height": 640,
+        "src": "/photos/eaton-square/image-480.webp"
+      },
+      {
+        "width": 768,
+        "outputWidth": 768,
+        "height": 1024,
+        "src": "/photos/eaton-square/image-768.webp"
+      },
+      {
+        "width": 1024,
+        "outputWidth": 1024,
+        "height": 1366,
+        "src": "/photos/eaton-square/image-1024.webp"
+      },
+      {
+        "width": 1200,
+        "outputWidth": 1200,
+        "height": 1600,
+        "src": "/photos/eaton-square/image-1200.webp"
+      },
+      {
+        "width": 1536,
+        "outputWidth": 1536,
+        "height": 2048,
+        "src": "/photos/eaton-square/image-1536.webp"
+      },
+      {
+        "width": 1600,
+        "outputWidth": 1600,
+        "height": 2134,
+        "src": "/photos/eaton-square/image-1600.webp"
+      },
+      {
+        "width": 2400,
+        "outputWidth": 2400,
+        "height": 3201,
+        "src": "/photos/eaton-square/image-2400.webp"
+      }
+    ],
+    "fallback": "/photos/eaton-square/image.webp",
+    "fallbackWidth": 2400,
+    "fallbackHeight": 3201,
+    "exif": {
+      "captureDate": "2026-08-08T11:28:28"
+    }
+  },
+  "eaton-square-1970s": {
+    "source": "source.avif",
+    "sourceHash": "77280a2eba4462ce6500e64f1a76a4e71d0483876cd07b8800ce2714afa0540b",
+    "pipelineSignature": "2f2fe7766d24c936",
+    "legacy": false,
+    "width": 5201,
+    "height": 7801,
+    "aspectRatio": 0.666709,
+    "orientation": "portrait",
+    "dominantColor": "#080808",
+    "blurDataURL": "data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAAAQBQCdASoYACQAPvFmp06ppaOiNVv4ATAeCWUAyrQdYeJWaHQQ/ORfw1Nr/tQj/kYAAP6Nxi6bJwPwnFYwMhaxcvxXU97looaOQSO4cdbelfnz/Y3QPocYIpgLoI7jufblqY2L3xhPuzEScCNjsrRDVVOvKyZdrtUv1LSyj4Rm90y93PiKBAAA",
+    "variants": [
+      {
+        "width": 256,
+        "outputWidth": 256,
+        "height": 384,
+        "src": "/photos/eaton-square-1970s/image-256.webp"
+      },
+      {
+        "width": 384,
+        "outputWidth": 384,
+        "height": 576,
+        "src": "/photos/eaton-square-1970s/image-384.webp"
+      },
+      {
+        "width": 480,
+        "outputWidth": 480,
+        "height": 720,
+        "src": "/photos/eaton-square-1970s/image-480.webp"
+      },
+      {
+        "width": 768,
+        "outputWidth": 768,
+        "height": 1152,
+        "src": "/photos/eaton-square-1970s/image-768.webp"
+      },
+      {
+        "width": 1024,
+        "outputWidth": 1024,
+        "height": 1536,
+        "src": "/photos/eaton-square-1970s/image-1024.webp"
+      },
+      {
+        "width": 1200,
+        "outputWidth": 1200,
+        "height": 1800,
+        "src": "/photos/eaton-square-1970s/image-1200.webp"
+      },
+      {
+        "width": 1536,
+        "outputWidth": 1536,
+        "height": 2304,
+        "src": "/photos/eaton-square-1970s/image-1536.webp"
+      },
+      {
+        "width": 1600,
+        "outputWidth": 1600,
+        "height": 2400,
+        "src": "/photos/eaton-square-1970s/image-1600.webp"
+      },
+      {
+        "width": 2400,
+        "outputWidth": 2400,
+        "height": 3600,
+        "src": "/photos/eaton-square-1970s/image-2400.webp"
+      }
+    ],
+    "fallback": "/photos/eaton-square-1970s/image.webp",
+    "fallbackWidth": 2400,
+    "fallbackHeight": 3600,
+    "exif": {
+      "captureDate": "2026-08-08T11:11:26"
     }
   },
   "jamor-flag-before-kickoff": {
@@ -1255,6 +1551,376 @@
     "fallbackHeight": 4267,
     "exif": {
       "captureDate": "2026-06-21T19:57:46"
+    }
+  },
+  "still-playing": {
+    "source": "source.avif",
+    "sourceHash": "2c3fbd32f3b4b67e9101ba4da3138b3356ee4b0817ab279a89d0f56ac185a7ce",
+    "pipelineSignature": "2f2fe7766d24c936",
+    "legacy": false,
+    "width": 3024,
+    "height": 4032,
+    "aspectRatio": 0.75,
+    "orientation": "portrait",
+    "dominantColor": "#080808",
+    "blurDataURL": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAACwBACdASoYACAAPvFmqE6ppaOiMAwBMB4JYwCw7CHfvcpyJNT7BqPScrKrAZUAAP70Iryk5QfrjZGHi1BkovUBGGnhTcdh0MIE/Q5RxQJKZDHPURcrt3b88vrLBZFKp6XSAA==",
+    "variants": [
+      {
+        "width": 256,
+        "outputWidth": 256,
+        "height": 341,
+        "src": "/photos/still-playing/image-256.webp"
+      },
+      {
+        "width": 384,
+        "outputWidth": 384,
+        "height": 512,
+        "src": "/photos/still-playing/image-384.webp"
+      },
+      {
+        "width": 480,
+        "outputWidth": 480,
+        "height": 640,
+        "src": "/photos/still-playing/image-480.webp"
+      },
+      {
+        "width": 768,
+        "outputWidth": 768,
+        "height": 1024,
+        "src": "/photos/still-playing/image-768.webp"
+      },
+      {
+        "width": 1024,
+        "outputWidth": 1024,
+        "height": 1365,
+        "src": "/photos/still-playing/image-1024.webp"
+      },
+      {
+        "width": 1200,
+        "outputWidth": 1200,
+        "height": 1600,
+        "src": "/photos/still-playing/image-1200.webp"
+      },
+      {
+        "width": 1536,
+        "outputWidth": 1536,
+        "height": 2048,
+        "src": "/photos/still-playing/image-1536.webp"
+      },
+      {
+        "width": 1600,
+        "outputWidth": 1600,
+        "height": 2133,
+        "src": "/photos/still-playing/image-1600.webp"
+      },
+      {
+        "width": 2400,
+        "outputWidth": 2400,
+        "height": 3200,
+        "src": "/photos/still-playing/image-2400.webp"
+      }
+    ],
+    "fallback": "/photos/still-playing/image.webp",
+    "fallbackWidth": 2400,
+    "fallbackHeight": 3200,
+    "exif": {
+      "captureDate": "2026-08-07T21:08:37"
+    }
+  },
+  "surfs-up": {
+    "source": "source.avif",
+    "sourceHash": "1a76a0e147621e8bad7c6e0b15a0cf93bacac40407631ff51f5e305ae37cdf81",
+    "pipelineSignature": "2f2fe7766d24c936",
+    "legacy": false,
+    "width": 4839,
+    "height": 6049,
+    "aspectRatio": 0.799967,
+    "orientation": "portrait",
+    "dominantColor": "#080818",
+    "blurDataURL": "data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAADQBACdASoYAB4APvlkrk6qpSSiMBgMAVAfCUAY3oHhMbTeKW3tUWrT4/jppOl/6AD+q2cc/gYsB9oa5vFrLgURA9WMO/dQ6+1PsIepo4DwwpV7md0ANLYGlavcO7IFm2q1fsdWrH10gAAA",
+    "variants": [
+      {
+        "width": 256,
+        "outputWidth": 256,
+        "height": 320,
+        "src": "/photos/surfs-up/image-256.webp"
+      },
+      {
+        "width": 384,
+        "outputWidth": 384,
+        "height": 480,
+        "src": "/photos/surfs-up/image-384.webp"
+      },
+      {
+        "width": 480,
+        "outputWidth": 480,
+        "height": 600,
+        "src": "/photos/surfs-up/image-480.webp"
+      },
+      {
+        "width": 768,
+        "outputWidth": 768,
+        "height": 960,
+        "src": "/photos/surfs-up/image-768.webp"
+      },
+      {
+        "width": 1024,
+        "outputWidth": 1024,
+        "height": 1280,
+        "src": "/photos/surfs-up/image-1024.webp"
+      },
+      {
+        "width": 1200,
+        "outputWidth": 1200,
+        "height": 1500,
+        "src": "/photos/surfs-up/image-1200.webp"
+      },
+      {
+        "width": 1536,
+        "outputWidth": 1536,
+        "height": 1920,
+        "src": "/photos/surfs-up/image-1536.webp"
+      },
+      {
+        "width": 1600,
+        "outputWidth": 1600,
+        "height": 2000,
+        "src": "/photos/surfs-up/image-1600.webp"
+      },
+      {
+        "width": 2400,
+        "outputWidth": 2400,
+        "height": 3000,
+        "src": "/photos/surfs-up/image-2400.webp"
+      }
+    ],
+    "fallback": "/photos/surfs-up/image.webp",
+    "fallbackWidth": 2400,
+    "fallbackHeight": 3000,
+    "exif": {
+      "captureDate": "2026-08-07T21:51:02"
+    }
+  },
+  "the-buttery": {
+    "source": "source.avif",
+    "sourceHash": "ae7bf4a1f29ac10fe26fdc0897e3db3207b5c8b6ab4d26737df8cc5d57a0d00d",
+    "pipelineSignature": "2f2fe7766d24c936",
+    "legacy": false,
+    "width": 4284,
+    "height": 5712,
+    "aspectRatio": 0.75,
+    "orientation": "portrait",
+    "dominantColor": "#080808",
+    "blurDataURL": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAABQBQCdASoYACAAPvlkqk6qpaQiN/VYAVAfCWUAvkgQ8BPpau1UQQ3r2P3Hi+eCyfyH4YAA/uvev6xmkprTTl7H38lCr5xFIyaTAXvzQf8U7xQ+Tjqf9GDbbg2lWFmXu9kDnQLvGGCr5ekrzQgAAA==",
+    "variants": [
+      {
+        "width": 256,
+        "outputWidth": 256,
+        "height": 341,
+        "src": "/photos/the-buttery/image-256.webp"
+      },
+      {
+        "width": 384,
+        "outputWidth": 384,
+        "height": 512,
+        "src": "/photos/the-buttery/image-384.webp"
+      },
+      {
+        "width": 480,
+        "outputWidth": 480,
+        "height": 640,
+        "src": "/photos/the-buttery/image-480.webp"
+      },
+      {
+        "width": 768,
+        "outputWidth": 768,
+        "height": 1024,
+        "src": "/photos/the-buttery/image-768.webp"
+      },
+      {
+        "width": 1024,
+        "outputWidth": 1024,
+        "height": 1365,
+        "src": "/photos/the-buttery/image-1024.webp"
+      },
+      {
+        "width": 1200,
+        "outputWidth": 1200,
+        "height": 1600,
+        "src": "/photos/the-buttery/image-1200.webp"
+      },
+      {
+        "width": 1536,
+        "outputWidth": 1536,
+        "height": 2048,
+        "src": "/photos/the-buttery/image-1536.webp"
+      },
+      {
+        "width": 1600,
+        "outputWidth": 1600,
+        "height": 2133,
+        "src": "/photos/the-buttery/image-1600.webp"
+      },
+      {
+        "width": 2400,
+        "outputWidth": 2400,
+        "height": 3200,
+        "src": "/photos/the-buttery/image-2400.webp"
+      }
+    ],
+    "fallback": "/photos/the-buttery/image.webp",
+    "fallbackWidth": 2400,
+    "fallbackHeight": 3200,
+    "exif": {
+      "captureDate": "2026-08-08T10:55:36"
+    }
+  },
+  "the-crossing": {
+    "source": "source.avif",
+    "sourceHash": "8e07f9ee4246b5c13abbbde9c9baa28e02858e5e8fa8156fb4fc7c60588b38eb",
+    "pipelineSignature": "2f2fe7766d24c936",
+    "legacy": false,
+    "width": 2375,
+    "height": 2375,
+    "aspectRatio": 1,
+    "orientation": "square",
+    "dominantColor": "#080808",
+    "blurDataURL": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAADQBACdASoYABgAPvFmp06ppaOiMAwBMB4JZwDM0ClpZa0/CmO03YcHjoeizm9sAAD+7zhb1u4MAUJcQxaraMF7F8W3U/HS0CUdnOs9Po3Gz4VmfdT1b2bBYtqhDpZY4AA=",
+    "variants": [
+      {
+        "width": 256,
+        "outputWidth": 256,
+        "height": 256,
+        "src": "/photos/the-crossing/image-256.webp"
+      },
+      {
+        "width": 384,
+        "outputWidth": 384,
+        "height": 384,
+        "src": "/photos/the-crossing/image-384.webp"
+      },
+      {
+        "width": 480,
+        "outputWidth": 480,
+        "height": 480,
+        "src": "/photos/the-crossing/image-480.webp"
+      },
+      {
+        "width": 768,
+        "outputWidth": 768,
+        "height": 768,
+        "src": "/photos/the-crossing/image-768.webp"
+      },
+      {
+        "width": 1024,
+        "outputWidth": 1024,
+        "height": 1024,
+        "src": "/photos/the-crossing/image-1024.webp"
+      },
+      {
+        "width": 1200,
+        "outputWidth": 1200,
+        "height": 1200,
+        "src": "/photos/the-crossing/image-1200.webp"
+      },
+      {
+        "width": 1536,
+        "outputWidth": 1536,
+        "height": 1536,
+        "src": "/photos/the-crossing/image-1536.webp"
+      },
+      {
+        "width": 1600,
+        "outputWidth": 1600,
+        "height": 1600,
+        "src": "/photos/the-crossing/image-1600.webp"
+      },
+      {
+        "width": 2400,
+        "outputWidth": 2375,
+        "height": 2375,
+        "src": "/photos/the-crossing/image-2400.webp"
+      }
+    ],
+    "fallback": "/photos/the-crossing/image.webp",
+    "fallbackWidth": 2375,
+    "fallbackHeight": 2375,
+    "exif": {
+      "captureDate": "2026-08-06T15:10:19"
+    }
+  },
+  "under-the-lights": {
+    "source": "source.avif",
+    "sourceHash": "7c058594dc6bae705fbfdc56d9a0ca736cd9dd089c57e379c354938b9063c005",
+    "pipelineSignature": "2f2fe7766d24c936",
+    "legacy": false,
+    "width": 2323,
+    "height": 2323,
+    "aspectRatio": 1,
+    "orientation": "square",
+    "dominantColor": "#080808",
+    "blurDataURL": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAABwBACdASoYABgAPvVkqk6qpaQiN/VYAVAeiWcAxzAJHkSqsCAi5j9Fi2r8AAD+2V8oWhfSRZZUG3zgXHURz90BzbNvt3FV/NoFO8MkoPSsfMFkfKAgu2y7YvCQAA==",
+    "variants": [
+      {
+        "width": 256,
+        "outputWidth": 256,
+        "height": 256,
+        "src": "/photos/under-the-lights/image-256.webp"
+      },
+      {
+        "width": 384,
+        "outputWidth": 384,
+        "height": 384,
+        "src": "/photos/under-the-lights/image-384.webp"
+      },
+      {
+        "width": 480,
+        "outputWidth": 480,
+        "height": 480,
+        "src": "/photos/under-the-lights/image-480.webp"
+      },
+      {
+        "width": 768,
+        "outputWidth": 768,
+        "height": 768,
+        "src": "/photos/under-the-lights/image-768.webp"
+      },
+      {
+        "width": 1024,
+        "outputWidth": 1024,
+        "height": 1024,
+        "src": "/photos/under-the-lights/image-1024.webp"
+      },
+      {
+        "width": 1200,
+        "outputWidth": 1200,
+        "height": 1200,
+        "src": "/photos/under-the-lights/image-1200.webp"
+      },
+      {
+        "width": 1536,
+        "outputWidth": 1536,
+        "height": 1536,
+        "src": "/photos/under-the-lights/image-1536.webp"
+      },
+      {
+        "width": 1600,
+        "outputWidth": 1600,
+        "height": 1600,
+        "src": "/photos/under-the-lights/image-1600.webp"
+      },
+      {
+        "width": 2400,
+        "outputWidth": 2323,
+        "height": 2323,
+        "src": "/photos/under-the-lights/image-2400.webp"
+      }
+    ],
+    "fallback": "/photos/under-the-lights/image.webp",
+    "fallbackWidth": 2323,
+    "fallbackHeight": 2323,
+    "exif": {
+      "captureDate": "2026-08-07T20:47:17"
     }
   }
 }

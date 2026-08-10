@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
-  const photo = getPhoto("culatra-under-the-trees")!;
+  const photo = getPhoto("culatra-farol")!;
   const image = getPhotoImage(photo);
 
   return (

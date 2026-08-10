@@ -13,7 +13,7 @@ import { getAllPhotos, getAllSeries } from "@/lib/photos";
 export default function Home() {
   const photos = getAllPhotos();
   const heroPhoto =
-    photos.find((photo) => photo.slug === "culatra-farol") ?? photos[0];
+    photos.find((photo) => photo.slug === "surfs-up") ?? photos[0];
   const featured = photos.filter((photo) => photo.featured).slice(0, 3);
   const latestSeries = getAllSeries()[0];
   const latestImage = getPhotoImage(latestSeries.photos[0]);
