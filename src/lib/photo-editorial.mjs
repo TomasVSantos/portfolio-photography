@@ -25,6 +25,18 @@ export function validateEditorialData(data, slug) {
       `[${slug}] Unsupported category "${String(data.category)}". Expected one of: ${photoCategories.join(", ")}.`,
     );
   }
+  for (const field of ["subject", "venue"]) {
+    if (data[field] !== undefined && typeof data[field] !== "string") {
+      errors.push(
+        `[${slug}] Frontmatter field "${field}" must be a string when provided.`,
+      );
+    }
+  }
+  if (data.updatedAt !== undefined && !isValidPhotoDate(data.updatedAt)) {
+    errors.push(
+      `[${slug}] Invalid updatedAt "${String(data.updatedAt)}"; expected YYYY-MM-DD.`,
+    );
+  }
   if (draft) return { draft, errors };
 
   const required = [

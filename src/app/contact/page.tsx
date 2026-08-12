@@ -5,12 +5,14 @@ import { Container } from "@/components/layout/container";
 import { PageShell } from "@/components/layout/page-shell";
 import { Reveal } from "@/components/motion/reveal";
 import { siteConfig } from "@/config/site";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Contact",
   description:
     "Contact Tomás Santos about photography, collaborations, or print enquiries.",
-};
+  pathname: "/contact",
+});
 
 const contacts = [
   {

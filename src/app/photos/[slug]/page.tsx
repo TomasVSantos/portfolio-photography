@@ -13,6 +13,13 @@ import { formatFilterValue } from "@/lib/gallery-filter";
 import { getPhotoImage } from "@/lib/images";
 import { getAllPhotos, getPhoto, getPhotoNeighbors } from "@/lib/photos";
 import { getLocationSlug, slugify } from "@/lib/slugs";
+import {
+  createPageMetadata,
+  getPhotoDescription,
+  getPhotoJsonLd,
+  getPhotoMetadataImage,
+  getPhotoSeoTitle,
+} from "@/lib/seo";
 
 type PhotoPageProps = { params: Promise<{ slug: string }> };
 
@@ -29,33 +36,13 @@ export async function generateMetadata({
   const photo = getPhoto(slug);
   if (!photo) return {};
   const image = getPhotoImage(photo);
-  const description = `${photo.title}, photographed in ${photo.location}. Part of the ${photo.series} series.`;
-
-  return {
-    title: photo.title,
-    description,
-    alternates: { canonical: `/photos/${photo.slug}` },
-    openGraph: {
-      type: "article",
-      title: photo.title,
-      description,
-      url: `/photos/${photo.slug}`,
-      images: [
-        {
-          url: image.src,
-          width: image.width,
-          height: image.height,
-          alt: image.alt,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: photo.title,
-      description,
-      images: [image.src],
-    },
-  };
+  return createPageMetadata({
+    title: getPhotoSeoTitle(photo),
+    description: getPhotoDescription(photo),
+    pathname: `/photos/${photo.slug}`,
+    image: getPhotoMetadataImage(image),
+    type: "article",
+  });
 }
 
 export default async function PhotoPage({ params }: PhotoPageProps) {
@@ -77,6 +64,9 @@ export default async function PhotoPage({ params }: PhotoPageProps) {
       value: photo.location,
       href: `/gallery?location=${getLocationSlug(photo.location)}`,
     },
+    ...(photo.subject
+      ? [{ term: "Subject", value: photo.subject, href: undefined }]
+      : []),
     ...(photo.venue
       ? [{ term: "Venue", value: photo.venue, href: undefined }]
       : []),
@@ -106,19 +96,7 @@ export default async function PhotoPage({ params }: PhotoPageProps) {
         ]
       : []),
   ];
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Photograph",
-    name: photo.title,
-    description: photo.story.split("\n")[0],
-    contentUrl: `${siteConfig.url}${image.src}`,
-    dateCreated: photo.date,
-    keywords: [...photo.tags, ...(photo.category ? [photo.category] : [])].join(
-      ", ",
-    ),
-    creator: { "@type": "Person", name: siteConfig.name },
-    contentLocation: { "@type": "Place", name: photo.location },
-  };
+  const jsonLd = getPhotoJsonLd(photo);
 
   return (
     <PageShell>

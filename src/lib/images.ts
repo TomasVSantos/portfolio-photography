@@ -22,3 +22,9 @@ const localImageProvider: ImageProvider = {
 export function getPhotoImage(photo: Photo) {
   return localImageProvider.resolve(photo);
 }
+
+export function getPhotoSourcePath(photo: Photo) {
+  return photo.image.source
+    ? `/photos/${photo.slug}/${photo.image.source}`
+    : photo.image.fallback;
+}

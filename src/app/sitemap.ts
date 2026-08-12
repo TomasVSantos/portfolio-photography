@@ -1,30 +1,35 @@
 import type { MetadataRoute } from "next";
 
-import { siteConfig } from "@/config/site";
+import { getPhotoSourcePath } from "@/lib/images";
 import { getAllPhotos, getAllSeries } from "@/lib/photos";
+import {
+  getAbsoluteUrl,
+  getCanonicalUrl,
+  getPhotoLastModified,
+} from "@/lib/seo";
 
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes = ["", "/gallery", "/about", "/gear", "/contact"].map(
-    (route) => ({
-      url: `${siteConfig.url}${route}`,
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
-      priority: route === "" ? 1 : 0.7,
-    }),
+  const staticRoutes = ["/", "/gallery", "/about", "/gear", "/contact"].map(
+    (route) => ({ url: getCanonicalUrl(route) }),
   );
   const photoRoutes = getAllPhotos().map((photo) => ({
-    url: `${siteConfig.url}/photos/${photo.slug}`,
-    lastModified: new Date(photo.date),
-    changeFrequency: "yearly" as const,
-    priority: 0.8,
+    url: getCanonicalUrl(`/photos/${photo.slug}`),
+    lastModified: getPhotoLastModified(photo),
+    images: [getAbsoluteUrl(getPhotoSourcePath(photo))],
   }));
   const seriesRoutes = getAllSeries().map((series) => ({
-    url: `${siteConfig.url}/series/${series.slug}`,
-    lastModified: new Date(series.photos[0].date),
-    changeFrequency: "monthly" as const,
-    priority: 0.8,
+    url: getCanonicalUrl(`/series/${series.slug}`),
+    lastModified: getPhotoLastModified(
+      series.photos.reduce(
+        (latest, photo) =>
+          getPhotoLastModified(photo) > getPhotoLastModified(latest)
+            ? photo
+            : latest,
+        series.photos[0],
+      ),
+    ),
   }));
 
   return [...staticRoutes, ...photoRoutes, ...seriesRoutes];

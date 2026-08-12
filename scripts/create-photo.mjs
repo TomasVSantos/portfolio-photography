@@ -67,6 +67,10 @@ if (!photoCategories.includes(options.category)) {
   console.error(`Category must be one of: ${photoCategories.join(", ")}.`);
   process.exit(1);
 }
+if (options.updatedAt && !isValidPhotoDate(String(options.updatedAt))) {
+  console.error("updatedAt must be a real calendar date in YYYY-MM-DD format.");
+  process.exit(1);
+}
 
 const contentDirectory = path.join(process.cwd(), "src/content/photos", slug);
 const publicDirectory = path.join(process.cwd(), "public/photos", slug);
@@ -101,6 +105,9 @@ const frontmatter = {
   date: String(options.date),
   series: String(options.series).trim(),
   category: options.category,
+  ...(options.subject?.trim() ? { subject: options.subject.trim() } : {}),
+  ...(options.venue?.trim() ? { venue: options.venue.trim() } : {}),
+  ...(options.updatedAt ? { updatedAt: String(options.updatedAt).trim() } : {}),
   featured: false,
   draft: true,
   tags,

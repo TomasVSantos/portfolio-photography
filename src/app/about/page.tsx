@@ -6,16 +6,20 @@ import { PageShell } from "@/components/layout/page-shell";
 import { Reveal } from "@/components/motion/reveal";
 import { getPhotoImage } from "@/lib/images";
 import { getPhoto } from "@/lib/photos";
+import { createPageMetadata, getPhotoMetadataImage } from "@/lib/seo";
 
-export const metadata: Metadata = {
+const aboutPhoto = getPhoto("culatra-farol")!;
+
+export const metadata: Metadata = createPageMetadata({
   title: "About",
   description:
     "About Tomás Santos and his developing interest in everyday life, travel, and live music photography.",
-};
+  pathname: "/about",
+  image: getPhotoMetadataImage(getPhotoImage(aboutPhoto)),
+});
 
 export default function AboutPage() {
-  const photo = getPhoto("culatra-farol")!;
-  const image = getPhotoImage(photo);
+  const image = getPhotoImage(aboutPhoto);
 
   return (
     <PageShell>

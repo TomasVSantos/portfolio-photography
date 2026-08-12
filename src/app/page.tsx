@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -6,21 +7,52 @@ import { Container } from "@/components/layout/container";
 import { PageShell } from "@/components/layout/page-shell";
 import { Reveal } from "@/components/motion/reveal";
 import { PhotoCard } from "@/components/photo/photo-card";
+import { siteConfig } from "@/config/site";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { getPhotoImage } from "@/lib/images";
 import { getAllPhotos, getAllSeries } from "@/lib/photos";
+import { getAbsoluteUrl, getCanonicalUrl } from "@/lib/seo";
+
+const homePhotos = getAllPhotos();
+const homeHeroPhoto =
+  homePhotos.find((photo) => photo.slug === "surfs-up") ?? homePhotos[0];
+const homeHeroImage = getPhotoImage(homeHeroPhoto);
+const homeMetadataImage = {
+  url: getAbsoluteUrl(homeHeroImage.src),
+  width: homeHeroImage.width,
+  height: homeHeroImage.height,
+  alt: homeHeroImage.alt,
+};
+
+export const metadata: Metadata = {
+  alternates: { canonical: getCanonicalUrl("/") },
+  openGraph: {
+    type: "website",
+    locale: "en_GB",
+    siteName: siteConfig.name,
+    title: siteConfig.title,
+    description: siteConfig.description,
+    url: getCanonicalUrl("/"),
+    images: [homeMetadataImage],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.title,
+    description: siteConfig.description,
+    images: [homeMetadataImage],
+  },
+};
 
 export default function Home() {
-  const photos = getAllPhotos();
-  const heroPhoto =
-    photos.find((photo) => photo.slug === "surfs-up") ?? photos[0];
+  const photos = homePhotos;
+  const heroPhoto = homeHeroPhoto;
   const featured = photos.filter((photo) => photo.featured).slice(0, 3);
   const latestSeries = getAllSeries()[0];
   const latestCoverPhoto =
     latestSeries.photos.find((photo) => photo.slug === "the-crossing") ??
     latestSeries.photos[0];
   const latestImage = getPhotoImage(latestCoverPhoto);
-  const heroImage = getPhotoImage(heroPhoto);
+  const heroImage = homeHeroImage;
 
   return (
     <PageShell>

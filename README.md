@@ -116,7 +116,9 @@ lens: 26mm equivalent
 date: 2026-07-18
 series: Culatra
 category: travel
-venue: MEO Arena # optional
+subject: Lighthouse # optional; use for an explicit named subject
+venue: Named venue # optional
+updatedAt: 2026-07-20 # optional; update when the editorial page changes
 featured: true
 tags: [lighthouse, sea, algarve]
 alt: A white lighthouse beyond sand dunes
@@ -124,7 +126,9 @@ seriesOrder: 10 # optional; controls order only within its series
 ---
 ```
 
-Camera and lens are optional editorial overrides. The pipeline extracts only a
+Camera and lens are optional editorial overrides. `subject`, `venue`, and
+`updatedAt` are optional semantic fields used by page metadata, structured data,
+and the sitemap. The pipeline extracts only a
 sanitized EXIF capture timestamp for chronological sorting; it does not publish
 raw EXIF. GPS, serial numbers, owner names, and software history are never copied
 to the public manifest. Alt text always remains human-authored.

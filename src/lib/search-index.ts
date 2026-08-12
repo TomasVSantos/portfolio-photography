@@ -47,6 +47,7 @@ export function getSearchIndex(): SearchIndexItem[] {
         photo.lens,
         photo.series,
         photo.category,
+        photo.subject,
         photo.venue,
       ]
         .filter(Boolean)

@@ -10,9 +10,11 @@ export interface PhotoFrontmatter {
   location?: string;
   camera?: string;
   lens?: string;
-  date?: string;
+  date?: string | Date;
+  updatedAt?: string | Date;
   series?: string;
   category?: PhotoCategory;
+  subject?: string;
   venue?: string;
   featured?: boolean;
   tags?: string[];
@@ -63,9 +65,11 @@ export interface Photo {
   camera?: string;
   lens?: string;
   date: string;
+  updatedAt?: string;
   capturedAt?: string;
   series: string;
   category: PhotoCategory;
+  subject?: string;
   venue?: string;
   featured: boolean;
   tags: string[];

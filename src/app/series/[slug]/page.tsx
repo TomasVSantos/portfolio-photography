@@ -9,6 +9,12 @@ import { formatFilterValue } from "@/lib/gallery-filter";
 import { getPhotoImage } from "@/lib/images";
 import { getAllSeries, getSeries } from "@/lib/photos";
 import { getLocationSlug, slugify } from "@/lib/slugs";
+import {
+  createPageMetadata,
+  getPhotoMetadataImage,
+  getSeriesDescription,
+  getSeriesSeoTitle,
+} from "@/lib/seo";
 
 type SeriesPageProps = { params: Promise<{ slug: string }> };
 
@@ -24,10 +30,13 @@ export async function generateMetadata({
   const { slug } = await params;
   const series = getSeries(slug);
   if (!series) return {};
-  return {
-    title: series.name,
-    description: `${series.name}, a photography series by Tomás Santos.`,
-  };
+  const coverImage = getPhotoImage(series.photos[0]);
+  return createPageMetadata({
+    title: getSeriesSeoTitle(series),
+    description: getSeriesDescription(series),
+    pathname: `/series/${series.slug}`,
+    image: getPhotoMetadataImage(coverImage),
+  });
 }
 
 export default async function SeriesPage({ params }: SeriesPageProps) {
@@ -73,8 +82,7 @@ export default async function SeriesPage({ params }: SeriesPageProps) {
               {series.name}
             </h1>
             <p className="text-muted-foreground mt-8 max-w-lg text-base leading-7">
-              {series.description ??
-                "Photographs connected by a place, subject, or the atmosphere around a shared moment."}
+              {getSeriesDescription(series)}
             </p>
           </header>
           <GalleryLightbox items={items} />

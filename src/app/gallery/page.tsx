@@ -9,12 +9,17 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { getPhotoImage } from "@/lib/images";
 import { getAllPhotos } from "@/lib/photos";
 import { getLocationSlug, slugify } from "@/lib/slugs";
+import { createPageMetadata, getPhotoMetadataImage } from "@/lib/seo";
 
-export const metadata: Metadata = {
+const galleryCover = getAllPhotos()[0];
+
+export const metadata: Metadata = createPageMetadata({
   title: "Gallery",
   description:
     "Places, people, live music, and everyday moments photographed by Tomás Santos.",
-};
+  pathname: "/gallery",
+  image: getPhotoMetadataImage(getPhotoImage(galleryCover)),
+});
 
 export default function GalleryPage() {
   const photos = getAllPhotos();

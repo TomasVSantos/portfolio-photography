@@ -4,11 +4,13 @@ import { Container } from "@/components/layout/container";
 import { PageShell } from "@/components/layout/page-shell";
 import { Reveal } from "@/components/motion/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Gear",
   description: "The cameras and lenses Tomás Santos uses for his photography.",
-};
+  pathname: "/gear",
+});
 
 const currentGear = [
   {

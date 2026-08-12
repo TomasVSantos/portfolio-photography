@@ -22,9 +22,16 @@ const imageManifest = imageManifestJson as Record<
 >;
 
 function normalizeDate(value: unknown) {
-  return value instanceof Date
-    ? value.toISOString().slice(0, 10)
-    : String(value);
+  if (value instanceof Date) {
+    return Number.isNaN(value.valueOf())
+      ? String(value)
+      : value.toISOString().slice(0, 10);
+  }
+  return String(value);
+}
+
+function normalizeOptionalDate(value: unknown) {
+  return value === undefined ? undefined : normalizeDate(value);
 }
 
 export function mergeEditorialWithDerived(
@@ -46,6 +53,9 @@ function assertPublishedFrontmatter(
   const normalized = {
     ...data,
     ...(data.date === undefined ? {} : { date: normalizeDate(data.date) }),
+    ...(data.updatedAt === undefined
+      ? {}
+      : { updatedAt: normalizeOptionalDate(data.updatedAt) }),
   };
   const validation = validateEditorialData(
     normalized as Record<string, unknown>,
@@ -64,10 +74,12 @@ function assertPublishedFrontmatter(
     title: normalized.title as string,
     location: normalized.location as string,
     date: normalized.date as string,
+    updatedAt: normalized.updatedAt as string | undefined,
     capturedAt: image.exif?.captureDate,
     series: normalized.series as string,
     category: normalized.category as Photo["category"],
-    venue: normalized.venue,
+    subject: normalized.subject?.trim() || undefined,
+    venue: normalized.venue?.trim() || undefined,
     featured: normalized.featured as boolean,
     tags: normalized.tags as string[],
     alt: normalized.alt as string,
