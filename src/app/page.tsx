@@ -155,7 +155,8 @@ export default function Home() {
             <Reveal delay={0.08}>
               <p className="text-muted-foreground text-[0.68rem] tracking-[0.22em] uppercase">
                 Selected series ·{" "}
-                {latestSeries.photos.length.toString().padStart(2, "0")}
+                {latestSeries.photos.length.toString().padStart(2, "0")}{" "}
+                photographs
               </p>
               <h2 className="mt-6 font-serif text-5xl tracking-[-0.045em] sm:text-6xl">
                 {latestSeries.name}

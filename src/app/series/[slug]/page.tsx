@@ -76,7 +76,7 @@ export default async function SeriesPage({ params }: SeriesPageProps) {
                   </Link>
                 </>
               )}{" "}
-              · {series.photos.length.toString().padStart(2, "0")}
+              · {series.photos.length.toString().padStart(2, "0")} photographs
             </p>
             <h1 className="mt-6 font-serif text-6xl tracking-[-0.055em] sm:text-8xl lg:text-9xl">
               {series.name}
