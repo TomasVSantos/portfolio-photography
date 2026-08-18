@@ -32,6 +32,45 @@ describe("photo editorial metadata", () => {
     expect(mergeEditorialWithDerived({}, image)).toEqual(image.exif);
   });
 
+  it("uses Apple camera names for iPhone 17 Pro focal lengths", () => {
+    const iPhoneImage = (focalLength: string) =>
+      ({
+        exif: {
+          camera: "iPhone 17 Pro",
+          lens: `iPhone 17 Pro back camera ${focalLength} f/1.78`,
+          focalLength,
+        },
+      }) as PhotoImageManifestEntry;
+
+    expect(mergeEditorialWithDerived({}, iPhoneImage("16.891mm"))).toEqual({
+      camera: "iPhone 17 Pro",
+      lens: "iPhone 17 Pro Telephoto",
+    });
+    expect(mergeEditorialWithDerived({}, iPhoneImage("6.765mm"))).toEqual({
+      camera: "iPhone 17 Pro",
+      lens: "iPhone 17 Pro Main",
+    });
+    expect(mergeEditorialWithDerived({}, iPhoneImage("2.2mm"))).toEqual({
+      camera: "iPhone 17 Pro",
+      lens: "iPhone 17 Pro Ultra Wide",
+    });
+  });
+
+  it("keeps EXIF lens names for non-iPhone cameras", () => {
+    expect(
+      mergeEditorialWithDerived({}, {
+        exif: {
+          camera: "Fujifilm X-T5",
+          lens: "XF 35mm F1.4 R",
+          focalLength: "35mm",
+        },
+      } as PhotoImageManifestEntry),
+    ).toEqual({
+      camera: "Fujifilm X-T5",
+      lens: "XF 35mm F1.4 R",
+    });
+  });
+
   it("allows incomplete drafts but rejects incomplete published photographs", () => {
     expect(validateEditorialData({ draft: true }, "draft").errors).toEqual([]);
     expect(validateEditorialData({}, "published").errors).toContain(

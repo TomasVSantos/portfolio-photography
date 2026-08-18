@@ -19,6 +19,8 @@ const filterLabels: Record<GalleryFilterKey, string> = {
   year: "Year",
   location: "Location",
   tag: "Tag",
+  camera: "Camera",
+  lens: "Lens",
 };
 
 export function GalleryView({ items }: { items: GalleryItem[] }) {

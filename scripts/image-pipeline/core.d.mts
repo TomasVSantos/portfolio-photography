@@ -25,7 +25,15 @@ export interface ImageManifestEntry {
   fallback: string;
   fallbackWidth: number;
   fallbackHeight: number;
-  exif?: { captureDate?: string };
+  exif?: {
+    camera?: string;
+    lens?: string;
+    focalLength?: string;
+    aperture?: string;
+    shutterSpeed?: string;
+    iso?: number;
+    captureDate?: string;
+  };
 }
 
 export class ImagePipelineError extends Error {}
@@ -39,9 +47,12 @@ export function hashFile(filePath: string): Promise<string>;
 export function extractCaptureDate(
   exif: Buffer | undefined,
 ): string | undefined;
+export function extractExifDefaults(
+  exif: Buffer | undefined,
+): ImageManifestEntry["exif"] | undefined;
 export function readSafeExifDefaults(
   input: string,
-): Promise<{ captureDate: string } | undefined>;
+): Promise<ImageManifestEntry["exif"] | undefined>;
 export function outputsAreCurrent(
   directory: string,
   entry: ImageManifestEntry,

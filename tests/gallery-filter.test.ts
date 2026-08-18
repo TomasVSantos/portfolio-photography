@@ -14,6 +14,8 @@ const photos: (FilterablePhoto & { id: string })[] = [
     date: "2026-07-18",
     location: "Culatra, Portugal",
     tags: ["lighthouse", "sea"],
+    camera: "Fujifilm X-T5",
+    lens: "XF 35mm F1.4 R",
   },
   {
     id: "stage",
@@ -22,6 +24,7 @@ const photos: (FilterablePhoto & { id: string })[] = [
     date: "2025-06-20",
     location: "Lisbon, Portugal",
     tags: ["live music", "stage"],
+    camera: "iPhone 17 Pro",
   },
   {
     id: "legacy",
@@ -35,7 +38,7 @@ const photos: (FilterablePhoto & { id: string })[] = [
 describe("gallery filtering", () => {
   it("parses supported URL filters", () => {
     const params = new URLSearchParams(
-      "series=Live%20Music&category=concert&year=2025&location=Lisbon&tag=live-music",
+      "series=Live%20Music&category=concert&year=2025&location=Lisbon&tag=live-music&camera=iPhone%2017%20Pro&lens=XF%2035mm%20F1.4%20R",
     );
 
     expect(getGalleryFilters(params)).toEqual({
@@ -44,6 +47,8 @@ describe("gallery filtering", () => {
       year: "2025",
       location: "lisbon",
       tag: "live-music",
+      camera: "iphone-17-pro",
+      lens: "xf-35mm-f1-4-r",
     });
   });
 
@@ -53,6 +58,8 @@ describe("gallery filtering", () => {
     ["year=2024", "legacy"],
     ["location=lisbon", "stage"],
     ["tag=live-music", "stage"],
+    ["camera=fujifilm-x-t5", "lighthouse"],
+    ["lens=xf-35mm-f1-4-r", "lighthouse"],
   ])("filters %s", (query, expectedId) => {
     const filtered = filterGalleryItems(
       photos,

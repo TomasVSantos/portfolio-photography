@@ -128,10 +128,10 @@ seriesOrder: 10 # optional; controls order only within its series
 
 Camera and lens are optional editorial overrides. `subject`, `venue`, and
 `updatedAt` are optional semantic fields used by page metadata, structured data,
-and the sitemap. The pipeline extracts only a
-sanitized EXIF capture timestamp for chronological sorting; it does not publish
-raw EXIF. GPS, serial numbers, owner names, and software history are never copied
-to the public manifest. Alt text always remains human-authored.
+and the sitemap. The pipeline extracts a small safe EXIF subset—camera, lens,
+aperture, shutter speed, ISO, and a sanitized capture timestamp—and never
+publishes raw EXIF. GPS, serial numbers, owner names, and software history are
+never copied to the public manifest. Alt text always remains human-authored.
 
 `draft: true` allows incomplete work to exist without an image manifest entry.
 Drafts are excluded from production gallery, search, series, sitemap, and photo
@@ -221,9 +221,3 @@ repository must define `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` as
 Actions secrets. The token needs Cloudflare Pages edit permission for the
 account that owns the `portfolio` project. No application runtime secrets are
 required by this static site.
-
-## Photography collection
-
-The public portfolio currently contains eight photographs from Culatra, ordered
-chronologically from 17–19 July 2026. New photographs can be added through the
-same source-backed workflow without changing application routes or components.

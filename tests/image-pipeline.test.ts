@@ -8,6 +8,7 @@ import { imagePipelineConfig } from "../scripts/image-pipeline/config.mjs";
 import {
   discoverSource,
   extractCaptureDate,
+  extractExifDefaults,
   generatePhotoAssets,
   getExpectedGeneratedFiles,
   isSourceEntryCurrent,
@@ -39,6 +40,54 @@ function exifFixture(captureDate: string) {
   exif.writeUInt32LE(44, exifIfd + 10);
   exif.write(`${captureDate}\0`, 50, "ascii");
   return exif;
+}
+
+function cameraSettingsExifFixture() {
+  const exif = Buffer.alloc(380);
+  exif.write("Exif\0\0", 0, "binary");
+  exif.write("II", 6, "ascii");
+  exif.writeUInt16LE(42, 8);
+  exif.writeUInt32LE(8, 10);
+
+  const ifd0 = 14;
+  exif.writeUInt16LE(3, ifd0);
+  writeEntry(ifd0 + 2, 0x010f, 2, 7, 90);
+  writeEntry(ifd0 + 14, 0x0110, 2, 12, 98);
+  writeEntry(ifd0 + 26, 0x8769, 4, 1, 200);
+
+  const exifIfd = 206;
+  exif.writeUInt16LE(5, exifIfd);
+  writeEntry(exifIfd + 2, 0x829a, 5, 1, 320);
+  writeEntry(exifIfd + 14, 0x829d, 5, 1, 328);
+  writeEntry(exifIfd + 26, 0x8827, 3, 1, 400, true);
+  writeEntry(exifIfd + 38, 0xa434, 2, 17, 336);
+  writeEntry(exifIfd + 50, 0x920a, 5, 1, 360);
+
+  exif.write("Fujifilm\0", 96, "ascii");
+  exif.write("X-T5\0", 104, "ascii");
+  exif.writeUInt32LE(1, 326);
+  exif.writeUInt32LE(250, 330);
+  exif.writeUInt32LE(28, 334);
+  exif.writeUInt32LE(10, 338);
+  exif.write("XF 35mm F1.4 R\0", 342, "ascii");
+  exif.writeUInt32LE(35, 366);
+  exif.writeUInt32LE(1, 370);
+  return exif;
+
+  function writeEntry(
+    offset: number,
+    tag: number,
+    type: number,
+    count: number,
+    value: number,
+    inline = false,
+  ) {
+    exif.writeUInt16LE(tag, offset);
+    exif.writeUInt16LE(type, offset + 2);
+    exif.writeUInt32LE(count, offset + 4);
+    if (inline) exif.writeUInt16LE(value, offset + 8);
+    else exif.writeUInt32LE(value, offset + 8);
+  }
 }
 
 async function fixtureDirectory() {
@@ -103,6 +152,17 @@ describe("safe EXIF metadata", () => {
       "2026-06-21T19:57:46",
     );
     expect(extractCaptureDate(Buffer.from("not exif"))).toBeUndefined();
+  });
+
+  it("extracts safe camera settings and equipment metadata", () => {
+    expect(extractExifDefaults(cameraSettingsExifFixture())).toEqual({
+      camera: "X-T5",
+      lens: "XF 35mm F1.4 R",
+      focalLength: "35mm",
+      aperture: "f/2.8",
+      shutterSpeed: "1/250 s",
+      iso: 400,
+    });
   });
 });
 

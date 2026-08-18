@@ -22,6 +22,8 @@ export interface GalleryItem {
   date: string;
   tags: string[];
   category?: string;
+  camera?: string;
+  lens?: string;
   locationSlug: string;
   seriesSlug: string;
   src: string;

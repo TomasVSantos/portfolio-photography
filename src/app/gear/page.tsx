@@ -14,14 +14,21 @@ export const metadata: Metadata = createPageMetadata({
 
 const currentGear = [
   {
+    name: "Sony α7C",
+    note: "A small full-frame camera that gets out of the way and leaves more room for the photograph.",
+  },
+  {
+    name: "Sony FE 28–60mm f/4–5.6",
+    note: "Small, simple and surprisingly capable. The lens I'm learning the camera through.",
+  },
+  {
     name: "iPhone 17 Pro",
     note: "The camera that started it all and removes every excuse not to make a photograph.",
   },
 ];
 
 const wishlist = [
-  "Fujifilm X-T5",
-  "Fujifilm XF 16-50mm f/2.8-4.8 R LM WR",
+  "Sigma 24–70mm f/2.8 DG DN II | Art",
   "More time in good light",
 ];
 

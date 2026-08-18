@@ -70,6 +70,12 @@
     "fallbackWidth": 2400,
     "fallbackHeight": 2400,
     "exif": {
+      "camera": "iPhone 17 Pro",
+      "lens": "iPhone 17 Pro back camera 6.765mm f/1.78",
+      "focalLength": "6.765mm",
+      "aperture": "f/1.8",
+      "shutterSpeed": "1/8000 s",
+      "iso": 64,
       "captureDate": "2026-08-06T13:10:55"
     }
   },
@@ -144,6 +150,12 @@
     "fallbackWidth": 2400,
     "fallbackHeight": 1600,
     "exif": {
+      "camera": "iPhone 17 Pro",
+      "lens": "iPhone 17 Pro back triple camera 6.765mm f/1.78",
+      "focalLength": "6.765mm",
+      "aperture": "f/1.8",
+      "shutterSpeed": "1/50 s",
+      "iso": 160,
       "captureDate": "2026-08-06T23:45:09"
     }
   },
@@ -218,6 +230,12 @@
     "fallbackWidth": 2400,
     "fallbackHeight": 4267,
     "exif": {
+      "camera": "iPhone 17 Pro",
+      "lens": "iPhone 17 Pro back camera 6.765mm f/1.78",
+      "focalLength": "6.765mm",
+      "aperture": "f/1.78",
+      "shutterSpeed": "1/27 s",
+      "iso": 800,
       "captureDate": "2026-07-17T21:28:47"
     }
   },
@@ -292,6 +310,12 @@
     "fallbackWidth": 2268,
     "fallbackHeight": 4032,
     "exif": {
+      "camera": "iPhone 17 Pro",
+      "lens": "iPhone 17 Pro back camera 6.765mm f/1.78",
+      "focalLength": "6.765mm",
+      "aperture": "f/1.78",
+      "shutterSpeed": "1/27778 s",
+      "iso": 64,
       "captureDate": "2026-07-17T11:11:50"
     }
   },
@@ -366,6 +390,12 @@
     "fallbackWidth": 2400,
     "fallbackHeight": 3200,
     "exif": {
+      "camera": "iPhone 17 Pro",
+      "lens": "iPhone 17 Pro back camera 6.765mm f/1.78",
+      "focalLength": "6.765mm",
+      "aperture": "f/1.78",
+      "shutterSpeed": "1/20408 s",
+      "iso": 64,
       "captureDate": "2026-07-18T14:10:30"
     }
   },
@@ -440,6 +470,12 @@
     "fallbackWidth": 2400,
     "fallbackHeight": 3200,
     "exif": {
+      "camera": "iPhone 17 Pro",
+      "lens": "iPhone 17 Pro back camera 16.891mm f/2.8",
+      "focalLength": "16.891mm",
+      "aperture": "f/2.8",
+      "shutterSpeed": "1/1359 s",
+      "iso": 20,
       "captureDate": "2026-07-19T09:42:02"
     }
   },
@@ -514,6 +550,12 @@
     "fallbackWidth": 2400,
     "fallbackHeight": 4267,
     "exif": {
+      "camera": "iPhone 17 Pro",
+      "lens": "iPhone 17 Pro back camera 6.765mm f/1.78",
+      "focalLength": "6.765mm",
+      "aperture": "f/1.78",
+      "shutterSpeed": "1/454 s",
+      "iso": 64,
       "captureDate": "2026-07-17T20:53:59"
     }
   },
@@ -588,6 +630,12 @@
     "fallbackWidth": 2400,
     "fallbackHeight": 4267,
     "exif": {
+      "camera": "iPhone 17 Pro",
+      "lens": "iPhone 17 Pro back camera 6.765mm f/1.78",
+      "focalLength": "6.765mm",
+      "aperture": "f/1.78",
+      "shutterSpeed": "1/10870 s",
+      "iso": 64,
       "captureDate": "2026-07-17T13:15:55"
     }
   },
@@ -662,6 +710,12 @@
     "fallbackWidth": 2400,
     "fallbackHeight": 3200,
     "exif": {
+      "camera": "iPhone 17 Pro",
+      "lens": "iPhone 17 Pro back camera 16.891mm f/2.8",
+      "focalLength": "16.891mm",
+      "aperture": "f/2.8",
+      "shutterSpeed": "1/1570 s",
+      "iso": 20,
       "captureDate": "2026-07-19T09:21:05"
     }
   },
@@ -736,6 +790,12 @@
     "fallbackWidth": 2400,
     "fallbackHeight": 3200,
     "exif": {
+      "camera": "iPhone 17 Pro",
+      "lens": "iPhone 17 Pro back camera 16.891mm f/2.8",
+      "focalLength": "16.891mm",
+      "aperture": "f/2.8",
+      "shutterSpeed": "1/638 s",
+      "iso": 20,
       "captureDate": "2026-07-18T18:19:59"
     }
   },
@@ -810,6 +870,12 @@
     "fallbackWidth": 2400,
     "fallbackHeight": 3201,
     "exif": {
+      "camera": "iPhone 17 Pro",
+      "lens": "iPhone 17 Pro back triple camera 16.891mm f/2.8",
+      "focalLength": "16.891mm",
+      "aperture": "f/2.8",
+      "shutterSpeed": "1/640 s",
+      "iso": 32,
       "captureDate": "2026-08-08T11:28:28"
     }
   },
@@ -884,6 +950,12 @@
     "fallbackWidth": 2400,
     "fallbackHeight": 3600,
     "exif": {
+      "camera": "iPhone 17 Pro",
+      "lens": "iPhone 17 Pro back triple camera 16.891mm f/2.8",
+      "focalLength": "16.891mm",
+      "aperture": "f/2.8",
+      "shutterSpeed": "1/320 s",
+      "iso": 50,
       "captureDate": "2026-08-08T11:11:26"
     }
   },
@@ -958,6 +1030,12 @@
     "fallbackWidth": 2268,
     "fallbackHeight": 4032,
     "exif": {
+      "camera": "iPhone 17 Pro",
+      "lens": "iPhone 17 Pro back camera 6.765mm f/1.78",
+      "focalLength": "6.765mm",
+      "aperture": "f/1.78",
+      "shutterSpeed": "1/8772 s",
+      "iso": 80,
       "captureDate": "2026-05-24T11:55:30"
     }
   },
@@ -1032,6 +1110,12 @@
     "fallbackWidth": 2400,
     "fallbackHeight": 4267,
     "exif": {
+      "camera": "iPhone 17 Pro",
+      "lens": "iPhone 17 Pro back camera 6.765mm f/1.78",
+      "focalLength": "6.765mm",
+      "aperture": "f/1.78",
+      "shutterSpeed": "1/11905 s",
+      "iso": 64,
       "captureDate": "2026-05-24T15:40:41"
     }
   },
@@ -1106,6 +1190,12 @@
     "fallbackWidth": 2400,
     "fallbackHeight": 4267,
     "exif": {
+      "camera": "iPhone 17 Pro",
+      "lens": "iPhone 17 Pro back camera 16.891mm f/2.8",
+      "focalLength": "16.891mm",
+      "aperture": "f/2.8",
+      "shutterSpeed": "1/50 s",
+      "iso": 320,
       "captureDate": "2026-05-25T00:43:00"
     }
   },
@@ -1180,6 +1270,12 @@
     "fallbackWidth": 2400,
     "fallbackHeight": 4267,
     "exif": {
+      "camera": "iPhone 17 Pro",
+      "lens": "iPhone 17 Pro back camera 16.891mm f/2.8",
+      "focalLength": "16.891mm",
+      "aperture": "f/2.8",
+      "shutterSpeed": "1/25 s",
+      "iso": 1250,
       "captureDate": "2026-05-24T23:47:54"
     }
   },
@@ -1254,6 +1350,12 @@
     "fallbackWidth": 2400,
     "fallbackHeight": 4267,
     "exif": {
+      "camera": "iPhone 17 Pro",
+      "lens": "iPhone 17 Pro back camera 16.891mm f/2.8",
+      "focalLength": "16.891mm",
+      "aperture": "f/2.8",
+      "shutterSpeed": "1/71 s",
+      "iso": 500,
       "captureDate": "2026-06-21T21:55:11"
     }
   },
@@ -1328,6 +1430,12 @@
     "fallbackWidth": 2400,
     "fallbackHeight": 4266,
     "exif": {
+      "camera": "iPhone 17 Pro",
+      "lens": "iPhone 17 Pro back camera 16.891mm f/2.8",
+      "focalLength": "16.891mm",
+      "aperture": "f/2.8",
+      "shutterSpeed": "1/622 s",
+      "iso": 50,
       "captureDate": "2026-06-21T20:07:10"
     }
   },
@@ -1402,6 +1510,12 @@
     "fallbackWidth": 2268,
     "fallbackHeight": 4032,
     "exif": {
+      "camera": "iPhone 17 Pro",
+      "lens": "iPhone 17 Pro back camera 6.765mm f/1.78",
+      "focalLength": "6.765mm",
+      "aperture": "f/1.78",
+      "shutterSpeed": "1/7874 s",
+      "iso": 80,
       "captureDate": "2026-06-20T11:17:15"
     }
   },
@@ -1476,6 +1590,12 @@
     "fallbackWidth": 2400,
     "fallbackHeight": 4267,
     "exif": {
+      "camera": "iPhone 17 Pro",
+      "lens": "iPhone 17 Pro back camera 6.765mm f/1.78",
+      "focalLength": "6.765mm",
+      "aperture": "f/1.78",
+      "shutterSpeed": "1/20 s",
+      "iso": 640,
       "captureDate": "2026-06-22T01:36:01"
     }
   },
@@ -1550,6 +1670,12 @@
     "fallbackWidth": 2400,
     "fallbackHeight": 4267,
     "exif": {
+      "camera": "iPhone 17 Pro",
+      "lens": "iPhone 17 Pro back camera 16.891mm f/2.8",
+      "focalLength": "16.891mm",
+      "aperture": "f/2.8",
+      "shutterSpeed": "1/531 s",
+      "iso": 50,
       "captureDate": "2026-06-21T19:57:46"
     }
   },
@@ -1624,6 +1750,12 @@
     "fallbackWidth": 2400,
     "fallbackHeight": 3200,
     "exif": {
+      "camera": "iPhone 17 Pro",
+      "lens": "iPhone 17 Pro back triple camera 16.891mm f/2.8",
+      "focalLength": "16.891mm",
+      "aperture": "f/2.8",
+      "shutterSpeed": "1/60 s",
+      "iso": 500,
       "captureDate": "2026-08-07T21:08:37"
     }
   },
@@ -1698,6 +1830,12 @@
     "fallbackWidth": 2400,
     "fallbackHeight": 3000,
     "exif": {
+      "camera": "iPhone 17 Pro",
+      "lens": "iPhone 17 Pro back triple camera 16.891mm f/2.8",
+      "focalLength": "16.891mm",
+      "aperture": "f/2.8",
+      "shutterSpeed": "1/80 s",
+      "iso": 250,
       "captureDate": "2026-08-07T21:51:02"
     }
   },
@@ -1772,6 +1910,12 @@
     "fallbackWidth": 2400,
     "fallbackHeight": 3200,
     "exif": {
+      "camera": "iPhone 17 Pro",
+      "lens": "iPhone 17 Pro back triple camera 6.765mm f/1.78",
+      "focalLength": "6.765mm",
+      "aperture": "f/1.8",
+      "shutterSpeed": "1/50 s",
+      "iso": 250,
       "captureDate": "2026-08-08T10:55:36"
     }
   },
@@ -1846,6 +1990,12 @@
     "fallbackWidth": 2375,
     "fallbackHeight": 2375,
     "exif": {
+      "camera": "iPhone 17 Pro",
+      "lens": "iPhone 17 Pro back camera 6.765mm f/1.78",
+      "focalLength": "6.765mm",
+      "aperture": "f/1.8",
+      "shutterSpeed": "1/1500 s",
+      "iso": 100,
       "captureDate": "2026-08-06T15:10:19"
     }
   },
@@ -1920,6 +2070,12 @@
     "fallbackWidth": 2323,
     "fallbackHeight": 2323,
     "exif": {
+      "camera": "iPhone 17 Pro",
+      "lens": "iPhone 17 Pro back triple camera 6.765mm f/1.78",
+      "focalLength": "6.765mm",
+      "aperture": "f/1.8",
+      "shutterSpeed": "1/370 s",
+      "iso": 80,
       "captureDate": "2026-08-07T20:47:17"
     }
   }

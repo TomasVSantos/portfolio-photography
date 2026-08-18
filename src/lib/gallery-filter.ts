@@ -6,6 +6,8 @@ export const galleryFilterKeys = [
   "year",
   "location",
   "tag",
+  "camera",
+  "lens",
 ] as const;
 
 export type GalleryFilterKey = (typeof galleryFilterKeys)[number];
@@ -17,6 +19,8 @@ export interface FilterablePhoto {
   date: string;
   location: string;
   tags: string[];
+  camera?: string;
+  lens?: string;
 }
 
 export function getGalleryFilters(params: URLSearchParams): GalleryFilters {
@@ -41,6 +45,8 @@ export function filterGalleryItems<T extends FilterablePhoto>(
       if (key === "category") return slugify(item.category ?? "") === value;
       if (key === "year") return item.date.slice(0, 4) === value;
       if (key === "location") return getLocationSlug(item.location) === value;
+      if (key === "camera") return slugify(item.camera ?? "") === value;
+      if (key === "lens") return slugify(item.lens ?? "") === value;
       return item.tags.some((tag) => slugify(tag) === value);
     }),
   );

@@ -76,10 +76,39 @@ export default async function PhotoPage({ params }: PhotoPageProps) {
       href: `/gallery?year=${year}`,
     },
     ...(photo.camera
-      ? [{ term: "Camera", value: photo.camera, href: undefined }]
+      ? [
+          {
+            term: "Camera",
+            value: photo.camera,
+            href: `/gallery?camera=${slugify(photo.camera)}`,
+          },
+        ]
       : []),
     ...(photo.lens
-      ? [{ term: "Lens", value: photo.lens, href: undefined }]
+      ? [
+          {
+            term: "Lens",
+            value: photo.lens,
+            href: `/gallery?lens=${slugify(photo.lens)}`,
+          },
+        ]
+      : []),
+    ...(photo.image.exif?.aperture ||
+    photo.image.exif?.shutterSpeed ||
+    photo.image.exif?.iso
+      ? [
+          {
+            term: "Settings",
+            value: [
+              photo.image.exif.aperture,
+              photo.image.exif.shutterSpeed,
+              photo.image.exif.iso ? `ISO ${photo.image.exif.iso}` : undefined,
+            ]
+              .filter(Boolean)
+              .join(" · "),
+            href: undefined,
+          },
+        ]
       : []),
     {
       term: "Series",

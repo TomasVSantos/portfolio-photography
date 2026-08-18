@@ -16,6 +16,16 @@ import { imagePipelineConfig, pipelineSignature } from "./config.mjs";
 const GENERATED_IMAGE_PATTERN = /^image(?:-\d+)?\.webp$/i;
 const SOURCE_FILE_PATTERN = /^source\.[^.]+$/i;
 const EXIF_HEADER = "Exif\0\0";
+const TIFF_TYPE_SIZES = {
+  1: 1,
+  2: 1,
+  3: 2,
+  4: 4,
+  5: 8,
+  7: 1,
+  9: 4,
+  10: 8,
+};
 
 function createTiffReader(exif) {
   if (!Buffer.isBuffer(exif) || exif.length < 8) return null;
@@ -74,22 +84,89 @@ function createTiffReader(exif) {
     return uint32(entry.valueOffset);
   }
 
-  function readAscii(entry) {
-    if (!entry || entry.type !== 2 || entry.count < 1) return null;
-    const byteLength = entry.count;
+  function getValueBounds(entry) {
+    if (!entry || !TIFF_TYPE_SIZES[entry.type] || entry.count < 1) return null;
+    const byteLength = TIFF_TYPE_SIZES[entry.type] * entry.count;
+    if (!Number.isSafeInteger(byteLength)) return null;
     const relativeOffset = byteLength <= 4 ? null : uint32(entry.valueOffset);
     if (byteLength > 4 && relativeOffset === null) return null;
     const offset =
       byteLength <= 4 ? entry.valueOffset : tiffStart + relativeOffset;
-    if (!inBounds(offset, byteLength)) return null;
+    return inBounds(offset, byteLength) ? { offset, byteLength } : null;
+  }
+
+  function readAscii(entry) {
+    if (!entry || entry.type !== 2) return null;
+    const bounds = getValueBounds(entry);
+    if (!bounds) return null;
     return exif
-      .subarray(offset, offset + byteLength)
+      .subarray(bounds.offset, bounds.offset + bounds.byteLength)
       .toString("ascii")
       .replace(/\0.*$/s, "")
       .trim();
   }
 
-  return { readIfd, readLong, readAscii, uint32, tiffStart };
+  function readUnsignedShort(offset) {
+    return littleEndian ? exif.readUInt16LE(offset) : exif.readUInt16BE(offset);
+  }
+
+  function readSignedLong(offset) {
+    return littleEndian ? exif.readInt32LE(offset) : exif.readInt32BE(offset);
+  }
+
+  function readUnsignedLong(offset) {
+    return littleEndian ? exif.readUInt32LE(offset) : exif.readUInt32BE(offset);
+  }
+
+  function readRational(entry, index = 0) {
+    if (!entry || ![5, 10].includes(entry.type) || entry.count <= index)
+      return null;
+    const bounds = getValueBounds(entry);
+    const offset = bounds?.offset + index * 8;
+    if (!bounds || !inBounds(offset, 8)) return null;
+    const numerator =
+      entry.type === 5 ? readUnsignedLong(offset) : readSignedLong(offset);
+    const denominator =
+      entry.type === 5
+        ? readUnsignedLong(offset + 4)
+        : readSignedLong(offset + 4);
+    if (!denominator) return null;
+    return { numerator, denominator };
+  }
+
+  function readNumber(entry, index = 0) {
+    if (!entry || entry.count <= index) return null;
+    const bounds = getValueBounds(entry);
+    if (!bounds) return null;
+
+    if (entry.type === 1 || entry.type === 7) {
+      return exif[bounds.offset + index] ?? null;
+    }
+    if (entry.type === 3) {
+      const offset = bounds.offset + index * 2;
+      return inBounds(offset, 2) ? readUnsignedShort(offset) : null;
+    }
+    if (entry.type === 4) {
+      const offset = bounds.offset + index * 4;
+      return inBounds(offset, 4) ? readUnsignedLong(offset) : null;
+    }
+    if (entry.type === 9) {
+      const offset = bounds.offset + index * 4;
+      return inBounds(offset, 4) ? readSignedLong(offset) : null;
+    }
+    const rational = readRational(entry, index);
+    return rational ? rational.numerator / rational.denominator : null;
+  }
+
+  return {
+    readAscii,
+    readIfd,
+    readLong,
+    readNumber,
+    readRational,
+    uint32,
+    tiffStart,
+  };
 }
 
 export function extractCaptureDate(exif) {
@@ -123,9 +200,87 @@ export function extractCaptureDate(exif) {
   return normalized;
 }
 
+function formatExifNumber(value, maximumFractionDigits = 4) {
+  if (!Number.isFinite(value)) return undefined;
+  return Number(value.toFixed(maximumFractionDigits)).toString();
+}
+
+function formatAperture(value) {
+  const formatted = formatExifNumber(value, 2);
+  return formatted ? `f/${formatted}` : undefined;
+}
+
+function formatFocalLength(value) {
+  if (!Number.isFinite(value) || value <= 0) return undefined;
+  const formatted = formatExifNumber(value, 3);
+  return formatted ? `${formatted}mm` : undefined;
+}
+
+function formatShutterSpeed(rational) {
+  if (!rational || rational.numerator <= 0 || rational.denominator <= 0)
+    return undefined;
+  const seconds = rational.numerator / rational.denominator;
+  if (!Number.isFinite(seconds)) return undefined;
+
+  if (seconds < 1) {
+    const reciprocal = rational.denominator / rational.numerator;
+    if (Number.isInteger(reciprocal)) return `1/${reciprocal} s`;
+  }
+
+  const formatted = formatExifNumber(seconds);
+  return formatted ? `${formatted} s` : undefined;
+}
+
+function getExifText(reader, ifd, tag) {
+  return reader.readAscii(ifd.get(tag)) || undefined;
+}
+
+export function extractExifDefaults(exif) {
+  const reader = createTiffReader(exif);
+  if (!reader) return undefined;
+
+  const ifd0Offset = reader.uint32(reader.tiffStart + 4);
+  if (ifd0Offset === null) return undefined;
+  const ifd0 = reader.readIfd(ifd0Offset);
+  const exifIfdOffset = reader.readLong(ifd0.get(0x8769));
+  const exifIfd =
+    exifIfdOffset === null ? new Map() : reader.readIfd(exifIfdOffset);
+
+  const camera =
+    getExifText(reader, ifd0, 0x0110) ??
+    getExifText(reader, ifd0, 0x010f) ??
+    undefined;
+  const lens = getExifText(reader, exifIfd, 0xa434);
+  const focalLength = formatFocalLength(
+    reader.readNumber(exifIfd.get(0x920a)) ?? NaN,
+  );
+  const aperture = formatAperture(
+    reader.readNumber(exifIfd.get(0x829d)) ?? NaN,
+  );
+  const shutterSpeed = formatShutterSpeed(
+    reader.readRational(exifIfd.get(0x829a)),
+  );
+  const rawIso =
+    reader.readNumber(exifIfd.get(0x8827)) ??
+    reader.readNumber(exifIfd.get(0x8833));
+  const iso =
+    Number.isFinite(rawIso) && rawIso > 0 ? Math.round(rawIso) : undefined;
+  const captureDate = extractCaptureDate(exif);
+  const defaults = {
+    ...(camera ? { camera } : {}),
+    ...(lens ? { lens } : {}),
+    ...(focalLength ? { focalLength } : {}),
+    ...(aperture ? { aperture } : {}),
+    ...(shutterSpeed ? { shutterSpeed } : {}),
+    ...(iso ? { iso } : {}),
+    ...(captureDate ? { captureDate } : {}),
+  };
+
+  return Object.keys(defaults).length > 0 ? defaults : undefined;
+}
+
 function safeExifDefaults(metadata) {
-  const captureDate = extractCaptureDate(metadata.exif);
-  return captureDate ? { captureDate } : undefined;
+  return extractExifDefaults(metadata.exif);
 }
 
 export async function readSafeExifDefaults(input) {

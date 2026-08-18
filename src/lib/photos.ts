@@ -20,6 +20,7 @@ const imageManifest = imageManifestJson as Record<
   string,
   PhotoImageManifestEntry
 >;
+const IPHONE_17_PRO = "iPhone 17 Pro";
 
 function normalizeDate(value: unknown) {
   if (value instanceof Date) {
@@ -34,13 +35,27 @@ function normalizeOptionalDate(value: unknown) {
   return value === undefined ? undefined : normalizeDate(value);
 }
 
+function getIPhone17ProLens(focalLength: string | undefined) {
+  const value = Number.parseFloat(focalLength ?? "");
+  if (!Number.isFinite(value)) return undefined;
+  if (value > 15) return `${IPHONE_17_PRO} Telephoto`;
+  if (value > 5) return `${IPHONE_17_PRO} Main`;
+  return `${IPHONE_17_PRO} Ultra Wide`;
+}
+
 export function mergeEditorialWithDerived(
   data: PhotoFrontmatter,
   image: PhotoImageManifestEntry,
 ) {
+  const camera = data.camera?.trim() || image.exif?.camera;
+  const derivedLens =
+    camera === IPHONE_17_PRO
+      ? (getIPhone17ProLens(image.exif?.focalLength) ?? image.exif?.lens)
+      : image.exif?.lens;
+
   return {
-    camera: data.camera?.trim() || image.exif?.camera,
-    lens: data.lens?.trim() || image.exif?.lens,
+    camera,
+    lens: data.lens?.trim() || derivedLens,
   };
 }
 

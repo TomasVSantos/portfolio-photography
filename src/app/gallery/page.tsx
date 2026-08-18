@@ -31,6 +31,8 @@ export default function GalleryPage() {
     date: photo.date,
     tags: photo.tags,
     category: photo.category,
+    camera: photo.camera,
+    lens: photo.lens,
     locationSlug: getLocationSlug(photo.location),
     seriesSlug: slugify(photo.series),
     ...getPhotoImage(photo),
