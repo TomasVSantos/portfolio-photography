@@ -42,7 +42,7 @@ export default function GalleryPage() {
     <PageShell>
       <main>
         <Container>
-          <header className="py-20 sm:py-28 lg:py-36">
+          <header className="pt-20 pb-12 sm:pt-28 sm:pb-12 lg:pt-36 lg:pb-12">
             <SectionHeading
               eyebrow={`${photos.length.toString().padStart(2, "0")} photographs`}
             >

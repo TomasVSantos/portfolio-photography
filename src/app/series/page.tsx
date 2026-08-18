@@ -47,7 +47,7 @@ export default function SeriesIndexPage() {
     <PageShell>
       <main>
         <Container>
-          <header className="max-w-3xl py-20 sm:py-28 lg:py-36">
+          <header className="max-w-3xl pt-20 pb-12 sm:pt-28 sm:pb-12 lg:pt-36 lg:pb-12">
             <SectionHeading
               eyebrow={`${series.length.toString().padStart(2, "0")} series`}
             >
@@ -58,7 +58,7 @@ export default function SeriesIndexPage() {
             </p>
           </header>
 
-          <section className="border-border border-t pt-14 pb-24 lg:pt-20 lg:pb-36">
+          <section className="pb-24 lg:pb-36">
             <div className="grid gap-x-8 gap-y-16 sm:grid-cols-2 lg:gap-x-10 lg:gap-y-24">
               {series.map((item) => {
                 const image = getPhotoImage(item.coverPhoto);
