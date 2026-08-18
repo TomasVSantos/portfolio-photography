@@ -12,6 +12,11 @@ const pageDetails: Record<
     keywords:
       "photographs places people travel street documentary concert live music performers venues atmosphere",
   },
+  Series: {
+    subtitle: "Photographic series",
+    keywords:
+      "series bodies of work collections projects photographs places people travel street documentary concert live music",
+  },
   About: {
     subtitle: `About ${siteConfig.name}`,
     keywords:

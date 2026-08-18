@@ -11,9 +11,14 @@ import {
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes = ["/", "/gallery", "/about", "/gear", "/contact"].map(
-    (route) => ({ url: getCanonicalUrl(route) }),
-  );
+  const staticRoutes = [
+    "/",
+    "/gallery",
+    "/series",
+    "/about",
+    "/gear",
+    "/contact",
+  ].map((route) => ({ url: getCanonicalUrl(route) }));
   const photoRoutes = getAllPhotos().map((photo) => ({
     url: getCanonicalUrl(`/photos/${photo.slug}`),
     lastModified: getPhotoLastModified(photo),

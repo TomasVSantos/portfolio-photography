@@ -113,7 +113,7 @@ export default async function PhotoPage({ params }: PhotoPageProps) {
     {
       term: "Series",
       value: photo.series,
-      href: `/gallery?series=${slugify(photo.series)}`,
+      href: `/series/${slugify(photo.series)}`,
     },
     ...(photo.category
       ? [
@@ -159,7 +159,7 @@ export default async function PhotoPage({ params }: PhotoPageProps) {
             <article>
               <p className="text-muted-foreground text-[0.68rem] tracking-[0.22em] uppercase">
                 <Link
-                  href={`/gallery?series=${slugify(photo.series)}`}
+                  href={`/series/${slugify(photo.series)}`}
                   className="hover:text-foreground transition-colors"
                 >
                   {photo.series}

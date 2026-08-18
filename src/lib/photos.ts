@@ -120,6 +120,50 @@ export function compareSeriesPhotos(a: Photo, b: Photo) {
   return comparePhotos(a, b);
 }
 
+function getPhotoTimelineValue(photo: Pick<Photo, "date" | "capturedAt">) {
+  return photo.capturedAt ?? `${photo.date}T00:00:00`;
+}
+
+export function getSeriesLatestPhoto(series: Pick<Series, "photos">) {
+  return series.photos.reduce((latest, photo) =>
+    getPhotoTimelineValue(photo).localeCompare(getPhotoTimelineValue(latest)) >
+    0
+      ? photo
+      : latest,
+  );
+}
+
+export function compareSeries(a: Series, b: Series) {
+  const latestOrder = getPhotoTimelineValue(
+    getSeriesLatestPhoto(b),
+  ).localeCompare(getPhotoTimelineValue(getSeriesLatestPhoto(a)));
+  return latestOrder || a.slug.localeCompare(b.slug);
+}
+
+export function getSeriesDateRange(series: Pick<Series, "photos">) {
+  const dates = series.photos.map((photo) => photo.date).sort();
+  const start = dates[0] ?? "";
+  return { start, end: dates.at(-1) ?? start };
+}
+
+export function getSeriesCoverPhoto(
+  seriesSlug: string,
+  photos: Photo[],
+  seriesCover?: string,
+) {
+  const coverPhoto = seriesCover
+    ? photos.find((photo) => photo.slug === seriesCover)
+    : photos[0];
+
+  if (!coverPhoto) {
+    throw new Error(
+      `Series "${seriesSlug}" seriesCover "${seriesCover}" must reference a photograph in that series.`,
+    );
+  }
+
+  return coverPhoto;
+}
+
 function getSeriesMetadata(slug: string): SeriesFrontmatter | undefined {
   const filePath = path.join(seriesDirectory, `${slug}.mdx`);
   if (!fs.existsSync(filePath)) return undefined;
@@ -132,6 +176,15 @@ function getSeriesMetadata(slug: string): SeriesFrontmatter | undefined {
   ) {
     throw new Error(
       `Series "${slug}" has unsupported category "${String(metadata.category)}".`,
+    );
+  }
+  if (
+    metadata.seriesCover !== undefined &&
+    (typeof metadata.seriesCover !== "string" ||
+      metadata.seriesCover.trim() === "")
+  ) {
+    throw new Error(
+      `Series "${slug}" seriesCover must be a non-empty photograph slug when provided.`,
     );
   }
   return metadata;
@@ -192,14 +245,20 @@ export function getAllSeries(): Series[] {
   return Array.from(grouped, ([name, photos]) => {
     const fallbackSlug = slugify(name);
     const metadata = getSeriesMetadata(fallbackSlug);
+    const orderedPhotos = [...photos].sort(compareSeriesPhotos);
     return {
       name: metadata?.title ?? name,
       slug: metadata?.slug ?? fallbackSlug,
       description: metadata?.description,
       category: metadata?.category,
-      photos: [...photos].sort(compareSeriesPhotos),
+      coverPhoto: getSeriesCoverPhoto(
+        metadata?.slug ?? fallbackSlug,
+        orderedPhotos,
+        metadata?.seriesCover,
+      ),
+      photos: orderedPhotos,
     } satisfies Series;
-  });
+  }).sort(compareSeries);
 }
 
 export function getSeries(slug: string) {

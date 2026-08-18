@@ -103,7 +103,7 @@ export function GalleryLightbox({ items }: { items: GalleryItem[] }) {
                 </Link>
               </div>
               <Link
-                href={`/gallery?series=${photo.seriesSlug}`}
+                href={`/series/${photo.seriesSlug}`}
                 className="text-muted-foreground hover:text-foreground pt-1 text-[0.65rem] tracking-[0.18em] uppercase transition-colors"
               >
                 {photo.series}

@@ -1,12 +1,14 @@
 import { describe, expect, it } from "vitest";
 
 import {
+  compareSeries,
   comparePhotos,
   compareSeriesPhotos,
+  getSeriesCoverPhoto,
   mergeEditorialWithDerived,
 } from "@/lib/photos";
 import { validateEditorialData } from "@/lib/photo-editorial.mjs";
-import type { Photo, PhotoImageManifestEntry } from "@/types/photo";
+import type { Photo, PhotoImageManifestEntry, Series } from "@/types/photo";
 
 const image = {
   exif: { camera: "Fujifilm X-T5", lens: "XF 35mm F1.4 R" },
@@ -19,6 +21,10 @@ function photo(
   capturedAt?: string,
 ) {
   return { slug, date, seriesOrder, capturedAt } as Photo;
+}
+
+function series(slug: string, photos: Photo[]) {
+  return { slug, name: slug, coverPhoto: photos[0], photos } as Series;
 }
 
 describe("photo editorial metadata", () => {
@@ -110,5 +116,27 @@ describe("deterministic photo ordering", () => {
       "ordered-last",
       "newest",
     ]);
+  });
+
+  it("orders series newest first by their latest photograph", () => {
+    const older = series("older", [photo("old-photo", "2025-03-01")]);
+    const newer = series("newer", [photo("new-photo", "2026-03-01")]);
+
+    expect([older, newer].sort(compareSeries).map(({ slug }) => slug)).toEqual([
+      "newer",
+      "older",
+    ]);
+  });
+
+  it("uses a series cover override and falls back to the first ordered photo", () => {
+    const photos = [
+      photo("first-photo", "2026-03-01", 10),
+      photo("selected-cover", "2026-02-01", 20),
+    ];
+
+    expect(
+      getSeriesCoverPhoto("test-series", photos, "selected-cover").slug,
+    ).toBe("selected-cover");
+    expect(getSeriesCoverPhoto("test-series", photos).slug).toBe("first-photo");
   });
 });

@@ -94,6 +94,7 @@ export interface Series {
   name: string;
   description?: string;
   category?: PhotoCategory;
+  coverPhoto: Photo;
   photos: Photo[];
 }
 
@@ -102,4 +103,5 @@ export interface SeriesFrontmatter {
   slug?: string;
   description?: string;
   category?: PhotoCategory;
+  seriesCover?: string;
 }

@@ -75,7 +75,8 @@ export function SiteHeader() {
           aria-label="Main navigation"
         >
           {navigation.map((item) => {
-            const active = pathname === item.href;
+            const active =
+              pathname === item.href || pathname.startsWith(`${item.href}/`);
             return (
               <Link
                 key={item.href}

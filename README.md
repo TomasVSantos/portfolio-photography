@@ -185,8 +185,14 @@ title: Live Music
 slug: live-music
 description: Performers, crowds, venues, and the atmosphere around the stage.
 category: concert
+seriesCover: photo-slug # optional; photo slug used on the series index
 ---
 ```
+
+Series are listed newest to oldest using the date of their latest photograph.
+Within a series, `seriesOrder` controls the browsing sequence. If
+`seriesCover` is omitted, the first photograph in that sequence is used as the
+cover automatically.
 
 ### Search and gallery discovery
 

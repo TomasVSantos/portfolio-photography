@@ -46,7 +46,7 @@ export function PhotoCard({
           </Link>
         </div>
         <Link
-          href={`/gallery?series=${slugify(photo.series)}`}
+          href={`/series/${slugify(photo.series)}`}
           className="text-muted-foreground hover:text-foreground pt-1 text-[0.65rem] tracking-[0.18em] uppercase transition-colors"
         >
           {photo.series}

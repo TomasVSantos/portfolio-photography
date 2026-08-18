@@ -164,12 +164,20 @@ export default function Home() {
                 {latestSeries.description ??
                   "Photographs connected by a place, subject, or the atmosphere around a shared moment."}
               </p>
-              <Link
-                href={`/series/${latestSeries.slug}`}
-                className="mt-9 inline-flex items-center gap-3 text-xs tracking-[0.17em] uppercase hover:opacity-60"
-              >
-                View the series <ArrowRight className="size-4" />
-              </Link>
+              <div className="mt-9 flex flex-wrap gap-x-6 gap-y-3">
+                <Link
+                  href={`/series/${latestSeries.slug}`}
+                  className="inline-flex items-center gap-3 text-xs tracking-[0.17em] uppercase hover:opacity-60"
+                >
+                  View the series <ArrowRight className="size-4" />
+                </Link>
+                <Link
+                  href="/series"
+                  className="text-muted-foreground inline-flex items-center gap-3 text-xs tracking-[0.17em] uppercase hover:opacity-60"
+                >
+                  All series <ArrowRight className="size-4" />
+                </Link>
+              </div>
             </Reveal>
           </section>
 
