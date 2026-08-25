@@ -30,10 +30,7 @@ export default function ContactPage() {
       <main>
         <Container className="flex min-h-[calc(100svh-16rem)] items-center py-20 sm:py-28">
           <Reveal className="w-full">
-            <p className="text-muted-foreground text-[0.68rem] tracking-[0.22em] uppercase">
-              Contact
-            </p>
-            <h1 className="mt-6 max-w-4xl font-serif text-5xl leading-[0.95] tracking-[-0.05em] sm:text-7xl lg:text-8xl">
+            <h1 className="max-w-4xl font-serif text-5xl leading-[0.95] tracking-[-0.05em] sm:text-7xl lg:text-8xl">
               A conversation can begin simply.
             </h1>
             <div className="border-border mt-16 max-w-3xl border-t lg:mt-24">

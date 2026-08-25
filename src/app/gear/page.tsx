@@ -37,7 +37,7 @@ export default function GearPage() {
     <PageShell>
       <main>
         <Container className="py-20 sm:py-28 lg:py-36">
-          <SectionHeading eyebrow="Tools, not trophies">Gear</SectionHeading>
+          <SectionHeading>Gear</SectionHeading>
           <p className="text-muted-foreground mt-7 max-w-xl text-base leading-7">
             The camera matters far less than attention, but these are the tools
             I enjoy carrying. A small kit leaves more room for the photograph.
@@ -74,7 +74,7 @@ export default function GearPage() {
                     className="border-border flex items-center gap-6 border-b py-7"
                   >
                     <span className="text-muted-foreground text-[0.65rem] tracking-[0.17em]">
-                      {String(index + 1).padStart(2, "0")}
+                      {index + 1}
                     </span>
                     <span className="font-serif text-xl">{item}</span>
                   </li>

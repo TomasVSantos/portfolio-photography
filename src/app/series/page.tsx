@@ -48,11 +48,7 @@ export default function SeriesIndexPage() {
       <main>
         <Container>
           <header className="max-w-3xl pt-20 pb-12 sm:pt-28 sm:pb-12 lg:pt-36 lg:pb-12">
-            <SectionHeading
-              eyebrow={`${series.length.toString().padStart(2, "0")} series`}
-            >
-              Series
-            </SectionHeading>
+            <SectionHeading>Series</SectionHeading>
             <p className="text-muted-foreground mt-7 max-w-lg text-base leading-7">
               The work, one series at a time.
             </p>
@@ -84,8 +80,7 @@ export default function SeriesIndexPage() {
                     <div className="mt-5 flex items-start justify-between gap-6">
                       <div>
                         <p className="text-muted-foreground text-[0.62rem] tracking-[0.16em] uppercase">
-                          {formatSeriesDateRange(item)} ·{" "}
-                          {item.photos.length.toString().padStart(2, "0")}
+                          {formatSeriesDateRange(item)} · {item.photos.length}
                         </p>
                         <h2 className="mt-3 font-serif text-3xl tracking-[-0.035em]">
                           <Link

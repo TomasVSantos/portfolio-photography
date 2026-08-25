@@ -27,10 +27,7 @@ export default function AboutPage() {
         <Container className="py-20 sm:py-28 lg:py-36">
           <div className="grid items-start gap-14 lg:grid-cols-[0.8fr_1.2fr] lg:gap-24">
             <Reveal>
-              <p className="text-muted-foreground text-[0.68rem] tracking-[0.22em] uppercase">
-                About
-              </p>
-              <h1 className="mt-6 font-serif text-5xl leading-[0.95] tracking-[-0.045em] sm:text-7xl">
+              <h1 className="font-serif text-5xl leading-[0.95] tracking-[-0.045em] sm:text-7xl">
                 Looking is a way of slowing down.
               </h1>
               <div className="text-muted-foreground mt-10 max-w-lg space-y-6 text-lg leading-8">

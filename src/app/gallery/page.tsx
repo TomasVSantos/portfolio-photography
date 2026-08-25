@@ -43,11 +43,7 @@ export default function GalleryPage() {
       <main>
         <Container>
           <header className="pt-20 pb-12 sm:pt-28 sm:pb-12 lg:pt-36 lg:pb-12">
-            <SectionHeading
-              eyebrow={`${photos.length.toString().padStart(2, "0")} photographs`}
-            >
-              Gallery
-            </SectionHeading>
+            <SectionHeading>Gallery</SectionHeading>
             <p className="text-muted-foreground mt-7 max-w-lg text-base leading-7">
               Places, people, and atmosphere. From quiet streets to live stages.
               Select an image to enter the full-screen view, or open its story
