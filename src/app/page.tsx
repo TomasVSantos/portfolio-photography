@@ -112,9 +112,7 @@ export default function Home() {
         <section className="border-border/70 border-y py-24 lg:py-36">
           <Container>
             <Reveal className="flex flex-col justify-between gap-8 sm:flex-row sm:items-end">
-              <SectionHeading eyebrow="A few recent frames">
-                Selected photographs
-              </SectionHeading>
+              <SectionHeading>Selected photographs</SectionHeading>
               <Link
                 href="/gallery"
                 className="inline-flex items-center gap-2 text-xs tracking-[0.16em] uppercase hover:opacity-60"
@@ -154,9 +152,7 @@ export default function Home() {
             </Reveal>
             <Reveal delay={0.08}>
               <p className="text-muted-foreground text-[0.68rem] tracking-[0.22em] uppercase">
-                Selected series ·{" "}
-                {latestSeries.photos.length.toString().padStart(2, "0")}{" "}
-                photographs
+                Selected series · {latestSeries.photos.length} photographs
               </p>
               <h2 className="mt-6 font-serif text-5xl tracking-[-0.045em] sm:text-6xl">
                 {latestSeries.name}
@@ -184,9 +180,7 @@ export default function Home() {
 
           <section className="border-border grid gap-10 border-t py-24 lg:grid-cols-2 lg:gap-24 lg:py-36">
             <Reveal>
-              <SectionHeading eyebrow="Behind the camera">
-                The work begins with paying attention.
-              </SectionHeading>
+              <SectionHeading>The work begins with paying attention.</SectionHeading>
             </Reveal>
             <Reveal delay={0.08} className="max-w-xl lg:pt-10">
               <p className="text-muted-foreground text-lg leading-8">
